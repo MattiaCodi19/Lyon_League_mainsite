@@ -1,0 +1,83 @@
+/* Effetti Dark Mode */
+body.dark-mode {
+    background: linear-gradient(135deg, #0b0b0b, #1c1c1c);
+    color: #e0e0e0;
+}
+header.dark-mode {
+    background: linear-gradient(to right, #1a1a1a, #333);
+}
+nav.dark-mode {
+    background: linear-gradient(to right, #333, #444);
+}
+nav.dark-mode a {
+    color: #e0e0e0;
+}
+nav.dark-mode a:hover {
+    background-color: #333;
+    color: #ffffff;
+}
+.hero.dark-mode {
+    color: #f5a623;
+}
+.rules-section.dark-mode, .teams-section.dark-mode, .standings-section.dark-mode {
+    background: linear-gradient(to bottom, #1c1c1c, #333);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
+}
+.rules-section.dark-mode h2, .teams-section.dark-mode h2, .standings-section.dark-mode h2 {
+    color: #f5a623;
+}
+.team.dark-mode {
+    background: linear-gradient(to bottom, #2b2b2b, #3d3d3d);
+}
+.standings-table.dark-mode th, .standings-table.dark-mode td {
+    background-color: #2b2b2b;
+    color: #e0e0e0;
+}
+footer.dark-mode {
+    background: linear-gradient(to right, #1a1a1a, #333);
+}
+.social-media.dark-mode a {
+    color: #f5a623;
+}
+
+/* Animazioni e particelle */
+@keyframes pageLoad {
+    0% { opacity: 0; transform: scale(0.95); }
+    50% { opacity: 0.5; transform: scale(1.02); }
+    100% { opacity: 1; transform: scale(1); }
+}
+body {
+    animation: pageLoad 1s ease-in-out;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #002f6c, #1976d2);
+    color: #ffffff;
+    line-height: 1.6;
+    position: relative;
+    overflow: visible;
+}
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+.particle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: #ffffff;
+    border-radius: 50%;
+    opacity: 0;
+    animation: particleAnimation 1s linear;
+}
+@keyframes particleAnimation {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
+}
+
+/* Tutto il resto dello stile principale (header, nav, hero, sezioni, tabelle, footer, media query) rimane invariato dal tuo codice originale */
