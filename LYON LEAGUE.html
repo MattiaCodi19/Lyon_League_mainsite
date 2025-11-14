@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lyon League</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="particles"></div>
+    <header>
+        <h1>Lyon League - Torneo di Calcio tra Amici</h1>
+    </header>
+    <nav style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; background: linear-gradient(to right, #005b96, #1976d2); padding: 10px; position: static; top: 0; width: 100%; z-index: 1000;">
+        <a href="#">Home</a>
+        <a href="#rules">Regolamento</a>        
+        <a href="#teams">Squadre</a>
+        <a href="#standings">Classifica</a>
+        <a href="#contact">Contatti</a>
+        <a href="#season">Edizioni</a>
+        <a href="#michelin">Premio Michelin</a>
+        <button onclick="toggleDarkMode()" id="darkModeToggle" style="margin-left: auto; padding: 10px; background: none; border: 2px solid #ffffff; border-radius: 8px; cursor: pointer; transition: background 0.3s, border 0.3s;">
+            <img id="darkModeIcon" src="https://img.icons8.com/ios-filled/50/ffffff/sun--v1.png" alt="Icona Modalità Notte" style="width: 24px; height: 24px;">
+        </button>
+    </nav>
+
+    <div class="content">
+        <!-- REGOLE -->
+        <section id="rules" class="rules-section">
+            <h2>Principali Regole del Torneo:</h2>
+            <ul>
+                <li>Le squadre sono composte da 4 giocatori più un portiere (incluse 2 riserve).</li>
+                <li>Se una squadra ha una riserva può fare da uno a più cambi ogni 3 minuti, compresa la pausa tra primo e secondo tempo, si può anche decidere di congelare il cambio (non farlo)</li>
+                <li>Ogni partita dura 10 minuti a tempo.</li>
+                <li>I falli laterali saranno battuti con i piedi.</li>
+                <li>Solo i capitani possono discutere con l'arbitro.</li>
+                <li>Niente risse! La squadra che inizia una rissa avrà una sanzione.</li>
+                <li>Non esiste il fuorigioco.</li>
+                <li>Durante un'esultanza, se il giocatore si toglie la maglia, gli verrà assegnata una sanzione.</li>
+                <li>Se la palla finisce sulla rete in alto è rimessa laterale.</li>
+                <li>Nelle partite a eliminazioni diretta, in caso di parità, ci saranno i rigori e non i tempi supplementari.</li>
+                <li>Per i calci di rigore battono tutti i componenti della squadra, i "rigori regolamentari" saranno fino a 5, da lì in poi si va ad oltranza.</li>
+                <li>Le punizioni, dalla metà campo avversaria, si possono battere solo di seconda.</li>
+            </ul>
+        </section>
+
+        <!-- SQUADRE -->
+        <section id="teams" class="teams-section">
+            <h2>Squadre Partecipanti:</h2>
+            <div class="teams">
+                <div class="team">
+                    <a href="black-rage.html">
+                        <img src="https://i.postimg.cc/XZpR17qR/Black-Rage.png" alt="Logo Black Rage">
+                        <h3>Black Rages</h3>
+                    </a>
+                </div>
+                <div class="team">
+                    <a href="Flash Tigers.html">
+                        <img src="https://i.postimg.cc/q7hMmJVJ/Flash-Tiger.png" alt="Logo Flash Tiger">
+                        <h3>Flash Tigers</h3>
+                    </a>
+                </div>
+                <div class="team">
+                    <a href="Silent Vipers.html">
+                        <img src="https://i.postimg.cc/MHkmyVWJ/Silent-Vipers.png" alt="Logo Silent Vipers">
+                        <h3>Silent Vipers</h3>
+                    </a>
+                </div>
+                <div class="team">
+                    <a href="Raton FC.html">
+                        <img src="https://i.postimg.cc/28ZGfvQh/Rato-n-FC.png" alt="Logo Ratòn FC">
+                        <h3>Ratón FC</h3>
+                    </a>
+                </div>
+                <div class="team">
+                    <a href="Red Dragon.html">
+                        <img src="https://i.postimg.cc/RFfNF0ZF/Red-Dragon.png" alt="Logo Red Dragon">
+                        <h3>Red Dragons</h3>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CLASSIFICA -->
+        <section id="standings" class="standings-section">
+            <h2>Classifica del Torneo:</h2>
+            <table class="standings-table">
+                <thead>
+                    <tr>
+                        <th>Posizione</th>
+                        <th>Squadra</th>
+                        <th>Punti</th>
+                        <th>Partite Giocate</th>
+                        <th>Vittorie</th>
+                        <th>Pareggi</th>
+                        <th>Sconfitte</th>
+                        <th>Gol Fatti</th>
+                        <th>Gol Subiti</th>
+                        <th>Differenza Reti</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Flash Tigers</td>
+                        <td><input type="number" value="9" onchange="updateStandings()"></td>
+                        <td><input type="number" value="3" onchange="updateStandings()"></td>
+                        <td><input type="number" value="3" onchange="updateStandings()"></td>
+                        <td><input type="number" value="0" onchange="updateStandings()"></td>
+                        <td><input type="number" value="0" onchange="updateStandings()"></td>
+                        <td><input type="number" value="9" onchange="updateStandings()"></td>
+                        <td><input type="number" value="3" onchange="updateStandings()"></td>
+                        <td><input type="number" value="6" onchange="updateStandings()"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Ratón FC</td>
+                        <td><input type="number" value="6" onchange="updateStandings()"></td>
+                        <td><input type="number" value="3" onchange="updateStandings()"></td>
+                        <td><input type="number" value="2" onchange="updateStandings()"></td>
+                        <td><input type="number" value="0" onchange="updateStandings()"></td>
+                        <td><input type="number" value="1" onchange="updateStandings()"></td>
+                        <td><input type="number" value="8" onchange="updateStandings()"></td>
+                        <td><input type="number" value="5" onchange="updateStandings()"></td>
+                        <td><input type="number" value="3" onchange="updateStandings()"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Black Rages</td>
+                        <td><input type="number" value="3" onchange="updateStandings()"></td>
+                        <td><input type="number" value="3" onchange="updateStandings()"></td>
+                        <td><input type="number" value="1" onchange="updateStandings()"></td>
+                        <td><input type="number" value="0" onchange="updateStandings()"></td>
+                        <td><input type="number" value="2" onchange="updateStandings()"></td>
+                        <td><input type="number" value="5" onchange="updateStandings()"></td>
+                        <td><input type="number" value="7" onchange="updateStandings()"></td>
+                        <td><input type="number" value="-2" onchange="updateStandings()"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Silent Vipers</td>
+                        <td><input type="number" value="0" onchange="updateStandings()"></td>
+                        <td><input type="number" value="3" onchange="updateStandings()"></td>
+                        <td><input type="number" value="0" onchange="updateStandings()"></td>
+                        <td><input type="number" value="0" onchange="updateStandings()"></td>
+                        <td><input type="number" value="3" onchange="updateStandings()"></td>
+                        <td><input type="number" value="4" onchange="updateStandings()"></td>
+                        <td><input type="number" value="11" onchange="updateStandings()"></td>
+                        <td><input type="number" value="-7" onchange="updateStandings()"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- CLASSIFICA MARCATORI -->
+        <hr color="#f9ea0e">
+        <h2>Classifica Marcatori 
+            <details style="display:inline;">
+                <summary style="font-size:0.7em; cursor:pointer; display:inline;">(criteri)</summary>
+                <small>
+                    1. Gol segnati<br>
+                    2. In caso di parità: posizionamento squadra (Flash Tigers - Ratón - Black Rages - Silent Vipers)
+                </small>
+            </details>
+        </h2>
+
+        <ol>
+            <li>Traversa (Flash Tigers) - 6g</li>
+            <li>Gabriele Santorsola (Ratón FC) - 6g</li>
+            <li>Pepe (Flash Tigers) - 3g</li>
+            <li>Antonello (Black Rages) - 2g</li>
+            <li>Domenico (Silent Vipers) - 2g</li>
+            <li>Andrea (Ratón FC) - 1g</li>
+            <li>Ivan (Black Rages) - 1g</li>
+            <li>Nicola (Silent Vipers) - 1g</li>
+            <li>Antonio (Silent Vipers) - 1g</li>
+        </ol>
+
+        <!-- CRONOLOGIA PARTITE -->
+        <hr color="#f9ea0e">
+        <h2>Cronologia Partite</h2>
+        <table class="matches">
+            <tr>
+                <h3>Prima Giornata</h3>
+                <p>Ratón FC - Flash Tigers 1-3</p>
+                <p>Black Rages - Silent Vipers 4-1</p> 
+            </tr>
+            <tr>
+                <h3>Seconda Giornata</h3>
+                <p>Silent Vipers - Ratón FC 2-5</p>
+                <p>Black Rages - Flash Tigers 1-4</p> 
+            </tr>
+            <tr>
+                <h3>Terza Giornata</h3> 
+                <p>Ratón FC - Black Rages 2-0</p> 
+                <p>Silent Vipers - Flash Tigers 1-2</p> 
+            </tr>
+            <tr>
+                <h3>Playoff + Finale</h3> 
+                <p>Ratón FC - Black Rages</p>
+                <p><b>Flash Tigers</b> - Vinc. Secondo/Terzo</p> 
+            </tr>
+        </table>
+
+                <!-- STAGIONI -->
+        <section id="season" class="season">
+            <div class="season">
+                <h2> Edizioni della Lyon League - Squadra trionfante </h2>
+                <ul>
+                    <h3> <a href="Lyon League 2024 - Prima Edizione.html"> &#127942; </a>  Lyon League 2024 - Black Rage </h3>
+                    <h3> <a href="Lyon League 2024 - Seconda Edizione.html"> &#127942; </a>  Lyon League A2025 - Black Rage (2)</h3>
+                    <h3> <a href="Lyon League 2024 - Terza Edizione.html"> &#127942; </a>  Lyon League B2025 - Black Rage (3)</h3>
+                </ul>
+            </div>
+        </section>
+
+        <!-- PREMIO MICHELIN -->
+        <section id="michelin" class="michelin">
+            <div class="michelin">
+                <h2>Premio Michelin </h2>
+                <ul>
+                    <h3> <a href="Premio Michelin.html"> &#127942; </a> Storia del Premio Michelin e Albo d'oro</h3>
+                </ul>
+            </div>
+        </section>
+
+        <h1>Il campo: DON GUANELLA</h1>
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1536.0762847165179!2d16.864589697996006!3d41.0907504345288!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1347e9a77a32dc45%3A0xdb2251823ce8c42f!2sParrocchia%20di%20Maria%20Santissima%20Addolorata!5e1!3m2!1sit!2sit!4v1747166489109!5m2!1sit!2sit" 
+            width="600" 
+            height="450" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+
+        <!-- CONTATTI -->
+        <section id="contact" class="contact-section">
+            <h2>Contatti:</h2>
+            <p>Per qualsiasi informazione, puoi contattarci a: <a href="mailto:info@lyonleague.com">info@lyonleague.com</a></p>
+            <div class="social-media">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Lyon League. Tutti i diritti riservati.</p>
+        <div class="social-media">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
