@@ -1,258 +1,338 @@
-        body {
-            margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #002f6c, #1976d2);
-            color: #ffffff;
-            line-height: 1.6;
-        }
-        header {
-            background: linear-gradient(to right, #002f6c, #1976d2);
-            padding: 20px;
-            text-align: center;
-            color: #ffffff;
-            animation: slideIn 1.5s ease-out;
-        }
-        header h1 {
-            font-size: 2.8em;
-            margin: 0;
-            letter-spacing: 1.5px;
-        }
-        @keyframes slideIn {
-            from { transform: translateY(-100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        nav {
-            background: linear-gradient(to right, #005b96, #1976d2);
-            display: flex;
-            justify-content: center;
-            padding: 10px;
-            animation: fadeIn 1s ease-in-out;
-        }
-        nav a {
-            color: #ffffff;
-            text-decoration: none;
-            padding: 12px 20px;
-            transition: background 0.3s, transform 0.3s;
-        }
-        nav a:hover {
-            background-color: #ffffff;
-            color: #005b96;
-            border-radius: 5px;
-            transform: scale(1.1);
-        }
-        .hero {
-            background: url('https://i.postimg.cc/LY9XwPdy/Lyon-League-Logo.jpg') no-repeat center center/cover;
-            height: 60vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #1976d2;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-            animation: zoomIn 2s ease;
-        }
-        @keyframes zoomIn {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-        .hero h2 {
-            font-size: 3em;
-            animation: fadeIn 2s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        .content {
-            padding: 40px;
-            max-width: 1200px;
-            margin: auto;
-            animation: fadeIn 1.5s ease-in;
-        }
-        .download-button {
-            display: inline-block;
-            background: linear-gradient(45deg, #1e88e5, #1e88e5);
-            color: #ffffff;
-            padding: 15px 30px;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 50px;
-            transition: transform 0.3s, background-color 0.3s;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            margin-bottom: 50px;
-            animation: bounceIn 1.2s ease-in;
-        }
-        @keyframes bounceIn {
-            0% { transform: scale(0.5); opacity: 0; }
-            60% { transform: scale(1.1); opacity: 1; }
-            100% { transform: scale(1); }
-        }
-        .download-button:hover {
-            background-color: #ffffff;
-            transform: scale(1.1);
-        }
-        .rules-section {
-            background: linear-gradient(to bottom, #002f6c, #333);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
-            margin-bottom: 40px;
-            animation: fadeIn 1.5s ease-in-out;
-        }
-        .rules-section h2 {
-            font-size: 2.2em;
-            color: #ffffff;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            text-align: center;
-        }
-        .rules-section ul {
-            list-style-type: none;
-            padding: 0;
-            line-height: 1.8;
-        }
-        .rules-section ul li {
-            margin-bottom: 15px;
-            font-size: 1.2em;
-            color: #ffffff;
-            position: relative;
-            padding-left: 25px;
-        }
-        .rules-section ul li:before {
-            content: "\2713";
-            position: absolute;
-            left: 0;
-            color: #1e88e5;
-            font-size: 1.3em;
-        }
-        .teams-section {
-            padding: 20px;
-            background: linear-gradient(to bottom, #002f6c, #005b96);
-            border-radius: 15px;
-            box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
-            margin-bottom: 40px;
-            animation: slideIn 1.5s ease-in-out;
-        }
-        .teams-section h2 {
-            color: #ffffff;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            text-align: center;
-        }
-        .teams {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-            justify-items: center;
-        }
-        .team {
-            background: linear-gradient(to bottom, #003366, #004c8c);
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-            text-align: center;
-            width: 100%;
-            max-width: 180px;
-            transition: transform 0.3s;
-            animation: bounceIn 1.5s ease;
-        }
-        .team:hover {
-            transform: scale(1.05);
-        }
-        .team img {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 50%;
-            margin-bottom: 10px;
-            transition: transform 0.3s;
-        }
-        .team img:hover {
-            transform: rotate(10deg) scale(1.1);
-        }
-        .team h3 {
-            color: #ffffff;
-            margin: 0;
-        }
-        .standings-section {
-            padding: 20px;
-            background: linear-gradient(to bottom, #002f6c, #005b96);
-            border-radius: 15px;
-            box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
-            margin-bottom: 40px;
-            animation: fadeIn 1.5s ease-in;
-        }
-        .standings-section h2 {
-            color: #ffffff;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            text-align: center;
-        }
-        .standings-table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: center;
-            border-radius: 15px;
-            overflow: hidden;
-            animation: zoomIn 1.5s ease;
-        }
-        .standings-table th, .standings-table td {
-            padding: 15px;
-            border: none;
-        }
-        .standings-table th {
-            color: #ffffff;
-        }
-        .standings-table td {
-            background-color: #003366;
-            color: #ffffff;
-        }
-        .standings-table input[type="number"] {
-            width: 50px;
-            padding: 5px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            text-align: center;
-        }
-        footer {
-            background: linear-gradient(to right, #002f6c, #005b96);
-            padding: 20px;
-            text-align: center;
-            color: #ffffff;
-            margin-top: 40px;
-            animation: slideInUp 1.5s ease;
-        }
-        @keyframes slideInUp {
-            from { transform: translateY(100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        .social-media {
-            margin-top: 20px;
-        }
-        .social-media a {
-            color: #1e88e5;
-            text-decoration: none;
-            margin: 0 10px;
-            font-size: 1.5em;
-            transition: color 0.3s;
-        }
-        .social-media a:hover {
-            color: #ffffff;
-            transform: scale(1.1);
-        }
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2em;
-            }
-            .hero h2 {
-                font-size: 2.5em;
-            }
-            .content {
-                padding: 20px;
-            }
-            nav {
-                flex-direction: column;
-            }
-            nav a {
-                padding: 10px;
-            }
-        }
+/* ================= Dark Mode ================= */
+body.dark-mode {
+    background: linear-gradient(135deg, #0b0b0b, #1c1c1c);
+    color: #e0e0e0;
+}
+header.dark-mode {
+    background: linear-gradient(to right, #1a1a1a, #333);
+}
+nav.dark-mode {
+    background: linear-gradient(to right, #333, #444);
+}
+nav.dark-mode a {
+    color: #e0e0e0;
+}
+nav.dark-mode a:hover {
+    background-color: #333;
+    color: #ffffff;
+}
+.hero.dark-mode {
+    color: #f5a623;
+}
+.rules-section.dark-mode,
+.teams-section.dark-mode,
+.standings-section.dark-mode {
+    background: linear-gradient(to bottom, #1c1c1c, #333);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
+}
+.rules-section.dark-mode h2,
+.teams-section.dark-mode h2,
+.standings-section.dark-mode h2 {
+    color: #f5a623;
+}
+.team.dark-mode {
+    background: linear-gradient(to bottom, #2b2b2b, #3d3d3d);
+}
+.standings-table.dark-mode th,
+.standings-table.dark-mode td {
+    background-color: #2b2b2b;
+    color: #e0e0e0;
+}
+footer.dark-mode {
+    background: linear-gradient(to right, #1a1a1a, #333);
+}
+.social-media.dark-mode a {
+    color: #f5a623;
+}
+
+/* ================= Animazioni ================= */
+@keyframes pageLoad {
+    0% { opacity: 0; transform: scale(0.95); }
+    50% { opacity: 0.5; transform: scale(1.02); }
+    100% { opacity: 1; transform: scale(1); }
+}
+body {
+    animation: pageLoad 1s ease-in-out;
+    position: relative;
+    overflow: visible;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #002f6c, #1976d2);
+    color: #ffffff;
+    line-height: 1.6;
+}
+@keyframes slideIn {
+    from { transform: translateY(-100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+@keyframes slideInUp {
+    from { transform: translateY(100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes bounceIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    60% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); }
+}
+@keyframes particleAnimation {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
+}
+
+/* ================= Particles ================= */
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+.particle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: #ffffff;
+    border-radius: 50%;
+    opacity: 0;
+    animation: particleAnimation 1s linear;
+}
+
+/* ================= Header & Nav ================= */
+header {
+    background: linear-gradient(to right, #002f6c, #1976d2);
+    padding: 20px;
+    text-align: center;
+    color: #ffffff;
+    animation: slideIn 1.5s ease-out;
+}
+header h1 {
+    font-size: 2.8em;
+    margin: 0;
+    letter-spacing: 1.5px;
+}
+nav {
+    background: linear-gradient(to right, #005b96, #1976d2);
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    animation: fadeIn 1s ease-in-out;
+}
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 20px;
+    transition: background 0.3s, transform 0.3s;
+}
+nav a:hover {
+    background-color: #ffffff;
+    color: #005b96;
+    border-radius: 5px;
+    transform: scale(1.1);
+}
+
+/* ================= Hero ================= */
+.hero {
+    background: url('https://i.postimg.cc/LY9XwPdy/Lyon-League-Logo.jpg') no-repeat center center/cover;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1976d2;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+    animation: zoomIn 2s ease;
+}
+.hero h2 {
+    font-size: 3em;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* ================= Content ================= */
+.content {
+    padding: 40px;
+    max-width: 1200px;
+    margin: auto;
+    animation: fadeIn 1.5s ease-in;
+}
+.download-button {
+    display: inline-block;
+    background: linear-gradient(45deg, #1e88e5, #1e88e5);
+    color: #ffffff;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 50px;
+    transition: transform 0.3s, background-color 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    margin-bottom: 50px;
+    animation: bounceIn 1.2s ease-in;
+}
+.download-button:hover {
+    background-color: #ffffff;
+    transform: scale(1.1);
+}
+
+/* ================= Sections ================= */
+.rules-section,
+.teams-section,
+.standings-section {
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.6);
+    margin-bottom: 40px;
+}
+.rules-section {
+    background: linear-gradient(to bottom, #002f6c, #333);
+}
+.rules-section h2 {
+    font-size: 2.2em;
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-align: center;
+}
+.rules-section ul {
+    list-style-type: none;
+    padding: 0;
+    line-height: 1.8;
+}
+.rules-section ul li {
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    color: #ffffff;
+    position: relative;
+    padding-left: 25px;
+}
+.rules-section ul li:before {
+    content: "\2713";
+    position: absolute;
+    left: 0;
+    color: #1e88e5;
+    font-size: 1.3em;
+}
+
+/* ================= Teams ================= */
+.teams-section {
+    background: linear-gradient(to bottom, #002f6c, #005b96);
+}
+.teams-section h2 {
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-align: center;
+}
+.teams {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+.team {
+    background: linear-gradient(to bottom, #003366, #004c8c);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    text-align: center;
+    width: 100%;
+    max-width: 180px;
+    transition: transform 0.3s;
+    animation: bounceIn 1.5s ease;
+}
+.team:hover {
+    transform: scale(1.05);
+}
+.team img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    transition: transform 0.3s;
+}
+.team img:hover {
+    transform: rotate(10deg) scale(1.1);
+}
+.team h3 {
+    color: #ffffff;
+    margin: 0;
+}
+
+/* ================= Standings ================= */
+.standings-section {
+    background: linear-gradient(to bottom, #002f6c, #005b96);
+}
+.standings-section h2 {
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-align: center;
+}
+.standings-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    border-radius: 15px;
+    overflow: hidden;
+    animation: zoomIn 1.5s ease;
+}
+.standings-table th, .standings-table td {
+    padding: 15px;
+    border: none;
+}
+.standings-table th {
+    color: #ffffff;
+}
+.standings-table td {
+    background-color: #003366;
+    color: #ffffff;
+}
+.standings-table input[type="number"] {
+    width: 50px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+/* ================= Footer ================= */
+footer {
+    background: linear-gradient(to right, #002f6c, #005b96);
+    padding: 20px;
+    text-align: center;
+    color: #ffffff;
+    margin-top: 40px;
+    animation: slideInUp 1.5s ease;
+}
+.social-media {
+    margin-top: 20px;
+}
+.social-media a {
+    color: #1e88e5;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 1.5em;
+    transition: color 0.3s;
+}
+.social-media a:hover {
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+/* ================= Responsive ================= */
+@media (max-width: 768px) {
+    header h1 { font-size: 2em; }
+    .hero h2 { font-size: 2.5em; }
+    .content { padding: 20px; }
+    nav { flex-direction: column; }
+    nav a { padding: 10px; }
+}
