@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="it">
+    <!DOCTYPE html>
+    <html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lyon League C2025 - Quarta Edizione</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+        <style>
+            body {
+                margin: 0;
+                font-family: 'Poppins', sans-serif;
+                background: linear-gradient(135deg, #002f6c, #1976d2);
+                color: #ffffff;
+                line-height: 1.6;
+                overflow-x: hidden; /* per evitare lo scrolling orizzontale */
+            }
+            body.dark-mode {
+                background: linear-gradient(135deg, #0b0b0b, #1c1c1c);
+                color: #e0e0e0;
+            }
+            header {
+                background: linear-gradient(to right, #002f6c, #1976d2);
+                padding: 20px;
+                text-align: center;
+                color: #ffffff;
+                position: sticky;
+                top: 0;
+                width: 100%;
+                z-index: 1000;
+            }
+            header.dark-mode {
+                background: linear-gradient(to right, #1a1a1a, #333);
+            }
+            header h1 {
+                font-size: 2.8em;
+                margin: 0;
+                letter-spacing: 1.5px;
+            }
+            nav {
+                background: linear-gradient(to right, #005b96, #1976d2);
+                display: flex;
+                align-items: center;
+                padding: 10px;
+                position: sticky;
+                top: 0;
+                width: 100%;
+                z-index: 1000;
+                transition: background 0.3s;
+                flex-wrap: wrap; /* per schermi piccoli */
+            }
+            nav.dark-mode {
+                background: linear-gradient(to right, #333, #444);
+            }
+            nav a {
+                color: #ffffff;
+                text-decoration: none;
+                padding: 12px 20px;
+                transition: background 0.3s, color 0.3s, transform 0.3s;
+                border-radius: 5px;
+                margin: 5px;
+            }
+            nav a:hover {
+                background-color: #ffffff;
+                color: #005b96;
+                transform: scale(1.1);
+            }
+            nav a.dark-mode {
+                color: #e0e0e0;
+            }
+            nav a.dark-mode:hover {
+                background-color: #444;
+                color: #ffffff;
+            }
+            .content {
+                padding: 40px;
+                max-width: 1200px;
+                margin: auto;
+            }
+            .content.dark-mode {
+                background: #1c1c1c;
+            }
+            .team-info {
+                text-align: center;
+                margin-bottom: 40px;
+            }
+            .team-info img {
+                width: 200px;
+                height: 200px;
+                object-fit: cover;
+                border-radius: 50%;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            }
+            .team-info h2 {
+                font-size: 2.5em;
+                margin: 20px 0;
+            }
+            .team-history {
+                background: linear-gradient(to bottom, #003366, #004c8c);
+                padding: 30px;
+                border-radius: 15px;
+                box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+            }
+            .team-history.dark-mode {
+                background: linear-gradient(to bottom, #2b2b2b, #3d3d3d);
+                box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
+            }
+            .team-history h3 {
+                font-size: 2em;
+                margin-bottom: 20px;
+            }
+            .team-history p {
+                font-size: 1.2em;
+            }
+            button#darkModeToggle {
+                margin-left: auto;
+                padding: 10px;
+                background: none;
+                border: 2px solid #ffffff;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: background 0.3s, border 0.3s;
+            }
+            button#darkModeToggle:hover {
+                background-color: #ffffff;
+            }
+            button#darkModeToggle img {
+                width: 24px;
+                height: 24px;
+            }
+            /* Effetto fuoco */
+            .fire-container {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                z-index: -1;
+            }
+            .fire {
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                width: 10px;
+                height: 10px;
+                background: orange;
+                box-shadow: 0 0 20px rgba(255, 165, 0, 0.8);
+                border-radius: 50%;
+                animation: fireAnimation 2s linear infinite;
+            }
+            @keyframes fireAnimation {
+                0% {
+                    transform: translateX(0) translateY(0) scale(1);
+                    opacity: 1;
+                }
+                50% {
+                    transform: translateX(calc(-50vw + 50%)) translateY(-60vh) scale(1.5);
+                    opacity: 0.6;
+                }
+                100% {
+                    transform: translateX(calc(-50vw + 50%)) translateY(-100vh) scale(0.3);
+                    opacity: 0;
+                }
+            }
+    
+            /* Media Queries per dispositivi mobili */
+            @media (max-width: 768px) {
+                header h1 {
+                    font-size: 2.2em;
+                }
+                nav {
+                    flex-direction: column;
+                    align-items: stretch;
+                }
+                nav a {
+                    padding: 10px;
+                    text-align: center;
+                }
+                .content {
+                    padding: 20px;
+                }
+                .team-info img {
+                    width: 150px;
+                    height: 150px;
+                }
+                .team-info h2 {
+                    font-size: 2em;
+                }
+                .team-history {
+                    padding: 20px;
+                }
+                .team-history h3 {
+                    font-size: 1.8em;
+                }
+                .team-history p {
+                    font-size: 1em;
+                }
+            }
+    
+            @media (max-width: 480px) {
+                header h1 {
+                    font-size: 1.8em;
+                }
+                nav a {
+                    padding: 8px;
+                    font-size: 1em;
+                }
+                .team-info img {
+                    width: 120px;
+                    height: 120px;
+                }
+                .team-info h2 {
+                    font-size: 1.8em;
+                }
+                .team-history h3 {
+                    font-size: 1.6em;
+                }
+                .team-history p {
+                    font-size: 0.9em;
+                }
+            }
+    
+        </style>
+        <script>
+            function toggleDarkMode() {
+                const darkModeIcon = document.getElementById('darkModeIcon');
+                document.body.classList.toggle('dark-mode');
+                document.querySelector('header').classList.toggle('dark-mode');
+                document.querySelector('nav').classList.toggle('dark-mode');
+                document.querySelector('.team-history').classList.toggle('dark-mode');
+    
+                if (document.body.classList.contains('dark-mode')) {
+                    darkModeIcon.src = 'https://img.icons8.com/ios-filled/50/ffffff/sun--v1.png';
+                    darkModeIcon.alt = 'Icona Modalità Giorno';
+                } else {
+                    darkModeIcon.src = 'https://img.icons8.com/ios-filled/50/ffffff/moon-symbol.png';
+                    darkModeIcon.alt = 'Icona Modalità Notte';
+                }
+            }
+            document.addEventListener("DOMContentLoaded", function() {
+                createFireEffect(100);
+                setTimeout(() => {
+                    document.querySelector('.fire-container').remove();
+                    document.body.style.overflow = 'auto';
+                }, 1000);
+            });
+            function createFireEffect(num) {
+                const fireContainer = document.createElement("div");
+                fireContainer.classList.add("fire-container");
+                for (let i = 0; i < num; i++) {
+                    const fire = document.createElement("div");
+                    fire.classList.add("fire");
+                    fire.style.left = Math.random() * 100 + "vw";
+                    fire.style.animationDelay = Math.random() * 2 + "s";
+                    fireContainer.appendChild(fire);
+                }
+                document.body.appendChild(fireContainer);
+                document.body.style.overflow = 'hidden';
+            }
+        </script>
+    </head>
+<body>
+    <header>
+        <h1>Lyon League C2025 - Quarta Edizione</h1>
+    </header>
+    <nav style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; background: linear-gradient(to right, #005b96, #1976d2); padding: 10px; position: static; top: 0; width: 100%; z-index: 1000;">
+        <a href="./LYON%20LEAGUE%20copia.html#home" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Home</a>
+        <a href="./LYON%20LEAGUE%20copia.html#rules" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Regolamento</a>
+        <a href="./LYON%20LEAGUE%20copia.html#teams" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Squadre</a>
+        <a href="./LYON%20LEAGUE%20copia.html#standings" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Classifica</a>
+        <a href="./LYON%20LEAGUE%20copia.html#contact" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Contatti</a>
+        <a href="./LYON%20LEAGUE%20copia.html#season" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Edizioni</a>
+        <a href="./LYON%20LEAGUE%20copia.html#michelin" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Premio Michelin</a>
+        <button onclick="toggleDarkMode()" id="darkModeToggle"><img id="darkModeIcon" src="https://img.icons8.com/ios-filled/50/ffffff/sun--v1.png" alt="Icona Modalità Notte"></button>
+    </nav>
+    <div class="content">
+        <section class="team-info">
+            <img src="https://i.postimg.cc/28ZGfvQh/Rato-n-FC.png" alt="Logo Ratòn FC">
+            <h2><a href="LYON LEAGUE copia.html" style="color: #ffffff; text-decoration: none;">VINCITORI</a></h2>
+        </section>
+        <section class="team-history">
+            <h3>Storia</h3>
+            <p> La Quarta Stagione mantiene il formato dell'edizione precedente: 4 squadre in un unico girone che si sfidano l'una contro l'altra per 3 giornate; alla fine, il primo posto va automaticamente in finale, mentre secondo e terzo posto si giocano i playoff, in caso di pareggio a passare &egrave; la squadra arrivata seconda.
+                A dominare la regular season, questa stagione, sono stati i Flash Tigers che sono riusciti a subire solo 3 gol nella regular season, il loro momento di gloria si infrange nella finale dove vengono battuti dai rivali Ratòn.
+                Quest'ultimi sono arrivati secondi e hanno passato i playoff contro i Black Rages con un 1-1 molto sofferto.
+                I Black Rages hanno avuto una stagione orribile, subendo le loro prime sconfitte, ma trovando comunque una vittoria contro i Silent Vipers.
+            </p>
+        </section>
+        <section> 
+            <h2>CLASSIFICA REGULAR SEASON</h2>
+            <ol>
+                <li>Flash Tigers | 9pt 3v 0p 0s | 9gf 3gs 6dr</li>
+                <li>Rat&ograve;n FC | 6pt 2v 0p 1s | 8gf 5gs 3dr</li>
+                <li>Black Rages | 3pt 1v 0p 2s | 5gf 7gs -2dr</li>
+                <li>Silent Vipers | 0pt 0v 0p 3s | 4gf 11gs -7dr</li>
+            </ol>
+
+            <h2>CLASSIFICA MARCATORI</h2>
+            <ol>
+                <li>Gabriele Santorsola (Ratón FC) - 7g</li>
+                <li>Traversa (Flash Tigers) - 6g</li>
+                <li>Pepe (Flash Tigers) - 5g</li>
+                <li>Andrea (Ratón FC) - 3g</li>
+                <li>Mattia N. (Ratón FC) - 3g</li>
+                <li>Antonello (Black Rages) - 2g</li>
+                <li>Domenico (Silent Vipers) - 2g</li>
+                <li>Sciaco (Flash Tigers) - 1g</li>
+                <li>Luca (Ratón FC) - 1g</li>
+                <li>Ivan (Black Rages) - 1g</li>
+                <li>Samuele (Black Rages) - 1g</li>
+                <li>Nicola (Silent Vipers) - 1g</li>
+                <li>Antonio (Silent Vipers) - 1g</li>
+            </ol>
+        </section>
+        <section> 
+            <h2> MEMBRI SQUADRA VINCITRICE</h2>
+            <p>Luca Marzullo (capitano) <br>
+            Mattia N. <br>
+            Gabriele "Gabbo" S. <br>
+            Ivan <br>
+            Andrea <br> 
+            Giuseppe <br>
+        </p>
+                
+            <h2> MEMBRI SQUADRA SECONDO POSTO</h2>
+            <p>Pepe (capitano) <br>
+                Giacomo <br>
+                Marzullo Mattia <br>
+                Moneta <br>
+                Mattia S. <br>
+                Traversa <br>
+                Sciaco <br>
+            </p>
+        </section>
+
+        <!-- CRONOLOGIA PARTITE -->
+        <hr color="#f9ea0e">
+        <h2>Cronologia Partite</h2>
+        <table class="matches">
+            <tr>
+                <h3>Prima Giornata</h3>
+                <p>Ratón FC - Flash Tigers 1-3</p>
+                <p>Black Rages - Silent Vipers 4-1</p> 
+            </tr>
+            <tr>
+                <h3>Seconda Giornata</h3>
+                <p>Silent Vipers - Ratón FC 2-5</p>
+                <p>Black Rages - Flash Tigers 1-4</p> 
+            </tr>
+            <tr>
+                <h3>Terza Giornata</h3> 
+                <p>Ratón FC - Black Rages 2-0</p> 
+                <p>Silent Vipers - Flash Tigers 1-2</p> 
+            </tr>
+            <tr>
+                <h3>Playoff + Finale</h3> 
+                <p>Rat&ograve;n FC - Black Rages 1-1</p>
+                <p><b>Flash Tigers</b> - Rat&ograve;n FC 3-6</p> 
+            </tr>
+        </table>
+        <hr color="#f9ea0e">
+
+        <section> 
+        <h2>CLASSIFICA PALLONE D'ORO <a href="Premio Michelin.html"><sup>&#128312;</sup></a> </h2>
+        <ol>
+            <li><b>Traversa (Flash Tigers) - 3.1pt</b></li>
+            <li>Pepe (Flash Tigers) - 2.5pt</li>
+            <li>Ivan (Ratòn FC) - 2.2pt</li>
+            <li>Sciaco (Flash Tigers) - 2.17pt</li>
+        </ol>
+        </section>
+        <hr color="#f9ea0e">
+        
+        <section> 
+            <br>
+            <p> QUINTA EDIZIONE <a href="Lyon League 2024 - Prima Edizione.html"><sup>&#128312;</sup></a> </p>
+            <p> TERZA EDIZIONE <a href="Lyon League 2024 - Terza Edizione.html"><sup>&#128312;</sup></a> </p>
+            </section>
+    </div>
+    <footer>
+        <p>&copy; 2024 Lyon League. Tutti i diritti riservati.</p>
+    </footer>
+</body>
+</html>
