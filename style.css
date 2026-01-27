@@ -267,6 +267,32 @@ nav a:hover {
     margin: 0;
 }
 
+/* Stile per la cella che contiene logo e nome */
+td:nth-child(2) {
+    display: flex;
+    align-items: center;
+    gap: 12px;         /* Distanza uniforme tra logo e testo */
+    min-width: 200px;  /* Assicura che la colonna abbia una base solida */
+    padding: 10px;
+}
+
+/* Contenitore fisso per il logo per evitare spostamenti */
+.logo-wrapper {
+    width: 45px;       /* Larghezza fissa: risolve il problema del disallineamento */
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;    /* Impedisce al logo di rimpicciolirsi */
+}
+
+/* Regola universale per i loghi */
+.logo-wrapper img {
+    height: 2.8em;     /* Altezza uniforme per tutti */
+    width: auto;       /* Mantiene le proporzioni originali */
+    object-fit: contain;
+}
+
+
+
 /* ================= Standings ================= */
 .standings-section {
     background: linear-gradient(to bottom, #002f6c, #005b96);
