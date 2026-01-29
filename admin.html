@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Lyon League - Area Amministrazione</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #002f6c, #1976d2);
+    color: white;
+}
+
+header {
+    background: linear-gradient(to right, #002f6c, #1976d2);
+    padding: 20px;
+    text-align: center;
+}
+
+nav {
+    background: linear-gradient(to right, #005b96, #1976d2);
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+}
+
+nav a:hover {
+    background: white;
+    color: #005b96;
+    border-radius: 5px;
+}
+
+.content {
+    padding: 40px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.box-sorteggio {
+    background: rgba(255,255,255,0.1);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.4);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#contenitore {
+    width: 100%;
+    max-width: 400px;
+}
+
+
+input {
+    padding: 8px;
+    margin: 5px 0;
+    width: 200px;
+}
+
+button {
+    padding: 10px 16px;
+    margin-top: 10px;
+    margin-right: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.simula { background: #00c811; color: black; }
+.simula:hover {background: #008035; color: black;}
+.reset { background: #c40e0e; color: white;}
+.reset:hover { background: #7e0000;}
+
+.blocco {
+    background: rgba(0,0,0,0.4);
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+    animation: entra 0.6s forwards;
+}
+
+.btn-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+@keyframes entra {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+
+<body>
+<header> <h1>Lyon League – Area Amministrazione</h1> </header>
+
+<nav style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; background: linear-gradient(to right, #005b96, #1976d2); padding: 10px; position: static; top: 0; width: 100%; z-index: 1000;">
+        <a href="./LYON%20LEAGUE%20copia.html#home" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Home</a>
+        <a href="./LYON%20LEAGUE%20copia.html#rules" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Regolamento</a>
+        <a href="./LYON%20LEAGUE%20copia.html#teams" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Squadre</a>
+        <a href="./LYON%20LEAGUE%20copia.html#standings" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Classifica</a>        
+        <a href="./LYON%20LEAGUE%20copia.html#season" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Edizioni</a>
+        <a href="../Lyon_League_SITE-main/Premio Michelin.html" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Pallone d'Oro</a>
+        <a href="../Lyon_League_SITE-main/amm.html" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Amministrazione</a>
+</nav>
+
+<div class="content">
+    <div class="box-sorteggio">
+        <h2>Sorteggio Incontri</h2>
+
+        <input id="a" placeholder="Valore A"><br>
+        <input id="b" placeholder="Valore B"><br>
+        <input id="c" placeholder="Valore C"><br>
+
+        <div class="btn-row">
+            <button class="simula" onclick="simula()">SIMULA</button>
+            <button class="reset" onclick="resetta()">RESET</button>
+        </div>
+
+
+        <div id="contenitore"></div>
+    </div>
+</div>
+
+<script>
+let gruppi = [];
+let indice = 0;
+
+function prepara() {
+    const A = a.value, B = b.value, C = c.value;
+    if (!A || !B || !C) return alert("Inserisci tutti i valori");
+
+    let coppie = [
+        `${A} - ${B}`, `${A} - ${C}`,
+        `${B} - ${C}`, `${B} - ${A}`,
+        `${C} - ${A}`, `${C} - ${B}`
+    ];
+
+    for (let i = coppie.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [coppie[i], coppie[j]] = [coppie[j], coppie[i]];
+    }
+
+    gruppi = [
+        coppie.slice(0,2),
+        coppie.slice(2,4),
+        coppie.slice(4,6)
+    ];
+    indice = 0;
+}
+
+function simula() {
+    if (gruppi.length === 0) prepara();
+    if (indice >= gruppi.length) return;
+
+    const div = document.createElement("div");
+    div.className = "blocco";
+    div.innerHTML = `<strong>${indice+1})</strong><br>${gruppi[indice].join("<br>")}`;
+    contenitore.appendChild(div);
+    indice++;
+}
+
+function resetta() {
+    contenitore.innerHTML = "";
+    gruppi = [];
+    indice = 0;
+}
+</script>
+
+</body>
+</html>
