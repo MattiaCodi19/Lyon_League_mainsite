@@ -137,35 +137,57 @@ let gruppi = [];
 let indice = 0;
 
 function prepara() {
-    const A = a.value, B = b.value, C = c.value;
-    if (!A || !B || !C) return alert("Inserisci tutti i valori");
+    const A = a.value.trim();
+    const B = b.value.trim();
+    const C = c.value.trim();
 
-    let coppie = [
-        `${A} - ${B}`, `${A} - ${C}`,
-        `${B} - ${C}`, `${B} - ${A}`,
-        `${C} - ${A}`, `${C} - ${B}`
-    ];
-
-    for (let i = coppie.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [coppie[i], coppie[j]] = [coppie[j], coppie[i]];
+    if (!A || !B || !C) {
+        alert("Inserisci tutti i valori");
+        return;
     }
 
+    // blocchi LOGICAMENTE CORRETTI
     gruppi = [
-        coppie.slice(0,2),
-        coppie.slice(2,4),
-        coppie.slice(4,6)
+        {
+            nome: A,
+            incontri: [`${A} - ${B}`, `${A} - ${C}`]
+        },
+        {
+            nome: B,
+            incontri: [`${B} - ${C}`, `${B} - ${A}`]
+        },
+        {
+            nome: C,
+            incontri: [`${C} - ${A}`, `${C} - ${B}`]
+        }
     ];
+
+    // randomizziamo SOLO l'ordine delle giornate
+    for (let i = gruppi.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [gruppi[i], gruppi[j]] = [gruppi[j], gruppi[i]];
+    }
+
     indice = 0;
 }
 
 function simula() {
-    if (gruppi.length === 0) prepara();
+    if (gruppi.length === 0) {
+        prepara();
+    }
+
     if (indice >= gruppi.length) return;
+
+    const g = gruppi[indice];
 
     const div = document.createElement("div");
     div.className = "blocco";
-    div.innerHTML = `<strong>${indice+1})</strong><br>${gruppi[indice].join("<br>")}`;
+    div.innerHTML = `
+        <strong>${indice + 1})</strong><br>
+        ${g.incontri[0]}<br>
+        ${g.incontri[1]}
+    `;
+
     contenitore.appendChild(div);
     indice++;
 }
