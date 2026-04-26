@@ -362,3 +362,11 @@ footer {
     nav { flex-direction: column; }
     nav a { padding: 10px; }
 }
+
+
+supertext {
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: underline;
+    text-decoration-color: red;
+}
