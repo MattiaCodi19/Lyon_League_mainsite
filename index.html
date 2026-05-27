@@ -12,18 +12,21 @@
         <h1>Lyon League - Torneo di Calcio tra Amici</h1>
     </header>
     <nav style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; background: linear-gradient(to right, #005b96, #1976d2); padding: 10px; position: static; top: 0; width: 100%; z-index: 1000;">
-        <a href="./LYON%20LEAGUE%20copia.html#home" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Home</a>
-        <a href="./LYON%20LEAGUE%20copia.html#rules" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Regolamento</a>
-        <a href="./LYON%20LEAGUE%20copia.html#teams" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Squadre</a>
-        <a href="./LYON%20LEAGUE%20copia.html#standings" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Classifica</a>        
-        <a href="./LYON%20LEAGUE%20copia.html#season" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Edizioni</a>
-        <a href="Premio Michelin.html" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Pallone d'Oro</a>
+        <a href="./index.html" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Home</a>
+        <a href="./index.html#rules" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Regolamento</a>
+        <a href="./index.html#teams" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Squadre</a>
+        <a href="./index.html#standings-normale" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Classifica</a>        
+        <a href="./index.html#season" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Edizioni</a>
+        <a href="Premi.html" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Premi</a>
         <a href="amm.html" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Amministrazione</a>
-        <button onclick="toggleDarkMode()" id="darkModeToggle" style="margin-left: auto; padding: 10px; background: none; border: 2px solid #ffffff; border-radius: 8px; cursor: pointer; transition: background 0.3s, border 0.3s;">
-            <img id="darkModeIcon" src="https://img.icons8.com/ios-filled/50/ffffff/sun--v1.png" alt="Icona Modalità Notte" style="width: 24px; height: 24px;">
-        </button>
-    </nav>
 
+        <a href="LyonLeagueHolidays.html" style="text-decoration: none; margin-left: auto;">
+            <button id="LyonLeague" class="btn-torneo">
+                <img src="https://i.postimg.cc/qB3mnfC2/Lyon-League-White-Logo.png" alt="LyonLeague-WhiteLogo" style="width: 80px; height: 80px;">
+            </button>
+        </a>
+
+    </nav>
     <div class="content">
         <!-- REGOLE -->
         <section id="rules" class="rules-section">
@@ -82,7 +85,7 @@
         </section>
 
         <!-- CLASSIFICA -->
-        <section id="standings" class="standings-section">
+        <section id="standings-normale" class="standings-section">
             <h2>Classifica del Torneo:</h2>
             <table class="standings-table">
                 <thead>
@@ -101,51 +104,55 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>1</td>
+                        <td><span style="border-left: 4px solid #ffcc00; padding-left: 6px;">1</span></td>
                         <td>
                             <div class="logo-wrapper"> <img src="https://i.postimg.cc/XZpR17qR/Black-Rage.png" alt="BR" style="height: 3.4em;"></div><span>Black Rages</span>
                         </td>
-                        <td><input type="number" value="12" onchange="updateStandings()"></td> <!-- PUNTI -->
-                        <td><input type="number" value="4" onchange="updateStandings()"></td> <!-- PARTITE GIOCATE -->
-                        <td><input type="number" value="4" onchange="updateStandings()"></td> <!-- VITTORIE -->
-                        <td><input type="number" value="0" onchange="updateStandings()"></td> <!-- PAREGGI -->
-                        <td><input type="number" value="0" onchange="updateStandings()"></td> <!-- SCONFITTE -->
-                        <td><input type="number" value="14" onchange="updateStandings()"></td> <!-- GOL FATTI -->
-                        <td><input type="number" value="2" onchange="updateStandings()"></td> <!-- GOL SUBITI -->
-                        <td><input type="number" value="12" onchange="updateStandings()"></td> <!-- DIFFERENZA RETI -->
+                        <td><input type="number" value="0" class="punti-input" data-team="br" oninput="updateStandingsNormale(this)"></td>
+                        <td><input type="number" value="0" class="pg-input" data-team="br" oninput="updateStandingsNormale(this)"></td>
+                        <td><input type="number" value="0" class="w-input" data-team="br" oninput="updateStandingsNormale(this)"></td>
+                        <td><input type="number" value="0" class="d-input" data-team="br" oninput="updateStandingsNormale(this)"></td>
+                        <td><input type="number" value="0" class="l-input" data-team="br" oninput="updateStandingsNormale(this)"></td>
+                        <td><input type="number" value="0" class="gf-input" data-team="br" oninput="updateStandingsNormale(this)"></td>
+                        <td><input type="number" value="0" class="gs-input" data-team="br" oninput="updateStandingsNormale(this)"></td>
+                        <td class="dr-cell">0</td> <!-- DIFFERENZA RETI AUTOMATICA -->
                     </tr>
                     <tr>
-                        <td>2</td>
+                        <td><span style="border-left: 4px solid #ffcc00; padding-left: 6px;">2</span></td>
                         <td>
                             <div class="logo-wrapper"> <img src="https://i.postimg.cc/B6sQYZCk/Flash-Tigers-Logo.png" alt="FT"></div><span>Flash Tigers</span>
                         </td>
-                        <td><input type="number" value="6" onchange="updateStandings()"></td> <!-- PUNTI -->
-                        <td><input type="number" value="4" onchange="updateStandings()"></td> <!-- PARTITE GIOCATE -->
-                        <td><input type="number" value="2" onchange="updateStandings()"></td> <!-- VITTORIE -->
-                        <td><input type="number" value="0" onchange="updateStandings()"></td> <!-- PAREGGI -->
-                        <td><input type="number" value="2" onchange="updateStandings()"></td> <!-- SCONFITTE -->
-                        <td><input type="number" value="12" onchange="updateStandings()"></td> <!-- GOL FATTI -->
-                        <td><input type="number" value="12" onchange="updateStandings()"></td> <!-- GOL SUBITI -->
-                        <td><input type="number" value="0" onchange="updateStandings()"></td> <!-- DIFFERENZA RETI -->
+                        <td><input type="number" value="0" class="punti-input" data-team="ft" oninput="updateStandingsNormale(this)"></td>
+                        <td><input type="number" value="0" class="pg-input" data-team="ft" oninput="updateStandingsNormale(this)"></td>
+                        <td><input type="number" value="0" class="w-input" data-team="ft" oninput="updateStandingsNormale(this)"></td>
+                        <td><input type="number" value="0" class="d-input" data-team="ft" oninput="updateStandingsNormale(this)"></td>
+                        <td><input type="number" value="0" class="l-input" data-team="ft" oninput="updateStandingsNormale(this)"></td>
+                        <td><input type="number" value="0" class="gf-input" data-team="ft" oninput="updateStandingsNormale(this)"></td>
+                        <td><input type="number" value="0" class="gs-input" data-team="ft" oninput="updateStandingsNormale(this)"></td>
+                        <td class="dr-cell">0</td> <!-- DIFFERENZA RETI AUTOMATICA -->
                     </tr>
                     <tr>
-                        <td>3</td>
+                        <td><span style="border-left: 4px solid #ff0000; padding-left: 6px;">3</span></td>
                         <td>
                             <div class="logo-wrapper"> <img src="https://i.postimg.cc/T25QTRjt/Raton-Logo.png" alt="RT"></div><span>Ratón FC</span>
                         </td>
-                        <td><input type="number" value="0" onchange="updateStandings()"></td> <!-- PUNTI -->
-                        <td><input type="number" value="4" onchange="updateStandings()"></td> <!-- PARTITE GIOCATE -->
-                        <td><input type="number" value="0" onchange="updateStandings()"></td> <!-- VITTORIE -->
-                        <td><input type="number" value="0" onchange="updateStandings()"></td> <!-- PAREGGI -->
-                        <td><input type="number" value="4" onchange="updateStandings()"></td> <!-- SCONFITTE -->
-                        <td><input type="number" value="5" onchange="updateStandings()"></td> <!-- GOL FATTI -->
-                        <td><input type="number" value="17" onchange="updateStandings()"></td> <!-- GOL SUBITI -->
-                        <td><input type="number" value="-12" onchange="updateStandings()"></td> <!-- DIFFERENZA RETI -->
+                        <td><input type="number" value="0" class="punti-input" data-team="rt" oninput="updateStandingsNormale(this)"></td>
+                        <td><input type="number" value="0" class="pg-input" data-team="rt" oninput="updateStandingsNormale(this)"></td>
+                        <td><input type="number" value="0" class="w-input" data-team="rt" oninput="updateStandingsNormale(this)"></td>
+                        <td><input type="number" value="0" class="d-input" data-team="rt" oninput="updateStandingsNormale(this)"></td>
+                        <td><input type="number" value="0" class="l-input" data-team="rt" oninput="updateStandingsNormale(this)"></td>
+                        <td><input type="number" value="0" class="gf-input" data-team="rt" oninput="updateStandingsNormale(this)"></td>
+                        <td><input type="number" value="0" class="gs-input" data-team="rt" oninput="updateStandingsNormale(this)"></td>
+                        <td class="dr-cell">0</td> <!-- DIFFERENZA RETI AUTOMATICA -->
                     </tr>
                 </tbody>
             </table>
-            <p>Al termine della regular season, il primo e il secondo posto si sfideranno nella Finalissima. In caso di pareggio in finale, vince la squadra
-                meglio posizionata in classifica.
+        </section>
+
+
+            <p>Al termine della regular season, il <b style="color: #ffcc00;"><u>primo posto</u></b> e il <b style="color: #ffcc00;"><u>secondo posto</u></b> si sfideranno nella Finalissima. <br>
+                La squadra arrivata al <b style="color: #ff0000;"><u>terzo posto</u></b>, sar&agrave; eliminata. <br>
+                In caso di pareggio in finale, vince la squadra meglio posizionata in classifica.
             </p>
         </section>
 
@@ -163,24 +170,14 @@
         </h2>
 
         <ol>
-            <li>Traversa (Flash Tigers) 6g 5p</li>
-            <!-- Partipilo (Flash Tigers) 6g 2p -->
-            <li>Antonello (Black Rages) 5g 4p</li>
-            <li>Gabbo (Ratòn) 5g 2p</li>
-            <li>Ivan (Black Rages) 4g 5p</li>
-            <li>Salvatore (Black Rages) 4g 5p</li>
-            <li>Sciacovelli (Flash Tigers) 4g 4p</li>
-            <li>Samuele (Black Rages) 4g 2p</li>
-            <li>Santorsola Mattia (Flash Tigers) 2g 3p</li>
-            <li>Tota (Black Rages) 1g 5p</li>
-            <li>Pepe (Flash Tigers) 1g 2p</li>
+        
         </ol>
 
         <!-- CLASSIFICA CARTELLINI -->
         <h2>Cartellini Gialli (y) e Rossi (r)</h2>
 
         <ol>
-            <li>Traversa (Flash Tigers) 1g 0r</li>
+
         </ol>
 
         <!-- CRONOLOGIA PARTITE -->
@@ -189,22 +186,22 @@
         <table class="matches">
             <tr>
                 <h3>Primo Incontro <small>(<i>2h</i>)</small> </h3>
-                <p>Black Rages - Flash Tigers 2-0</p>
-                <p>Black Rages - Ratón FC 5-0</p> 
+                <p>??? - ???</p>
+                <p>??? - ???</p> 
             </tr>
             <tr>
                 <h3>Secondo Incontro <small>(<i>2h</i>)</small> </h3>
-                <p>Flash Tigers - Ratón FC 2-0 <supertext>(tav)</supertext></p> 
-                <p>Flash Tigers - Black Rages 2-5</p>
+                <p>??? - ???</p>
+                <p>??? - ???</p> 
             </tr>
             <tr>
                 <h3>Terza Giornata <small>(<i>2h</i>)</small> </h3> 
-                <p>Ratòn FC - Black Rages 0-2 <supertext>(tav)</supertext></p> 
-                <p>Ratòn FC - Flash Tigers 5-8</p>
+                <p>??? - ???</p>
+                <p>??? - ???</p> 
             </tr>
             <tr>
                 <h3>Finale <small>(<i>1h</i>)</small> </h3> 
-                <p>Black Rages - Flash Tigers 6-9 </p>
+                <p>Primo Posto - Secondo Posto </p>
             </tr>
         </table>
 
