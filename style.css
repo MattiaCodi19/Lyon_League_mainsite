@@ -1,58 +1,12 @@
-/* ================= Dark Mode ================= */
-body.dark-mode {
-    background: linear-gradient(135deg, #0b0b0b, #1c1c1c);
-    color: #e0e0e0;
-}
-header.dark-mode {
-    background: linear-gradient(to right, #1a1a1a, #333);
-}
-nav.dark-mode {
-    background: linear-gradient(to right, #333, #444);
-}
-nav.dark-mode a {
-    color: #e0e0e0;
-}
-nav.dark-mode a:hover {
-    background-color: #333;
-    color: #ffffff;
-}
-.hero.dark-mode {
-    color: #f5a623;
-}
-.rules-section.dark-mode,
-.teams-section.dark-mode,
-.standings-section.dark-mode {
-    background: linear-gradient(to bottom, #1c1c1c, #333);
-    box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
-}
-.rules-section.dark-mode h2,
-.teams-section.dark-mode h2,
-.standings-section.dark-mode h2 {
-    color: #f5a623;
-}
-.team.dark-mode {
-    background: linear-gradient(to bottom, #2b2b2b, #3d3d3d);
-}
-.standings-table.dark-mode th,
-.standings-table.dark-mode td {
-    background-color: #2b2b2b;
-    color: #e0e0e0;
-}
-footer.dark-mode {
-    background: linear-gradient(to right, #1a1a1a, #333);
-}
-.social-media.dark-mode a {
-    color: #f5a623;
-}
-
 /* ================= Animazioni ================= */
 @keyframes pageLoad {
     0% { opacity: 0; transform: scale(0.95); }
     50% { opacity: 0.5; transform: scale(1.02); }
     100% { opacity: 1; transform: scale(1); }
 }
+
+
 body {
-    animation: pageLoad 1s ease-in-out;
     position: relative;
     overflow: visible;
     margin: 0;
@@ -61,52 +15,46 @@ body {
     color: #ffffff;
     line-height: 1.6;
 }
-@keyframes slideIn {
-    from { transform: translateY(-100%); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-@keyframes slideInUp {
-    from { transform: translateY(100%); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-@keyframes zoomIn {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-@keyframes bounceIn {
-    0% { transform: scale(0.5); opacity: 0; }
-    60% { transform: scale(1.1); opacity: 1; }
-    100% { transform: scale(1); }
-}
-@keyframes particleAnimation {
-    0% { transform: translateY(0) scale(1); opacity: 1; }
-    50% { opacity: 0.5; }
-    100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
-}
 
 /* ================= Particles ================= */
-.particles {
+body {
+    position: relative; 
+    margin: 0;
+    padding: 0;
+}
+
+/* Sfondo infinito con micro-stelline */
+body::before {
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100%; /* Si allunga all'infinito insieme alla pagina */
+    z-index: -1; 
     pointer-events: none;
-    z-index: 0;
+
+    /* Cambiato a 1.5px per renderle piccolissime e circolari */
+    background-image: 
+        radial-gradient(circle, #ffcc00 1.5px, transparent 1.5px),
+        radial-gradient(circle, #ffcc00 1.2px, transparent 1.2px),
+        radial-gradient(circle, #ffcc00 1.5px, transparent 1.5px),
+        radial-gradient(circle, #ffcc00 1px, transparent 1px);
+    
+    /* Ridotto a 150px così il pattern si ripete molto più frequentemente (tante stelline) */
+    background-size: 150px 150px; 
+    
+    /* Posizioni asimmetriche all'interno del quadratino di 150px */
+    background-position: 
+        15px 20px, 
+        95px 60px, 
+        40px 110px, 
+        120px 130px;
+        
+    /* Regola la luminosità generale delle stelline */
+    opacity: 0.6; 
 }
-.particle {
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    background: #ffffff;
-    border-radius: 50%;
-    opacity: 0;
-    animation: particleAnimation 1s linear;
-}
+
 
 /* ================= Header & Nav ================= */
 header {
@@ -135,8 +83,8 @@ nav a {
     transition: background 0.3s, transform 0.3s;
 }
 nav a:hover {
-    background-color: #ffffff;
-    color: #005b96;
+    background-color: #005b96;
+    color: #ffcc00 !important;
     border-radius: 5px;
     transform: scale(1.1);
 }
@@ -178,7 +126,7 @@ nav a:hover {
     animation: bounceIn 1.2s ease-in;
 }
 .download-button:hover {
-    background-color: #ffffff;
+    background-color: #ffcc00;
     transform: scale(1.1);
 }
 
@@ -271,27 +219,25 @@ nav a:hover {
 td:nth-child(2) {
     display: flex;
     align-items: center;
-    gap: 12px;         /* Distanza uniforme tra logo e testo */
-    min-width: 200px;  /* Assicura che la colonna abbia una base solida */
+    gap: 12px;
+    min-width: 200px;
     padding: 10px;
 }
 
 /* Contenitore fisso per il logo per evitare spostamenti */
 .logo-wrapper {
-    width: 45px;       /* Larghezza fissa: risolve il problema del disallineamento */
+    width: 45px;
     display: flex;
     justify-content: center;
-    flex-shrink: 0;    /* Impedisce al logo di rimpicciolirsi */
+    flex-shrink: 0;
 }
 
 /* Regola universale per i loghi */
 .logo-wrapper img {
-    height: 2.8em;     /* Altezza uniforme per tutti */
-    width: auto;       /* Mantiene le proporzioni originali */
+    height: 2.8em;
+    width: auto;
     object-fit: contain;
 }
-
-
 
 /* ================= Standings ================= */
 .standings-section {
@@ -329,6 +275,10 @@ td:nth-child(2) {
     border: 1px solid #ccc;
     text-align: center;
 }
+.standings-table tr:hover td {
+    background-color: #077aee;
+}
+
 
 /* ================= Footer ================= */
 footer {
@@ -363,11 +313,45 @@ footer {
     nav a { padding: 10px; }
 }
 
-
 supertext {
     color: yellow;
     font-weight: bold;
     font-style: italic;
     text-decoration: underline;
     text-decoration-color: red;
+}
+
+/* Classe speciale per il pulsante */
+.btn-torneo {
+    margin-left: auto; 
+    width: 60px; 
+    height: 60px; 
+    padding: 0; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    background: none; 
+    border: 2px solid #ffffff; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    transition: border 0.3s ease; /* Transizione SOLO sul bordo */
+}
+
+/* Stato normale del logo */
+.btn-torneo img {
+    width: 80px; 
+    height: 80px;
+    /* Diamo al logo bianco un filtro di partenza per evitare il flash rosso */
+    filter: brightness(1) saturate(1);
+    transition: filter 0.3s ease;
+}
+
+/* Quando ci passi sopra con il mouse */
+.btn-torneo:hover {
+    border-color: #ffcc00; /* Il bordo diventa giallo */
+}
+
+.btn-torneo:hover img {
+    /* Questa combinazione pulita trasforma il bianco in giallo fisso senza passare dal rosso */
+    filter: sepia(1) hue-rotate(15deg) saturate(10) brightness(1.1);
 }
