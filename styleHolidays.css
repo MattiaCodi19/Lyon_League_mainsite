@@ -1,0 +1,348 @@
+/* ================= Animazioni ================= */
+@keyframes pageLoad {
+    0% { opacity: 0; transform: scale(0.95); }
+    50% { opacity: 0.5; transform: scale(1.02); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+
+body {
+    position: relative;
+    overflow: visible;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+    color: #f5f5f5;
+    line-height: 1.6;
+}
+
+/* ================= Particles ================= */
+body {
+    position: relative; 
+    margin: 0;
+    padding: 0;
+}
+
+/* Sfondo infinito con micro-stelline */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Si allunga all'infinito insieme alla pagina */
+    z-index: -1; 
+    pointer-events: none;
+
+    /* Cambiato a 1.5px per renderle piccolissime e circolari */
+    background-image: 
+        radial-gradient(circle, #ffcc00 1.5px, transparent 1.5px),
+        radial-gradient(circle, #ffcc00 1.2px, transparent 1.2px),
+        radial-gradient(circle, #ffcc00 1.5px, transparent 1.5px),
+        radial-gradient(circle, #ffcc00 1px, transparent 1px);
+    
+    /* Ridotto a 150px così il pattern si ripete molto più frequentemente (tante stelline) */
+    background-size: 150px 150px; 
+    
+    /* Posizioni asimmetriche all'interno del quadratino di 150px */
+    background-position: 
+        15px 20px, 
+        95px 60px, 
+        40px 110px, 
+        120px 130px;
+        
+    /* Regola la luminosità generale delle stelline */
+    opacity: 0.6; 
+}
+
+
+
+
+/* ================= Header & Nav ================= */
+header {
+    background: linear-gradient(to right, #111111, #2b0000);
+    padding: 20px;
+    text-align: center;
+    color: #ffcc00;
+    border-bottom: 3px solid #cc0000;
+}
+
+header h1 {
+    font-size: 2.8em;
+    margin: 0;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+}
+
+nav {
+    background: linear-gradient(to right, #1a1a1a, #330000);
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    border-bottom: 2px solid #ffcc00;
+}
+
+nav a {
+    color: #f5f5f5;
+    text-decoration: none;
+    padding: 12px 20px;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+nav a:hover {
+    background-color: #cc0000;
+    color: #ffcc00;
+    border-radius: 5px;
+    transform: scale(1.1);
+}
+
+/* ================= Hero ================= */
+.hero {
+    background:
+        linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+        url('https://i.postimg.cc/LY9XwPdy/Lyon-League-Logo.jpg')
+        no-repeat center center/cover;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffcc00;
+    text-shadow: 3px 3px 10px rgba(255,0,0,0.8);
+}
+
+.hero h2 {
+    font-size: 3em;
+    text-transform: uppercase;
+}
+
+/* ================= Content ================= */
+.content {
+    padding: 40px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.download-button {
+    display: inline-block;
+    background: linear-gradient(45deg, #cc0000, #ffcc00);
+    color: #111111;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 50px;
+    transition: 0.3s;
+    box-shadow: 0 0 15px rgba(255,0,0,0.5);
+    margin-bottom: 50px;
+}
+
+.download-button:hover {
+    background: linear-gradient(45deg, #ffcc00, #cc0000);
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+/* ================= Sections ================= */
+.rules-section,
+.teams-section,
+.standings-section {
+    padding: 30px;
+    border-radius: 15px;
+    background: linear-gradient(to bottom, #141414, #1f1f1f);
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.25);
+    margin-bottom: 40px;
+    border: 2px solid #330000;
+}
+
+.rules-section h2,
+.teams-section h2,
+.standings-section h2 {
+    font-size: 2.2em;
+    color: #ffcc00;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-align: center;
+    text-shadow: 0 0 8px rgba(255,204,0,0.5);
+}
+
+.rules-section ul {
+    list-style-type: none;
+    padding: 0;
+    line-height: 1.8;
+}
+
+.rules-section ul li {
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    color: #f5f5f5;
+    position: relative;
+    padding-left: 25px;
+}
+
+.rules-section ul li:before {
+    content: "\2713";
+    position: absolute;
+    left: 0;
+    color: #cc0000;
+    font-size: 1.3em;
+}
+
+/* ================= Teams ================= */
+.teams {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+
+.team {
+    background: linear-gradient(to bottom, #1a1a1a, #2b0000);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(255,0,0,0.4);
+    text-align: center;
+    width: 100%;
+    max-width: 180px;
+    transition: 0.3s;
+    border: 1px solid #ffcc00;
+}
+
+.team:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255,204,0,0.5);
+}
+
+.team img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    border: 3px solid #ffcc00;
+}
+
+.team h3 {
+    color: #ffffff;
+    margin: 0;
+}
+
+/* ================= Tabelle ================= */
+td:nth-child(2) {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 200px;
+    padding: 10px;
+}
+
+.logo-wrapper {
+    width: 45px;
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.logo-wrapper img {
+    height: 2.8em;
+    width: auto;
+    object-fit: contain;
+}
+
+/* ================= Standings ================= */
+.standings-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.standings-table th,
+.standings-table td {
+    padding: 15px;
+    border: none;
+}
+
+.standings-table th {
+    background-color: #330000;
+    color: #ffcc00;
+    text-transform: uppercase;
+}
+
+.standings-table td {
+    background-color: #1a1a1a;
+    color: #f5f5f5;
+    border-bottom: 1px solid #333;
+}
+
+.standings-table tr:hover td {
+    background-color: #2b0000;
+}
+
+.standings-table input[type="number"] {
+    width: 50px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ffcc00;
+    background-color: #111111;
+    color: #ffffff;
+    text-align: center;
+}
+
+/* ================= Footer ================= */
+footer {
+    background: linear-gradient(to right, #111111, #2b0000);
+    padding: 20px;
+    text-align: center;
+    color: #ffcc00;
+    margin-top: 40px;
+    border-top: 3px solid #cc0000;
+}
+
+.social-media {
+    margin-top: 20px;
+}
+
+.social-media a {
+    color: #ffcc00;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 1.5em;
+    transition: 0.3s;
+}
+
+.social-media a:hover {
+    color: #cc0000;
+}
+
+/* ================= Responsive ================= */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2em;
+    }
+
+    .hero h2 {
+        font-size: 2.5em;
+    }
+
+    .content {
+        padding: 20px;
+    }
+
+    nav {
+        flex-direction: column;
+    }
+
+    nav a {
+        padding: 10px;
+    }
+}
+
+/* ================= Supertext ================= */
+supertext {
+    color: #ffcc00;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: underline;
+    text-decoration-color: #cc0000;
+}
