@@ -1,203 +1,221 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<title>Lyon League - Area Amministrazione</title>
+    <meta charset="UTF-8">
+    <title>Lyon League - Area Amministrazione</title>
+    <link id="css-dinamico" rel="stylesheet" href="style.css">
+    <style>
+        /* Stile dei pulsanti per le tendine */
+        .tendina-btn-container { display: flex; justify-content: center; gap: 20px; margin-bottom: 30px; }
+        .tendina-btn { background: #005b96; color: white; padding: 15px 25px; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; transition: background 0.3s; }
+        .tendina-btn:hover { background: #1976d2; }
 
-<style>
-body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #002f6c, #1976d2);
-    color: white;
-}
+        /* Contenitori delle tendine (nascosti di default) */
+        .tendina-content { display: none; background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 0 15px rgba(0,0,0,0.2); }
+        .tendina-content.active { display: block; animation: entra 0.4s ease-out forwards; }
 
-header {
-    background: linear-gradient(to right, #002f6c, #1976d2);
-    padding: 20px;
-    text-align: center;
-}
-
-nav {
-    background: linear-gradient(to right, #005b96, #1976d2);
-    display: flex;
-    align-items: center;
-    padding: 10px;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    padding: 12px 20px;
-}
-
-nav a:hover {
-    background: white;
-    color: #005b96;
-    border-radius: 5px;
-}
-
-.content {
-    padding: 40px;
-    max-width: 900px;
-    margin: auto;
-}
-
-.box-sorteggio {
-    background: rgba(255,255,255,0.1);
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 0 25px rgba(0,0,0,0.4);
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#contenitore {
-    width: 100%;
-    max-width: 400px;
-}
-
-
-input {
-    padding: 8px;
-    margin: 5px 0;
-    width: 200px;
-}
-
-button {
-    padding: 10px 16px;
-    margin-top: 10px;
-    margin-right: 5px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.simula { background: #00c811; color: black; }
-.simula:hover {background: #008035; color: black;}
-.reset { background: #c40e0e; color: white;}
-.reset:hover { background: #7e0000;}
-
-.blocco {
-    background: rgba(0,0,0,0.4);
-    padding: 15px;
-    border-radius: 10px;
-    margin-top: 20px;
-    animation: entra 0.6s forwards;
-}
-
-.btn-row {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-
-@keyframes entra {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-</style>
+        .box-sorteggio { display: flex; flex-direction: column; align-items: center; width: 100%; }
+        .contenitore-output { width: 100%; max-width: 500px; }
+        input { padding: 8px; margin: 5px 0; width: 200px; border-radius: 5px; border: 1px solid #ccc; color: black; }
+        button { padding: 10px 16px; margin-top: 10px; margin-right: 5px; border: none; border-radius: 5px; cursor: pointer; }
+        .simula { background: #00c811; color: black; font-weight: bold; }
+        .simula:hover { background: #008035; color: black; }
+        .reset { background: #c40e0e; color: white; font-weight: bold; }
+        .reset:hover { background: #7e0000; }
+        .blocco { background: rgba(0,0,0,0.5); padding: 15px; border-radius: 10px; margin-top: 20px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        .assegnazione-lettere { background: rgba(255, 235, 59, 0.2); border: 1px solid #ffeb3b; padding: 10px; border-radius: 8px; margin-top: 15px; text-align: center; font-weight: bold; color: #ffeb3b; }
+        .btn-row { display: flex; justify-content: center; gap: 10px; }
+        
+        @keyframes entra { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
 </head>
-
 <body>
-<header> <h1>Lyon League – Area Amministrazione</h1> </header>
-
-<nav style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; background: linear-gradient(to right, #005b96, #1976d2); padding: 10px; position: static; top: 0; width: 100%; z-index: 1000;">
-        <a href="./index.html" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Home</a>
-        <a href="./index.html#rules" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Regolamento</a>
-        <a href="./index.html#teams" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Squadre</a>
-        <a href="./index.html#standings-normale" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Classifica</a>        
-        <a href="./index.html#season" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Edizioni</a>
-        <a href="Premi.html" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Premi</a>
+    <header>
+        <h1>Lyon League – Area Amministrazione</h1>
+    </header>
+    
+    <nav style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; padding: 10px; position: static; top: 0; width: 100%; z-index: 1000;">
+        <a href="./index.html">Home</a>
+        <a href="./index.html#rules">Regolamento</a>
+        <a href="./index.html#teams">Squadre</a>
+        <a href="./index.html#standings-normale">Classifica</a>
+        <a href="./index.html#season">Edizioni</a>
+        <a href="Premi.html">Premi</a>
     </nav>
 
-<div class="content">
-    <div class="box-sorteggio">
-        <h2>Sorteggio Incontri</h2>
-
-        <input id="a" placeholder="Valore A"><br>
-        <input id="b" placeholder="Valore B"><br>
-        <input id="c" placeholder="Valore C"><br>
-
-        <div class="btn-row">
-            <button class="simula" onclick="simula()">SIMULA</button>
-            <button class="reset" onclick="resetta()">RESET</button>
+    <div class="content">
+        <!-- Pulsanti per attivare le tendine -->
+        <div class="tendina-btn-container">
+            <button class="tendina-btn" onclick="toggleTendina('sorteggio1')">Sorteggio Base</button>
+            <button class="tendina-btn" onclick="toggleTendina('sorteggio2')">Sorteggio Lyon League Holidays</button>
         </div>
 
+        <!-- SEZIONE 1: Sorteggio 1 (Il tuo originale) -->
+        <div id="sorteggio1" class="tendina-content active">
+            <div class="box-sorteggio">
+                <h2>Sorteggio Incontri Lyon League</h2>
+                <input id="a" placeholder="Valore A"><br>
+                <input id="b" placeholder="Valore B"><br>
+                <input id="c" placeholder="Valore C"><br>
+                <div class="btn-row">
+                    <button class="simula" onclick="simula()">SIMULA</button>
+                    <button class="reset" onclick="resetta()">RESET</button>
+                </div>
+                <div id="contenitore"></div>
+            </div>
+        </div>
 
-        <div id="contenitore"></div>
+        <!-- SEZIONE 2: Sorteggio 2 (Nuovo schema a 3 Giornate) -->
+        <div id="sorteggio2" class="tendina-content">
+            <div class="box-sorteggio">
+                <h2>Sorteggio Lyon League Holidays</h2>
+                <input id="p_a" placeholder="Squadra 1"><br>
+                <input id="p_b" placeholder="Squadra 2"><br>
+                <input id="p_c" placeholder="Squadra 3"><br>
+                <div class="btn-row">
+                    <button class="simula" onclick="simulaPersonalizzato()">SIMULA</button>
+                    <button class="reset" onclick="resettaPersonalizzato()">RESET</button>
+                </div>
+                <div id="contenitore-personalizzato" class="contenitore-output"></div>
+            </div>
+        </div>
     </div>
-</div>
 
-<script>
-let gruppi = [];
-let indice = 0;
 
-function prepara() {
-    const A = a.value.trim();
-    const B = b.value.trim();
-    const C = c.value.trim();
+    <script>
+        // Configurazione percorsi CSS
+        const URL_CSS_BASE = "style.css";
+        const URL_CSS_PERSONALIZZATO = "styleHolidays.css"; 
 
-    if (!A || !B || !C) {
-        alert("Inserisci tutti i valori");
-        return;
-    }
+        // Funzione per gestire sia la tendina che il cambio stile
+        function toggleTendina(id) {
+            const contents = document.querySelectorAll('.tendina-content');
+            contents.forEach(content => content.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
 
-    // blocchi LOGICAMENTE CORRETTI
-    gruppi = [
-        {
-            nome: A,
-            incontri: [`${A} - ${B}`, `${A} - ${C}`]
-        },
-        {
-            nome: B,
-            incontri: [`${B} - ${C}`, `${B} - ${A}`]
-        },
-        {
-            nome: C,
-            incontri: [`${C} - ${A}`, `${C} - ${B}`]
+            const linkCss = document.getElementById("css-dinamico");
+            if (id === 'sorteggio2') {
+                linkCss.href = URL_CSS_PERSONALIZZATO;
+            } else {
+                linkCss.href = URL_CSS_BASE;
+            }
         }
-    ];
 
-    // randomizziamo SOLO l'ordine delle giornate
-    for (let i = gruppi.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [gruppi[i], gruppi[j]] = [gruppi[j], gruppi[i]];
-    }
+        // --- SCRIPT SORTEGGIO 1 (ORIGINALE) ---
+        let gruppi = [];
+        let indice = 0;
+        
+        function prepara() {
+            const A = document.getElementById("a").value.trim();
+            const B = document.getElementById("b").value.trim();
+            const C = document.getElementById("c").value.trim();
+            
+            if (!A || !B || !C) {
+                alert("Inserisci tutti i valori");
+                return;
+            }
+            
+            gruppi = [
+                { nome: A, incontri: [`${A} - ${B}`, `${A} - ${C}`] },
+                { nome: B, incontri: [`${B} - ${C}`, `${B} - ${A}`] },
+                { nome: C, incontri: [`${C} - ${A}`, `${C} - ${B}`] }
+            ];
+            
+            for (let i = gruppi.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [gruppi[i], gruppi[j]] = [gruppi[j], gruppi[i]];
+            }
+            indice = 0;
+        }
 
-    indice = 0;
-}
+        function simula() {
+            if (gruppi.length === 0) {
+                prepara();
+            }
+            if (indice >= gruppi.length) return;
+            
+            const g = gruppi[indice];
+            const div = document.createElement("div");
+            div.className = "blocco";
+            div.innerHTML = `<strong>${indice + 1})</strong><br>${g.incontri[0]}<br>${g.incontri[1]}`;
+            
+            document.getElementById("contenitore").appendChild(div);
+            indice++;
+        }
 
-function simula() {
-    if (gruppi.length === 0) {
-        prepara();
-    }
+        function resetta() {
+            document.getElementById("contenitore").innerHTML = "";
+            gruppi = [];
+            indice = 0;
+        }
 
-    if (indice >= gruppi.length) return;
+        // --- SCRIPT SORTEGGIO 2 (NUOVA LOGICA PERSONALIZZATA) ---
+        function simulaPersonalizzato() {
+            const s1 = document.getElementById("p_a").value.trim();
+            const s2 = document.getElementById("p_b").value.trim();
+            const s3 = document.getElementById("p_c").value.trim();
+            const cont = document.getElementById("contenitore-personalizzato");
 
-    const g = gruppi[indice];
+            if (!s1 || !s2 || !s3) {
+                alert("Inserisci i nomi di tutte e 3 le squadre");
+                return;
+            }
 
-    const div = document.createElement("div");
-    div.className = "blocco";
-    div.innerHTML = `
-        <strong>${indice + 1})</strong><br>
-        ${g.incontri[0]}<br>
-        ${g.incontri[1]}
-    `;
+            cont.innerHTML = "";
 
-    contenitore.appendChild(div);
-    indice++;
-}
+            // Mischia le squadre inserite per decidere a caso chi è A, B e C
+            let squadre = [s1, s2, s3];
+            for (let i = squadre.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [squadre[i], squadre[j]] = [squadre[j], squadre[i]];
+            }
 
-function resetta() {
-    contenitore.innerHTML = "";
-    gruppi = [];
-    indice = 0;
-}
-</script>
+            const SqA = squadre[0];
+            const SqB = squadre[1];
+            const SqC = squadre[2];
+
+            // Giornata 1
+            const g1 = document.createElement("div");
+            g1.className = "blocco";
+            g1.innerHTML = `
+                <h3>GIORNATA 1</h3>
+                1° Match: <strong>${SqA} vs ${SqB}</strong> <small>(Riposa: ${SqC})</small><br>
+                2° Match: <strong>${SqB} vs ${SqC}</strong> <small>(Riposa: ${SqA})</small><br>
+                3° Match: <strong>${SqC} vs ${SqA}</strong> <small>(Riposa: ${SqB})</small>
+            `;
+            cont.appendChild(g1);
+
+            // Giornata 2 (Ordine Ruotato)
+            const g2 = document.createElement("div");
+            g2.className = "blocco";
+            g2.innerHTML = `
+                <h3>GIORNATA 2</h3>
+                1° Match: <strong>${SqB} vs ${SqC}</strong> <small>(Riposa: ${SqA})</small><br>
+                2° Match: <strong>${SqC} vs ${SqA}</strong> <small>(Riposa: ${SqB})</small><br>
+                3° Match: <strong>${SqA} vs ${SqB}</strong> <small>(Riposa: ${SqC})</small>
+            `;
+            cont.appendChild(g2);
+
+            // Giornata 3 (Ulteriore Rotazione)
+            const g3 = document.createElement("div");
+            g3.className = "blocco";
+            g3.innerHTML = `
+                <h3>GIORNATA 3</h3>
+                1° Match: <strong>${SqC} vs ${SqA}</strong> <small>(Riposa: ${SqB})</small><br>
+                2° Match: <strong>${SqA} vs ${SqB}</strong> <small>(Riposa: ${SqC})</small><br>
+                3° Match: <strong>${SqB} vs ${SqC}</strong> <small>(Riposa: ${SqA})</small>
+            `;
+            cont.appendChild(g3);
+        }
+
+        function resettaPersonalizzato() {
+            document.getElementById("contenitore-personalizzato").innerHTML = "";
+            document.getElementById("p_a").value = "";
+            document.getElementById("p_b").value = "";
+            document.getElementById("p_c").value = "";
+        }
+    </script>
+
 
 </body>
 </html>
