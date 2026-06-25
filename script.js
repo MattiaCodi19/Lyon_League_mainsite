@@ -266,3 +266,49 @@ document.addEventListener("DOMContentLoaded", function() {
         document.body.style.overflow = 'auto'; // Ripristina lo scroll della pagina
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const dropdown = document.querySelector('.dropdown');
+    const dropbtn = document.querySelector('.dropbtn');
+    const dropdownLinks = document.querySelectorAll('.dropdown-content a');
+
+    // 1. Apri/Chiudi il menu al click su "Edizioni"
+    dropbtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        dropdown.classList.toggle('active');
+    });
+
+    // 2. Chiudi automaticamente il menu quando clicchi su una sottofinestra (Edizione)
+    dropdownLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            dropdown.classList.remove('active');
+        });
+    });
+
+    // 3. Chiudi il menu se clicchi in un punto qualsiasi fuori dalla navbar
+    document.addEventListener('click', (e) => {
+        if (!dropdown.contains(e.target)) {
+            dropdown.classList.remove('active');
+        }
+    });
+});
+
+
+// TAG CORONA COLLEGAMENTO
+// Usiamo una funzione sicura che si avvia subito senza subire i blocchi degli altri errori
+(function() {
+    class CoronaElement extends HTMLElement {
+        connectedCallback() {
+            this.innerHTML = `<img src="img/crown.png" height="30px" style="pointer-events: auto; vertical-align: middle;">`;
+        }
+    }
+
+    try {
+        // trattino obbligatorio
+        if (!customElements.get('corona-ll')) {
+            customElements.define('corona-ll', CoronaElement);
+        }
+    } catch (e) {
+        console.error("Errore nella registrazione del tag corona:", e);
+    }
+})();
