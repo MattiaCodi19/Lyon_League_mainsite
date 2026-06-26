@@ -141,11 +141,20 @@
             object-fit:contain;
         }   
 
-        .dado-logo{
-            width:24px;
-            height:24px;
-            object-fit:contain;
+        /* Stile standard per i numeri 2 e 3 */
+        .dado-logo {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+            transition: all 0.3s ease; /* Rende il cambio di dimensione fluido */
         }       
+
+        /* Stile speciale SOLO per il numero 1 */
+        .dado-logo.logo-grande {
+            width: 200%;  /* Diventa molto più grande */
+            height: 200%;
+        }
+ 
 
         .immagine-carta{
             width:140px;
@@ -399,29 +408,34 @@
             1:[4],
             2:[0,8],
             3:[0,4,8],
-            4:[0,2,6,8],
-            5:[0,2,4,6,8],
-            6:[0,2,3,5,6,8]
         };      
 
-        function mostraFaccia(numero){      
 
-            const dado = document.getElementById("dado");       
+        function mostraFaccia(numero) {
+            const dado = document.getElementById("dado");
+            dado.innerHTML = "";            
 
-            dado.innerHTML = "";        
+                for (let i = 0; i < 9; i++) {
+                    const cella = document.createElement("div");
+                    cella.className = "punto";          
 
-            for(let i=0;i<9;i++){       
+                    if (configurazioniDado[numero].includes(i)) {
+                        // 1. Se il numero è 1, aggiungiamo la classe "logo-grande", altrimenti lasciamo solo "dado-logo"
+                        const classeDimensione = (numero === 1) ? "dado-logo logo-grande" : "dado-logo";    
 
-                const cella = document.createElement("div");
-                cella.className = "punto";      
+                        // 2. Inseriamo la variabile della classe nel tag dell'immagine
+                        cella.innerHTML = `<img src="img/lyon-logo.png" class="${classeDimensione}" alt="logo">`;
+                    }           
 
-                if(configurazioniDado[numero].includes(i)){
-                    cella.innerHTML =
-                    `<img src="img/lyon-logo.png" class="dado-logo" alt="logo">`;
-                }       
-                dado.appendChild(cella);
-            }
-        }       
+                    dado.appendChild(cella);
+                }
+        }
+       
+        const messaggiRisultato = {
+            1: "1VS1 CON PORTIERE <br> <h6> (CHE NON POTRÀ USCIRE DALLA PROPRIA METÀ DI CAMPO) </h6>",
+            2: "2VS2",
+            3: "3VS3"
+        };
 
         function lanciaDado(){      
 
@@ -432,14 +446,10 @@
             setTimeout(()=>{        
 
                 const numero =
-                Math.floor(Math.random()*6)+1;      
+                Math.floor(Math.random()*3)+1;      
 
-                mostraFaccia(numero);       
-
-                document.getElementById(
-                    "risultatoDado"
-                ).innerHTML =
-                "Faccia uscita: " + numero;     
+                mostraFaccia(numero);
+                document.getElementById("risultatoDado").innerHTML = messaggiRisultato[numero];
 
                 dado.classList.remove("roll");      
 
