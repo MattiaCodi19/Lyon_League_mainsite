@@ -3,37 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lyon League</title>
+    <title>Lyon League - Holidays Edition</title>
     <link rel="stylesheet" href="styleHolidays.css">
 </head>
 <body>
     <div class="particles"></div>
+    
     <header>
-        <h1>Lyon League - Holidays Edition</h1>
+        <h1>Lyon League</h1>
+        <p class="subtitle">Holidays Edition</p>
     </header>
-    <nav style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; background: linear-gradient(to right, #1a1a1a, #330000); padding: 10px; position: static; top: 0; width: 100%; z-index: 1000;">
-        <a href="./LyonLeagueHolidays.html" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Home</a>
-        <a href="./LyonLeagueHolidays.html#rules" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Regolamento</a>
-        <a href="./LyonLeagueHolidays.html#teams" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Squadre</a>
-        <a href="./LyonLeagueHolidays.html#standings" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Classifica</a>        
-        <a href="./LyonLeagueHolidays.html#season" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Edizioni</a>
 
-        <a href="amm.html" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Amministrazione</a>
+    <nav class="main-nav">
+        <div class="nav-links">
+            <a href="./LyonLeagueHolidays.html">Home</a>
+            <a href="./LyonLeagueHolidays.html#rules">Regolamento</a>
+            <a href="./LyonLeagueHolidays.html#teams">Squadre</a>
+            <a href="./LyonLeagueHolidays.html#standings">Classifica</a>        
+            <a href="./LyonLeagueHolidays.html#season">Edizioni</a>
+            <a href="amm.html">Amministrazione</a>
+        </div>
 
-        <a href="index.html" style="text-decoration: none; margin-left: auto;">
-            <button id="LyonLeague" style="margin-left: auto; width: 60px; height: 60px; padding: 0; display: flex; align-items: center; justify-content: center; background: none; border: 2px solid #ffffff; border-radius: 8px; cursor: pointer; transition: background 0.3s, border 0.3s;">
-                <img src="https://i.postimg.cc/qB3mnfC2/Lyon-League-White-Logo.png" alt="LyonLeague-WhiteLogo" style="width: 80px; height: 80px;">
+        <a href="index.html" class="logo-nav-link">
+            <button id="LyonLeague" class="btn-torneo">
+                <img src="https://i.postimg.cc/qB3mnfC2/Lyon-League-White-Logo.png" alt="LyonLeague-WhiteLogo">
             </button>
         </a>
-
     </nav>
+
     <div class="content">
-        <!-- REGOLE -->
         <section id="rules" class="rules-section">
-            <h2>Principali Regole del Torneo:</h2>
+            <h2>Principali Regole del Torneo</h2>
             <ul>
                 <li>Le squadre sono composte da 4 giocatori più un portiere (incluse 2 riserve).</li>
-                <li>Se una squadra ha una riserva può fare da uno a più cambi quando vuole, non si ferma il gioco in caso di cambi</li>
+                <li>Se una squadra ha una riserva può fare da uno a più cambi quando vuole, non si ferma il gioco in caso di cambi.</li>
                 <li>In caso di pareggio prima dei 3 min finali di partita, ci saranno 3 shootout a testa.</li>
                 <li>I falli laterali vanno battuti con i piedi.</li>
                 <li>Solo i capitani possono discutere con l'arbitro, senza cattiveria.</li>
@@ -42,15 +45,18 @@
                 <li>Durante un'esultanza, se il giocatore si toglie la maglia, gli verrà assegnata una sanzione.</li>
                 <li>Se la palla finisce sulla rete in alto è rimessa laterale.</li>
                 <li>Le punizioni, dalla metà campo avversaria, si possono battere anche di prima.</li>
-                <li>La carta si chiama ed entrarà in vigore solo quando la palla sarà uscita.</li>
+                <li>La carta si chiama ed entrerà in vigore solo quando la palla sarà uscita.</li>
             </ul>
 
-            <h3 style="text-align: center;"> <a href="https://docs.google.com/document/d/1HQ8QLAdlyVdP6PDh0YzxVh92KEOKGYgX5kjUHHXpM1U/edit?usp=sharing" style="color: #ffd700;">REGOLE SPECIALI </a></h3>
+            <div class="special-rules-container">
+                <a href="https://docs.google.com/document/d/1HQ8QLAdlyVdP6PDh0YzxVh92KEOKGYgX5kjUHHXpM1U/edit?usp=sharing" target="_blank" class="btn-special-rules">
+                    REGOLE SPECIALI
+                </a>
+            </div>
         </section>
 
-        <!-- SQUADRE -->
         <section id="teams" class="teams-section">
-            <h2>Squadre Partecipanti:</h2>
+            <h2>Squadre Partecipanti</h2>
             <div class="teams">
                 <div class="team">
                     <a href="black-rage.html">
@@ -64,171 +70,211 @@
                         <h3>Flash Tigers</h3>
                     </a>
                 </div>
-                
                 <div class="team">
                     <a href="Raton FC.html">
                         <img src="https://i.postimg.cc/28ZGfvQh/Rato-n-FC.png" alt="Logo Ratòn FC">
                         <h3>Ratón FC</h3>
                     </a>
                 </div>
-                
             </div>
         </section>
 
-        <!-- CLASSIFICA -->
         <section id="standings" class="standings-section">
-            <h2>Classifica del Torneo:</h2>
-            <table class="standings-table">
-                <thead>
-                    <tr>
-                        <th>Posizione</th>
-                        <th>Squadra</th>
-                        <th>Partite Giocate</th>
-                        <th>Vittorie</th>
-                        <th>Sconfitte</th>
-                        <th>Gol Fatti</th>
-                        <th>Gol Subiti</th>
-                        <th>Differenza Reti</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><span style="border-left: 4px solid #ffd700; padding-left: 6px;">1</span></td>
-                        <td>
-                            <div class="logo-wrapper"> <img src="https://i.postimg.cc/B6sQYZCk/Flash-Tigers-Logo.png" alt="FT"></div><span>Flash Tigers</span>
-                        </td>
-                        <td><input type="number" value="6" onchange="updateStandingsHE()"></td> <!-- PARTITE GIOCATE -->
-                        <td><input type="number" value="4" onchange="updateStandingsHE()"></td> <!-- VITTORIE -->
-                        <td><input type="number" value="2" onchange="updateStandingsHE()"></td> <!-- SCONFITTE -->
-                        <td><input type="number" value="28" onchange="updateStandingsHE()"></td> <!-- GOL FATTI -->
-                        <td><input type="number" value="26" onchange="updateStandingsHE()"></td> <!-- GOL SUBITI -->
-                        <td>2</td> <!-- DIFFERENZA RETI -->
-                    </tr>
-                    <tr>
-                        <td><span style="border-left: 4px solid #ffd700; padding-left: 6px;">2</span></td>
-                        <td>
-                            <div class="logo-wrapper"> <img src="https://i.postimg.cc/XZpR17qR/Black-Rage.png" alt="BR" style="height: 3.4em;"></div><span>Black Rages</span>
-                        </td>
-                        <td><input type="number" value="6" onchange="updateStandingsHE()"></td> <!-- PARTITE GIOCATE -->
-                        <td><input type="number" value="3" onchange="updateStandingsHE()"></td> <!-- VITTORIE -->
-                        <td><input type="number" value="3" onchange="updateStandingsHE()"></td> <!-- SCONFITTE -->
-                        <td><input type="number" value="30" onchange="updateStandingsHE()"></td> <!-- GOL FATTI -->
-                        <td><input type="number" value="28" onchange="updateStandingsHE()"></td> <!-- GOL SUBITI -->
-                        <td>2</td> <!-- DIFFERENZA RETI -->
-                    </tr>
-                    <tr>
-                        <td><span style="border-left: 4px solid #90ee90; padding-left: 6px;">3*</span></td>
-                        <td>
-                            <div class="logo-wrapper"> <img src="https://i.postimg.cc/T25QTRjt/Raton-Logo.png" alt="RT"></div><span>Ratón FC</span>
-                        </td>
-                        <td><input type="number" value="6" onchange="updateStandingsHE()"></td> <!-- PARTITE GIOCATE -->
-                        <td><input type="number" value="2" onchange="updateStandingsHE()"></td> <!-- VITTORIE -->
-                        <td><input type="number" value="4" onchange="updateStandingsHE()"></td> <!-- SCONFITTE -->
-                        <td><input type="number" value="43" onchange="updateStandingsHE()"></td> <!-- GOL FATTI -->
-                        <td><input type="number" value="48" onchange="updateStandingsHE()"></td> <!-- GOL SUBITI -->
-                        <td>-5</td> <!-- DIFFERENZA RETI -->
-                    </tr>
-                </tbody>
-            </table>
-            <p>
-                VITTORIA = 1pt | SCONFITTA = 0pt <br>       
-                Al termine della regular season, il <b style="color: #90ee90;"><u>primo posto</u></b> acceder&agrave; direttamente alla Finalissima, <b style="color: #ffd700;"><u>secondo posto</u></b> e <b style="color: #ffd700;"><u>terzo posto</u></b> si sfideranno nei playoff; ma questo *SOLO se la squadra arrivata terza totalizzer&agrave; almeno un punto. <br>
-                La squadra che vince il playoff arriva in Finalissima.
-            </p>
+            <h2>Classifica del Torneo</h2>
+            <div class="table-container">
+                <table class="standings-table">
+                    <thead>
+                        <tr>
+                            <th>Pos</th>
+                            <th>Squadra</th>
+                            <th>PG</th>
+                            <th>V</th>
+                            <th>S</th>
+                            <th>GF</th>
+                            <th>GS</th>
+                            <th>DR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="pos-advance">
+                            <td><span class="pos-badge gold">1</span></td>
+                            <td class="team-cell">
+                                <div class="logo-wrapper"> <img src="https://i.postimg.cc/B6sQYZCk/Flash-Tigers-Logo.png" alt="FT"></div><span>Flash Tigers</span>
+                            </td>
+                            <td><input type="number" value="6" onchange="updateStandingsHE()"></td> <!-- PARTITE GIOCATE -->
+                            <td><input type="number" value="4" onchange="updateStandingsHE()"></td> <!-- VITTORIE -->
+                            <td><input type="number" value="2" onchange="updateStandingsHE()"></td> <!-- SCONFITTE -->
+                            <td><input type="number" value="28" onchange="updateStandingsHE()"></td> <!-- GOL FATTI -->
+                            <td><input type="number" value="26" onchange="updateStandingsHE()"></td> <!-- GOL SUBITI -->
+                            <td class="dr-cell">2</td> <!-- DIFFERENZA RETI -->
+                        </tr>
+                        <tr class="pos-advance">
+                            <td><span class="pos-badge gold">2</span></td>
+                            <td class="team-cell">
+                                <div class="logo-wrapper"><img src="https://i.postimg.cc/XZpR17qR/Black-Rage.png" alt="BR"></div>
+                                <span>Black Rages</span>
+                            </td>
+                            <td><input type="number" value="6" onchange="updateStandingsHE()"></td> <!-- PARTITE GIOCATE -->
+                            <td><input type="number" value="3" onchange="updateStandingsHE()"></td> <!-- VITTORIE -->
+                            <td><input type="number" value="3" onchange="updateStandingsHE()"></td> <!-- SCONFITTE -->
+                            <td><input type="number" value="30" onchange="updateStandingsHE()"></td> <!-- GOL FATTI -->
+                            <td><input type="number" value="28" onchange="updateStandingsHE()"></td> <!-- GOL SUBITI -->
+                            <td class="dr-cell">2</td> <!-- DIFFERENZA RETI -->
+                        </tr>
+                        <tr class="pos-conditional">
+                            <td><span class="pos-badge green">3*</span></td>
+                            <td class="team-cell">
+                                <div class="logo-wrapper"><img src="https://i.postimg.cc/T25QTRjt/Raton-Logo.png" alt="RT"></div>
+                                <span>Ratón FC</span>
+                            </td>
+                            <td><input type="number" value="6" onchange="updateStandingsHE()"></td> <!-- PARTITE GIOCATE -->
+                            <td><input type="number" value="2" onchange="updateStandingsHE()"></td> <!-- VITTORIE -->
+                            <td><input type="number" value="4" onchange="updateStandingsHE()"></td> <!-- SCONFITTE -->
+                            <td><input type="number" value="43" onchange="updateStandingsHE()"></td> <!-- GOL FATTI -->
+                            <td><input type="number" value="48" onchange="updateStandingsHE()"></td> <!-- GOL SUBITI -->
+                            <td class="dr-cell">-5</td> <!-- DIFFERENZA RETI -->  
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="info-footer-table">
+                <p class="score-legend">VITTORIA = 1pt | SCONFITTA = 0pt</p>
+                <p>Al termine della regular season, il <span class="highlight green">primo posto</span> accederà direttamente alla Finalissima.</p>
+                <p>Il <span class="highlight gold">secondo posto</span> e il <span class="highlight gold">terzo posto</span> si sfideranno nei playoff; questo <span class="highlight-text">*SOLO se la squadra arrivata terza totalizzerà almeno un punto</span>.</p>
+                <p class="small-notice">La squadra che vince il playoff arriva in Finalissima.</p>
+            </div>
         </section>
 
-        <!-- CLASSIFICA MARCATORI -->
-        <hr color="#f9ea0e">
-        <h2>Classifica Marcatori 
-            <details style="display:inline;">
-                <summary style="font-size:0.7em; cursor:pointer; display:inline;">(criteri) <br></summary>
-                <small>
-                    1. Gol segnati (g).<br>
-                    2. In caso di parità: posizionamento squadra in classifica. (Flash Tigers -> Black Rages -> Raton) <br>
-                    3. Partite giocate (p). <br>
-                </small>
-            </details>
-        </h2>
+        <div class="separator-line"></div>
 
-        <ol>
-            <li>Gabbo (att, Raton) 22g 5p <b style="color: yellow;">(scarpa d'oro)</b></li>
-            <li>Davide (cen, Flash Tigers) 15g 4p</li>
-            <li>Mauro (dif, Black Rages) 7g 6p</li>
-            <li>Alessandro G. (att, Flash Tigers) 6g 4p</li>
-            <li>Sciaco (dif, Flash Tigers) 6g 6p</li>
-            <li>Pepe (att, Flash Tigers) 6g 6p</li>
-            <li>Giuse (dif, Raton) 5g 5p</li>
-            <li>Luca (cen, Raton) 4g 5p</li>
-            <li>Anto (por, Black Rages) 3g 6p</li>
-            <li>Romito Giacomo (dif, Flash Tigers) 2g 4p</li>
-            <li>Santorsola Mattia (dif, Raton) 2g 5p</li>
-            <li>Tota (dif, Black Rages) 1g 4p</li>
-        </ol>
-
-
-        <!-- CLASSIFICA CARTELLINI -->
-        <h2>Cartellini Gialli (y) e Rossi (r)</h2>
-
-        <ol>
-            <li>Francesco G. (por, Raton) 1y 0r 1p</li>
-            <li>Mattia Marzullo (dif, Flash Tigers) 1y 0r 5p</li>
-        </ol>
-
-        <!-- CRONOLOGIA PARTITE -->
-        <hr color="#f9ea0e">
-        <h2>Cronologia Partite</h2>
-        <table class="matches">
-            <tr>
-                <h3>Primo Incontro <small>(<i>2h</i>)</small> </h3>
-                <p>Black Rages - Flash Tigers 4-6</p> 
-                <p>Flash Tigers - Raton FC 6-7</p> 
-                <p>Raton FC - Black Rages 2-0 <supertext>tav</supertext></p>
-            </tr>
-            <tr>
-                <h3>Secondo Incontro <small>(<i>2h</i>)</small> </h3>
-                <p>Flash Tigers - Raton FC 9-7</p>
-                <p>Raton FC - Black Rages 6-12</p> 
-                <p>Black Rages - Flash Tigers 0-0 (3-1)</p>
-            </tr>
-            <tr>
-                <h3>Terza Giornata <small>(<i>2h</i>)</small> </h3> 
-                <p>Raton FC - Black Rages 9-12</p> 
-                <p>Black Rages - Flash Tigers 2-5 </p>
-                <p>Flash Tigers - Raton FC 11-6</p>
-            </tr>
-            <tr>
-                <h3>Playoff + Finalissima <small>(<i>2h</i>)</small> </h3> 
-                <p>Black Rages - Raton</p>
-                <p>Flash Tigers - Vincitore Playoff </p>
-            </tr>
-        </table>
-
-                <!-- STAGIONI -->
-        <section id="season" class="season">
-            <div class="season">
-                <h2> Edizioni della Lyon League - Squadra trionfante </h2>
+        <section class="stats-section">
+            <h2>
+                Classifica Marcatori
+                <button class="tooltip-trigger" onclick="toggleCriteria(event)">ⓘ</button>
+            </h2>
+            
+            <div id="criteria-box" class="criteria-popup">
+                <strong>Criteri di parità:</strong>
                 <ul>
-                    <h3>Lyon League Summer 2026 - <text style="color: rgb(220, 220, 220); font-size: small;">in corso...</text> </h3>
-                    <h3>Lyon League Winter 2026 - ??? </h3>
-                    <h3>Lyon League Summer 2027 - ??? </h3>
-                    <h3>Lyon League Winter 2027 - ??? </h3>
+                    <li>1. Gol segnati (g).</li>
+                    <li>2. In caso di parità: posizionamento squadra in classifica.</li>
+                    <li>3. Partite giocate (p).</li>
                 </ul>
             </div>
+
+            <ol class="styled-list scorers-list">
+                <li><span>Gabbo <small>(att, Raton)</small></span> <span class="stats-counter">22g 5p <b class="award">(scarpa d'oro)</b></span></li>
+                <li><span>Davide <small>(cen, Flash Tigers)</small></span> <span class="stats-counter">15g 4p</span></li>
+                <li><span>Mauro <small>(dif, Black Rages)</small></span> <span class="stats-counter">7g 6p</span></li>
+                <li><span>Alessandro G. <small>(att, Flash Tigers)</small></span> <span class="stats-counter">6g 4p</span></li>
+                <li><span>Sciaco <small>(dif, Flash Tigers)</small></span> <span class="stats-counter">6g 6p</span></li>
+                <li><span>Pepe <small>(att, Flash Tigers)</small></span> <span class="stats-counter">6g 6p</span></li>
+                <li><span>Giuse <small>(dif, Raton)</small></span> <span class="stats-counter">5g 5p</span></li>
+                <li><span>Luca <small>(cen, Raton)</small></span> <span class="stats-counter">4g 5p</span></li>
+                <li><span>Anto <small>(por, Black Rages)</small></span> <span class="stats-counter">3g 6p</span></li>
+                <li><span>Romito Giacomo <small>(dif, Flash Tigers)</small></span> <span class="stats-counter">2g 4p</span></li>
+                <li><span>Santorsola Mattia <small>(dif, Raton)</small></span> <span class="stats-counter">2g 5p</span></li>
+                <li><span>Tota <small>(dif, Black Rages)</small></span> <span class="stats-counter">1g 4p</span></li> 
+            </ol>
         </section>
 
-        <h1>Il campo: DON GUANELLA</h1>
-        <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1536.0762847165179!2d16.864589697996006!3d41.0907504345288!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1347e9a77a32dc45%3A0xdb2251823ce8c42f!2sParrocchia%20di%20Maria%20Santissima%20Addolorata!5e1!3m2!1sit!2sit!4v1747166489109!5m2!1sit!2sit" 
-            width="600" 
-            height="450" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+        <section class="stats-section">
+            <h2>Cartellini Gialli (y) e Rossi (r)</h2>
+            <ol class="styled-list cards-list">
+                <li><span>Francesco G. <small>(por, Raton)</small></span> <span class="stats-counter"> <b class="yellow-card-text"> 1y </b> <b class="red-card-text">0r</b> 1p</span></li>
+                <li><span>Mattia Marzullo <small>(dif, Flash Tigers)</small></span> <span class="stats-counter"> <b class="yellow-card-text"> 1y </b> <b class="red-card-text">0r</b> 5p</span></li>
+            </ol>
+        </section>
+
+        <div class="separator-line"></div>
+
+        <section class="matches-section">
+            <h2>Cronologia Partite</h2>
+            <div class="matches-timeline">
+                <div class="match-card">
+                    <h3>Primo Incontro <small>2h</small></h3>
+                    <div class="match-row">
+                        <p class="teams-versus">Black Rages <span class="score">4 - 6</span> Flash Tigers</p>
+                        <p class="teams-versus">Flash Tigers <span class="score">6 - 7</span> Raton FC</p> 
+                        <p class="teams-versus">Raton FC <span class="score">2 - 0</span> Black Rages <span class="supertext">tav</span></p>
+                    </div>
+                </div>
+                <div class="match-card">
+                    <h3>Secondo Incontro <small>2h</small></h3>
+                    <div class="match-row">
+                        <p class="teams-versus">Flash Tigers <span class="score">9 - 7</span> Raton FC</p>
+                        <p class="teams-versus">Raton FC <span class="score">6 - 12</span> Black Rages</p>
+                        <p class="teams-versus">Black Rages <span class="score">0-0 (3-1)</span> Flash Tigers</p>
+                    </div>
+                </div>
+                <div class="match-card">
+                    <h3>Terza Giornata <small>2h</small></h3>
+                    <div class="match-row">
+                        <p class="teams-versus">Raton FC <span class="score">9 - 12</span> Black Rages</p>
+                        <p class="teams-versus">Black Rages <span class="score">2 - 5</span> Flash Tigers</p>
+                        <p class="teams-versus">Flash Tigers <span class="score">11 - 6</span> Raton FC</p>
+                    </div>
+                </div>
+                <div class="match-card final-card">
+                    <h3>Playoff + Finalissima <small>2h</small></h3>
+                    <div class="match-row">
+                        <p class="teams-versus font-gold">Black Rages <span class="vs">VS</span> Raton</p>
+                        <p class="teams-versus font-gold">Flash Tigers <span class="vs">VS</span> Vincitore Playoff</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="season" class="season-section">
+            <h2>Edizioni della Lyon League</h2>
+            <div class="editions-grid">
+                <div class="edition-item offline">
+                    <span class="trophy">⏳</span>
+                    <div class="edition-info">
+                        <span class="year">Lyon League Summer 2026</span>
+                        <span class="winner">In corso</span>
+                    </div>
+                </div>
+                <div class="edition-item offline">
+                    <span class="trophy">⏳</span>
+                    <div class="edition-info">
+                        <span class="year">Lyon League Winter 2026</span>
+                        <span class="winner">Da disputare</span>
+                    </div>
+                </div>
+                <div class="edition-item offline">
+                    <span class="trophy">⏳</span>
+                    <div class="edition-info">
+                        <span class="year">Lyon League Summer 2027</span>
+                        <span class="winner">Da disputare</span>
+                    </div>
+                </div>
+                <div class="edition-item offline">
+                    <span class="trophy">⏳</span>
+                    <div class="edition-info">
+                        <span class="year">Lyon League Winter 2027</span>
+                        <span class="winner">Da disputare</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="map-section">
+            <h2>Il campo: DON GUANELLA</h2>
+            <div class="iframe-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1536.0762847165179!2d16.864589697996006!3d41.0907504345288!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1347e9a77a32dc45%3A0xdb2251823ce8c42f!2sParrocchia%20di%20Maria%20Santissima%20Addolorata!5e1!3m2!1sit!2sit!4v1747166489109!5m2!1sit!2sit" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </section>
+    </div>
         
     <footer>
-        <p>&copy; 2024 Lyon League. Tutti i diritti riservati.</p>
+        <p>© 2024 Lyon League. Tutti i diritti riservati.</p>
         <div class="social-media">
             <a href="#"><i class="fab fa-facebook"></i></a>
             <a href="#"><i class="fab fa-twitter"></i></a>
