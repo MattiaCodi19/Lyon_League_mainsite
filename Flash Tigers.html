@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flash Tigers - Lyon League</title>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="stylesquad.css">
     <script src="script.js" defer></script>
-
     <script>
         function toggleDarkMode() {
             const darkModeIcon = document.getElementById('darkModeIcon');
@@ -28,9 +26,9 @@
 
         document.addEventListener("DOMContentLoaded", function() {
             createFireEffect(100);
-
             setTimeout(() => {
-                document.querySelector('.fire-container').remove();
+                const container = document.querySelector('.fire-container');
+                if(container) container.remove();
                 document.body.style.overflow = 'auto';
             }, 1000);
         });
@@ -46,32 +44,30 @@
                 fire.style.animationDelay = Math.random() * 2 + "s";
                 fireContainer.appendChild(fire);
             }
-
             document.body.appendChild(fireContainer);
             document.body.style.overflow = 'hidden';
         }
     </script>
 </head>
-
 <body>
 
     <header>
         <h1>Flash Tigers - Lyon League</h1>
     </header>
 
-    <nav>
-        <a href="./index.html">Home</a>
-        <a href="./index.html#rules">Regolamento</a>
-        <a href="./index.html#teams">Squadre</a>
-        <a href="./index.html#standings-normale">Classifica</a>
-        <a href="./index.html#season">Edizioni</a>
-        <a href="Premi.html">Premi</a>
-        <a href="amm.html">Amministrazione</a>
+    <nav class="main-nav">
+        <div class="nav-links">
+            <a href="./index.html">Home</a>
+            <a href="./index.html#rules">Regolamento</a>
+            <a href="./index.html#teams">Squadre</a>
+            <a href="./index.html#standings-normale">Classifica</a>
+            <a href="./index.html#season">Edizioni</a>
+            <a href="Premi.html">Premi</a>
+            <a href="amm.html">Amministrazione</a>
+        </div>
 
-        <button onclick="toggleDarkMode()" id="darkModeToggle">
-            <img id="darkModeIcon"
-                 src="https://img.icons8.com/ios-filled/50/ffffff/sun--v1.png"
-                 alt="Icona Modalità Notte">
+        <button onclick="toggleDarkMode()" id="darkModeToggle" aria-label="Cambia modalità colore">
+            <img id="darkModeIcon" src="https://img.icons8.com/ios-filled/50/ffffff/sun--v1.png" alt="Icona Modalità Notte">
         </button>
     </nav>
 
@@ -80,118 +76,124 @@
         <section class="team-info">
             <img src="https://i.postimg.cc/B6sQYZCk/Flash-Tigers-Logo.png" alt="Logo Flash-Tiger">
             <h2>FLASH TIGERS</h2>
+            <div class="champion-badge-container">
+                <a href="Lyon League 2024 - Quinta Edizione.html" class="champion-link">
+                    🏆 Campioni Lyon League in carica
+                </a>
+            </div>
+            <div class="champion-badge-container">
+                <a href="LyonLeagueHolidays.html" class="champion-link">
+                    🏆 Campioni Lyon League Holidays in carica
+                </a>
+            </div>
         </section>
 
         <section class="team-history">
             <h3>Storia del Team</h3>
-
             <p>
                 Flash Tigers, una squadra di amici contraddistinta dalla sua organizzazione perfetta.
                 Un gioco pulito, definito da molti il migliore della competizione, perchè loro vincono
-                in branco come le tigri. <br>
-
-                Principali rivali dei Rat&ograve;n, i Flash Tigers sanno come incutere timore agli avversari,
+                in branco come le tigri.
+            </p>
+            <p>
+                Principali rivali dei Ratón, i Flash Tigers sanno come incutere timore agli avversari,
                 anche quelli più temibili.
-
+            </p>
+            <p>
                 Dopo molte sconfitte, nella terza Stagione, i Flash Tigers rinascono, arrivando secondi
-                nella regular season, raggiungendo la finale grazie al successo contro i Rat&ograve;n ma
-                perdendo poi contro i Black Rages 7-4, andando comunque 4 volte in vantaggio. <br>
-
+                nella regular season, raggiungendo la finale grazie al successo contro i Ratón ma
+                perdendo poi contro i Black Rages 7-4, andando comunque 4 volte in vantaggio.
+            </p>
+            <p>
                 Durante la quarta stagione, precisamente alla seconda giornata, i Flash Tigers sono
                 diventati la prima squadra a battere i Black Rages, vincendo 4-1.
-
+            </p>
+            <p>
                 Con la successiva vittoria contro i silent per 2-1, i Flash Tigers eguagliano il record
-                dei Black Rages di imbattibilit&aacute; in una stagione di regular season
+                dei Black Rages di imbattibilità in una stagione di regular season
                 (3 partite 3 vittorie).
-
+            </p>
+            <p>
                 Nonostante la grande stagione, i Flash Tigers fermano la loro striscia di vittorie proprio
-                in finale contro i Rat&ograve;n, per un risultato di 3-6.
-
+                in finale contro i Ratón, per un risultato di 3-6.
+            </p>
+            <p>
                 Praticamente in maniera opposta alla stagione precedente, i Flash Tigers non fanno una
                 regular season perfetta ma vanno a stravincere nella Finalissima della Quinta Stagione,
                 battendo i Black Rages finora imbattuti.
             </p>
+            <p>
+                Nella primissima stagione della Lyon League Holidays sono proprio loro a vincere il titolo nella finale contro i Raton.
+            </p>
         </section>
 
-        <section>
-            <h2>MEMBRI SQUADRA</h2>
+        <div class="team-details-grid">
+            
+            <section class="section-box members-box">
+                <h2>Membri Squadra</h2>
+                <ul class="members-list">
+                    <li>Lupis <small>(por)</small></li>
+                    <!--- <li>Moneta <small>(por / dif)</small></li> -->
+                    <li>Marzullo Mattia <small>(dif)</small></li>
+                    <li>Romito Giacomo <small>(dif)</small></li>
+                    <li>Sciaco <small>(dif, vicecapitano)</small></li>
+                    <li>Davide <small>(cen)</small></li>
+                    <!--- <li>Traversa <small>(cen)</small></li> -->
+                    <li>Alessandro G. <small>(att)</small></li>
+                    <!--- <li>Partipilo <small>(cen)</small></li> -->
+                    <li class="captain">Pepe <small>(att, capitano)</small></li>
+                </ul>
+            </section>
 
-            <p>
-                Lupis (por) <br>
-                <!-- Moneta (por) <br> --> 
-                Romito Giacomo (dif)<br>
-                Marzullo Mattia (dif)<br>
-                Sciaco (dif, vicecapitano)<br>
-                <!-- Traversa (cen) <br> -->
-                Davide (cen) <br>
-                <!-- Partipilo (att) <br> -->
-                Alessandro G. (att) <br>
-                <b>Pepe (att, capitano)</b>
-            </p>
-        </section> <br><br><br><br>
-
-
-        <section class="gallery-section" style="float: left; clear: left; width: 45%; margin-top: 20px;">
-            <h2>GALLERIA</h2>
-            <div class="slider-container" style="position: relative; overflow: hidden; border-radius: 15px;">
-                <button class="slider-btn prev" style="position: absolute; z-index: 99; left: 10px; top: 50%; transform: translateY(-50%);">&#10094;</button> 
-
-                <div class="slider-wrapper">
-                    <div class="slider-slide"><img src="https://i.postimg.cc/JzFFGf16/ft1LL.jpg" alt="LyonLeagueA2026"></div>
+            <section class="gallery-section">
+                <h2>Galleria</h2>
+                <div class="slider-container">
+                    <button class="slider-btn prev" aria-label="Immagine precedente">&#10094;</button> 
+                    <div class="slider-wrapper">
+                        <div class="slider-slide"><img src="https://i.postimg.cc/JzFFGf16/ft1LL.jpg" alt="LyonLeagueA2026"></div>
+                        <div class="slider-slide"><img src="https://i.postimg.cc/8P5cBYq4/ftsummer2026.png" alt="LyonLeagueA2026"></div>
+                    </div>
+                    <button class="slider-btn next" aria-label="Immagine successiva">&#10095;</button> 
                 </div>
+            </section>
 
-                <button class="slider-btn next" style="position: absolute; z-index: 99; right: 10px; top: 50%; transform: translateY(-50%);">&#10095;</button> 
-            </div>
-        </section>
+            <section class="section-box data-box section-right">
+                <h2>Fondazione, Colori e Simboli</h2>
+                <ul class="info-data-list">
+                    <li><strong>Fondazione:</strong> 5 Agosto 2024</li>
+                    <li><strong>Colori Sociali:</strong> Giallo e Azzurro</li>
+                    <li><strong>Simboli:</strong> Tigre, Corona</li>
+                    <li><strong>Nomi:</strong> <em>I Tigers, Coronado</em></li>
+                </ul>
+            </section>
+
+            <section class="section-box palmares-box section-right">
+                <h2>PALMARES</h2>
+                    <p>
+                        1 Lyon League
+                        <a href="Lyon League 2024 - Quinta Edizione.html"><sup><corona-ll></corona-ll></sup></a>
+                    </p>        
+                    <p>
+                        2 Secondo Posto Lyon League
+                        <a href="Lyon League_PrSnTr_Edizione.html"><sup><corona-ll></corona-ll></sup></a>        
+                        <a href="Lyon League 2024 - Quarta Edizione.html"><sup><corona-ll></corona-ll></sup></a>
+                    </p>
+                    <p>
+                        1 Lyon League Holidays
+                        <a href="LyonLeagueHolidays.html"><sup><corona-ll></corona-ll></sup></a>
+                    </p>
+                    <p>
+                        3 Pallone d'Oro
+                        <a href="Premi.html"><sup><corona-ll></corona-ll></sup></a>
+                    </p>        
+                    <p>
+                        1 Scarpa d'Oro
+                        <a href="Premi.html"><sup><corona-ll></corona-ll></sup></a>
+                    </p>
+            </section>
 
 
-        <section class="section-right">
-            <h2>FONDAZIONE, COLORI SOCIALI E SIMBOLI</h2>
-
-            <p>
-                Fondazione: 5 Agosto 2024 <br>
-                Colori Sociali: Giallo e Azzurro <br>
-                Simboli: Tigre, Corona <br>
-                Nomi: <em>I Tigers , Coronado</em>
-            </p>
-        </section>
-
-        <section class="section-right">
-            <h2>PALMARES</h2>
-
-            <p>
-                1 Lyon League
-                <a href="Lyon League 2024 - Quinta Edizione.html">
-                    <sup>&#128312;</sup>
-                </a>
-            </p>
-
-            <p>
-                2 Secondo Posto Lyon League
-                <a href="Lyon League 2024 - Terza Edizione.html">
-                    <sup>&#128312;</sup>
-                </a>
-
-                <a href="Lyon League 2024 - Quarta Edizione.html">
-                    <sup>&#128312;</sup>
-                </a>
-            </p>
-
-            <p>
-                2 Pallone d'Oro
-                <a href="Premi.html">
-                    <sup>&#128312;</sup>
-                </a>
-            </p>
-
-            <p>
-                1 Scarpa d'Oro
-                <a href="Premi.html">
-                    <sup>&#128312;</sup>
-                </a>
-            </p>
-        </section>
-
+        </div>
     </div>
 
     <footer>
