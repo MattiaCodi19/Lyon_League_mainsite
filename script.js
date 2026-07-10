@@ -310,7 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
 (function() {
     class CoronaElement extends HTMLElement {
         connectedCallback() {
-            this.innerHTML = `<img src="crown.png" height="30px" style="pointer-events: auto; vertical-align: middle;">`;
+            this.innerHTML = `<img src="./img/crown.png" height="30px" style="pointer-events: auto; vertical-align: middle;">`;
         }
     }
 
