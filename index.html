@@ -9,29 +9,33 @@
 </head>
 <body>
     <div class="particles"></div>
+    
     <header>
-        <h1>Lyon League - Torneo di Calcio tra Amici</h1>
+        <h1>Lyon League</h1>
+        <p class="subtitle">TORNEO DI CALCIO TRA AMICI</p>
     </header>
-    <nav style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; background: linear-gradient(to right, #005b96, #1976d2); padding: 10px; position: static; top: 0; width: 100%; z-index: 1000;">
-        <a href="./index.html" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Home</a>
-        <a href="./index.html#rules" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Regolamento</a>
-        <a href="./index.html#teams" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Squadre</a>
-        <a href="./index.html#standings-normale" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Classifica</a>        
-        <a href="./index.html#season" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Edizioni</a>
-        <a href="Premi.html" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Premi</a>
-        <a href="amm.html" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Amministrazione</a>
 
-        <a href="LyonLeagueHolidays.html" style="text-decoration: none; margin-left: auto;">
+    <nav class="main-nav">
+        <div class="nav-links">
+            <a href="./index.html">Home</a>
+            <a href="./index.html#rules">Regolamento</a>
+            <a href="./index.html#teams">Squadre</a>
+            <a href="./index.html#standings-normale">Classifica</a>        
+            <a href="./index.html#season">Edizioni</a>
+            <a href="Premi.html">Premi</a>
+            <a href="amm.html">Amministrazione</a>
+        </div>
+
+        <a href="LyonLeagueHolidays.html" class="logo-nav-link">
             <button id="LyonLeague" class="btn-torneo">
-                <img src="https://i.postimg.cc/qB3mnfC2/Lyon-League-White-Logo.png" alt="LyonLeague-WhiteLogo" style="width: 80px; height: 80px;">
+                <img src="https://i.postimg.cc/qB3mnfC2/Lyon-League-White-Logo.png" alt="LyonLeague-WhiteLogo">
             </button>
         </a>
-
     </nav>
+
     <div class="content">
-        <!-- REGOLE -->
         <section id="rules" class="rules-section">
-            <h2>Principali Regole del Torneo:</h2>
+            <h2>PRINCIPALI REGOLE DEL TORNEO</h2>
             <ul>
                 <li>Le squadre sono composte da 4 giocatori più un portiere (incluse 2 riserve).</li>
                 <li>Se una squadra ha una riserva può fare da uno a più cambi ogni 3 minuti, compresa la pausa tra primo e secondo tempo, si può anche decidere di congelare il cambio (non farlo).</li>
@@ -48,9 +52,8 @@
             </ul>
         </section>
 
-        <!-- SQUADRE -->
         <section id="teams" class="teams-section">
-            <h2>Squadre Partecipanti:</h2>
+            <h2>Squadre Partecipanti</h2>
             <div class="teams">
                 <div class="team">
                     <a href="black-rage.html">
@@ -85,154 +88,200 @@
             </div>
         </section>
 
-        <!-- CLASSIFICA -->
         <section id="standings-normale" class="standings-section">
-            <h2>Classifica del Torneo:</h2>
-            <table class="standings-table">
-                <thead>
-                    <tr>
-                        <th>Posizione</th>
-                        <th>Squadra</th>
-                        <th>Punti</th>
-                        <th>Partite Giocate</th>
-                        <th>Vittorie</th>
-                        <th>Pareggi</th>
-                        <th>Sconfitte</th>
-                        <th>Gol Fatti</th>
-                        <th>Gol Subiti</th>
-                        <th>Differenza Reti</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><span style="border-left: 4px solid #ffcc00; padding-left: 6px;">1</span></td>
-                        <td>
-                            <div class="logo-wrapper"> <img src="https://i.postimg.cc/XZpR17qR/Black-Rage.png" alt="BR" style="height: 3.4em;"></div><span>Black Rages</span>
-                        </td>
-                        <td><input type="number" value="0" class="punti-input" data-team="br" oninput="updateStandingsNormale(this)"></td>
-                        <td><input type="number" value="0" class="pg-input" data-team="br" oninput="updateStandingsNormale(this)"></td>
-                        <td><input type="number" value="0" class="w-input" data-team="br" oninput="updateStandingsNormale(this)"></td>
-                        <td><input type="number" value="0" class="d-input" data-team="br" oninput="updateStandingsNormale(this)"></td>
-                        <td><input type="number" value="0" class="l-input" data-team="br" oninput="updateStandingsNormale(this)"></td>
-                        <td><input type="number" value="0" class="gf-input" data-team="br" oninput="updateStandingsNormale(this)"></td>
-                        <td><input type="number" value="0" class="gs-input" data-team="br" oninput="updateStandingsNormale(this)"></td>
-                        <td class="dr-cell">0</td> <!-- DIFFERENZA RETI AUTOMATICA -->
-                    </tr>
-                    <tr>
-                        <td><span style="border-left: 4px solid #ffcc00; padding-left: 6px;">2</span></td>
-                        <td>
-                            <div class="logo-wrapper"> <img src="https://i.postimg.cc/B6sQYZCk/Flash-Tigers-Logo.png" alt="FT"></div><span>Flash Tigers</span>
-                        </td>
-                        <td><input type="number" value="0" class="punti-input" data-team="ft" oninput="updateStandingsNormale(this)"></td>
-                        <td><input type="number" value="0" class="pg-input" data-team="ft" oninput="updateStandingsNormale(this)"></td>
-                        <td><input type="number" value="0" class="w-input" data-team="ft" oninput="updateStandingsNormale(this)"></td>
-                        <td><input type="number" value="0" class="d-input" data-team="ft" oninput="updateStandingsNormale(this)"></td>
-                        <td><input type="number" value="0" class="l-input" data-team="ft" oninput="updateStandingsNormale(this)"></td>
-                        <td><input type="number" value="0" class="gf-input" data-team="ft" oninput="updateStandingsNormale(this)"></td>
-                        <td><input type="number" value="0" class="gs-input" data-team="ft" oninput="updateStandingsNormale(this)"></td>
-                        <td class="dr-cell">0</td> <!-- DIFFERENZA RETI AUTOMATICA -->
-                    </tr>
-                    <tr>
-                        <td><span style="border-left: 4px solid #ff0000; padding-left: 6px;">3</span></td>
-                        <td>
-                            <div class="logo-wrapper"> <img src="https://i.postimg.cc/T25QTRjt/Raton-Logo.png" alt="RT"></div><span>Ratón FC</span>
-                        </td>
-                        <td><input type="number" value="0" class="punti-input" data-team="rt" oninput="updateStandingsNormale(this)"></td>
-                        <td><input type="number" value="0" class="pg-input" data-team="rt" oninput="updateStandingsNormale(this)"></td>
-                        <td><input type="number" value="0" class="w-input" data-team="rt" oninput="updateStandingsNormale(this)"></td>
-                        <td><input type="number" value="0" class="d-input" data-team="rt" oninput="updateStandingsNormale(this)"></td>
-                        <td><input type="number" value="0" class="l-input" data-team="rt" oninput="updateStandingsNormale(this)"></td>
-                        <td><input type="number" value="0" class="gf-input" data-team="rt" oninput="updateStandingsNormale(this)"></td>
-                        <td><input type="number" value="0" class="gs-input" data-team="rt" oninput="updateStandingsNormale(this)"></td>
-                        <td class="dr-cell">0</td> <!-- DIFFERENZA RETI AUTOMATICA -->
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-
-            <p>Al termine della regular season, il <b style="color: #ffcc00;"><u>primo posto</u></b> e il <b style="color: #ffcc00;"><u>secondo posto</u></b> si sfideranno nella Finalissima. <br>
-                La squadra arrivata al <b style="color: #ff0000;"><u>terzo posto</u></b>, sar&agrave; eliminata. <br>
-                In caso di pareggio in finale, vince la squadra meglio posizionata in classifica.
-            </p>
-        </section>
-
-        <!-- CLASSIFICA MARCATORI -->
-        <hr color="#f9ea0e">
-        <h2>Classifica Marcatori 
-            <details style="display:inline;">
-                <summary style="font-size:0.7em; cursor:pointer; display:inline;">(criteri) <br></summary>
-                <small>
-                    1. Gol segnati (g).<br>
-                    2. In caso di parità: posizionamento squadra (Black Rages - Flash Tigers - Ratón). <br>
-                    3. Partite giocate (p). <br>
-                </small>
-            </details>
-        </h2>
-
-        <ol>
-        
-        </ol>
-
-        <!-- CLASSIFICA CARTELLINI -->
-        <h2>Cartellini Gialli (y) e Rossi (r)</h2>
-
-        <ol>
-
-        </ol>
-
-        <!-- CRONOLOGIA PARTITE -->
-        <hr color="#f9ea0e">
-        <h2>Cronologia Partite</h2>
-        <table class="matches">
-            <tr>
-                <h3>Primo Incontro <small>(<i>2h</i>)</small> </h3>
-                <p>??? - ???</p>
-                <p>??? - ???</p> 
-            </tr>
-            <tr>
-                <h3>Secondo Incontro <small>(<i>2h</i>)</small> </h3>
-                <p>??? - ???</p>
-                <p>??? - ???</p> 
-            </tr>
-            <tr>
-                <h3>Terza Giornata <small>(<i>2h</i>)</small> </h3> 
-                <p>??? - ???</p>
-                <p>??? - ???</p> 
-            </tr>
-            <tr>
-                <h3>Finale <small>(<i>1h</i>)</small> </h3> 
-                <p>Primo Posto - Secondo Posto </p>
-            </tr>
-        </table>
-
-                <!-- STAGIONI -->
-        <section id="season" class="season">
-            <div class="season">
-                <h2> Edizioni della Lyon League - Squadra trionfante </h2>
-                <ul>
-                    <h3> <a href="Lyon League 2024 - Prima Edizione.html"> &#127942; </a>  Lyon League 2024 - Black Rages </h3>
-                    <h3> <a href="Lyon League 2024 - Seconda Edizione.html"> &#127942; </a>  Lyon League A2025 - Black Rages (2)</h3>
-                    <h3> <a href="Lyon League 2024 - Terza Edizione.html"> &#127942; </a>  Lyon League B2025 - Black Rages (3)</h3>
-                    <h3> <a href="Lyon League 2024 - Quarta Edizione.html"> &#127942; </a>  Lyon League C2025 - Rat&ograve;n FC </h3>
-                    <h3> <a href="Lyon League 2024 - Quinta Edizione.html"> &#127942; </a>  Lyon League A2026 - Flash Tigers </h3>
-                </ul>
+            <h2>Classifica del Torneo</h2>
+            <div class="table-container">
+                <table class="standings-table">
+                    <thead>
+                        <tr>
+                            <th>Pos</th>
+                            <th>Squadra</th>
+                            <th>Punti</th>
+                            <th>PG</th>
+                            <th>V</th>
+                            <th>P</th>
+                            <th>S</th>
+                            <th>GF</th>
+                            <th>GS</th>
+                            <th>DR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="pos-advance">
+                            <td><span class="pos-badge gold">1</span></td>
+                            <td class="team-cell">
+                                <div class="logo-wrapper"><img src="https://i.postimg.cc/XZpR17qR/Black-Rage.png" alt="BR"></div>
+                                <span>Black Rages</span>
+                            </td>
+                            <td><input type="number" value="0" class="punti-input" data-team="br" oninput="updateStandingsNormale(this)"></td>
+                            <td><input type="number" value="0" class="pg-input" data-team="br" oninput="updateStandingsNormale(this)"></td>
+                            <td><input type="number" value="0" class="w-input" data-team="br" oninput="updateStandingsNormale(this)"></td>
+                            <td><input type="number" value="0" class="d-input" data-team="br" oninput="updateStandingsNormale(this)"></td>
+                            <td><input type="number" value="0" class="l-input" data-team="br" oninput="updateStandingsNormale(this)"></td>
+                            <td><input type="number" value="0" class="gf-input" data-team="br" oninput="updateStandingsNormale(this)"></td>
+                            <td><input type="number" value="0" class="gs-input" data-team="br" oninput="updateStandingsNormale(this)"></td>
+                            <td class="dr-cell">0</td>
+                        </tr>
+                        <tr class="pos-advance">
+                            <td><span class="pos-badge gold">2</span></td>
+                            <td class="team-cell">
+                                <div class="logo-wrapper"><img src="https://i.postimg.cc/B6sQYZCk/Flash-Tigers-Logo.png" alt="FT"></div>
+                                <span>Flash Tigers</span>
+                            </td>
+                            <td><input type="number" value="0" class="punti-input" data-team="ft" oninput="updateStandingsNormale(this)"></td>
+                            <td><input type="number" value="0" class="pg-input" data-team="ft" oninput="updateStandingsNormale(this)"></td>
+                            <td><input type="number" value="0" class="w-input" data-team="ft" oninput="updateStandingsNormale(this)"></td>
+                            <td><input type="number" value="0" class="d-input" data-team="ft" oninput="updateStandingsNormale(this)"></td>
+                            <td><input type="number" value="0" class="l-input" data-team="ft" oninput="updateStandingsNormale(this)"></td>
+                            <td><input type="number" value="0" class="gf-input" data-team="ft" oninput="updateStandingsNormale(this)"></td>
+                            <td><input type="number" value="0" class="gs-input" data-team="ft" oninput="updateStandingsNormale(this)"></td>
+                            <td class="dr-cell">0</td>
+                        </tr>
+                        <tr class="pos-eliminated">
+                            <td><span class="pos-badge red">3</span></td>
+                            <td class="team-cell">
+                                <div class="logo-wrapper"><img src="https://i.postimg.cc/T25QTRjt/Raton-Logo.png" alt="RT"></div>
+                                <span>Ratón FC</span>
+                            </td>
+                            <td><input type="number" value="0" class="punti-input" data-team="rt" oninput="updateStandingsNormale(this)"></td>
+                            <td><input type="number" value="0" class="pg-input" data-team="rt" oninput="updateStandingsNormale(this)"></td>
+                            <td><input type="number" value="0" class="w-input" data-team="rt" oninput="updateStandingsNormale(this)"></td>
+                            <td><input type="number" value="0" class="d-input" data-team="rt" oninput="updateStandingsNormale(this)"></td>
+                            <td><input type="number" value="0" class="l-input" data-team="rt" oninput="updateStandingsNormale(this)"></td>
+                            <td><input type="number" value="0" class="gf-input" data-team="rt" oninput="updateStandingsNormale(this)"></td>
+                            <td><input type="number" value="0" class="gs-input" data-team="rt" oninput="updateStandingsNormale(this)"></td>
+                            <td class="dr-cell">0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="info-footer-table">
+                <p>Al termine della regular season, il <span class="highlight gold">primo posto</span> e il <span class="highlight gold">secondo posto</span> si sfideranno nella Finalissima.</p>
+                <p>La squadra arrivata al <span class="highlight red">terzo posto</span>, sarà eliminata.</p>
+                <p class="small-notice">In caso di pareggio in finale, vince la squadra meglio posizionata in classifica.</p>
             </div>
         </section>
 
-        <h1>Il campo: DON GUANELLA</h1>
-        <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1536.0762847165179!2d16.864589697996006!3d41.0907504345288!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1347e9a77a32dc45%3A0xdb2251823ce8c42f!2sParrocchia%20di%20Maria%20Santissima%20Addolorata!5e1!3m2!1sit!2sit!4v1747166489109!5m2!1sit!2sit" 
-            width="600" 
-            height="450" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+        <div class="separator-line"></div>
+
+        <section class="stats-section">
+            <h2>
+                Classifica Marcatori 
+                <button class="tooltip-trigger" onclick="toggleCriteria(event)">
+                    ⓘ
+                </button>
+            </h2>
+
+            <div id="criteria-box" class="criteria-popup">
+                <strong>Criteri di parità:</strong>
+                <ul>
+                    <li>1. Gol segnati (g)</li>
+                    <li>2. In caso di parità: posizionamento squadra (Black Rages - Flash Tigers - Ratón)</li>
+                    <li>3. Partite giocate (p)</li>
+                </ul>
+            </div>      
+
+            <ol class="styled-list">
+                
+                </ol>
+        </section>
+
+        <section class="stats-section">
+            <h2>Cartellini Gialli (y) e Rossi (r)</h2>
+            <ol class="styled-list">
+                </ol>
+        </section>
+
+        <div class="separator-line"></div>
+
+        <section class="matches-section">
+            <h2>Cronologia Partite</h2>
+            <div class="matches-timeline">
+                <div class="match-card">
+                    <h3>Primo Incontro <small>2h</small></h3>
+                    <div class="match-row">
+                        <p class="teams-versus">??? <span class="vs">VS</span> ???</p>
+                        <p class="teams-versus">??? <span class="vs">VS</span> ???</p>
+                    </div>
+                </div>
+                <div class="match-card">
+                    <h3>Secondo Incontro <small>2h</small></h3>
+                    <div class="match-row">
+                        <p class="teams-versus">??? <span class="vs">VS</span> ???</p>
+                        <p class="teams-versus">??? <span class="vs">VS</span> ???</p>
+                    </div>
+                </div>
+                <div class="match-card">
+                    <h3>Terza Giornata <small>2h</small></h3>
+                    <div class="match-row">
+                        <p class="teams-versus">??? <span class="vs">VS</span> ???</p>
+                        <p class="teams-versus">??? <span class="vs">VS</span> ???</p>
+                    </div>
+                </div>
+                <div class="match-card final-card">
+                    <h3>🏆 Finale <small>1h</small></h3>
+                    <p class="teams-versus font-big">Primo Posto <span class="vs">VS</span> Secondo Posto</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="season" class="season-section">
+            <h2>Edizioni della Lyon League</h2>
+            <div class="editions-grid">
+                <a href="Lyon League 2024 - Prima Edizione.html" class="edition-item">
+                    <span class="trophy">🏆</span>
+                    <div class="edition-info">
+                        <span class="year">Lyon League 2024</span>
+                        <span class="winner">Campione: Black Rages</span>
+                    </div>
+                </a>
+                <a href="Lyon League 2024 - Seconda Edizione.html" class="edition-item">
+                    <span class="trophy">🏆</span>
+                    <div class="edition-info">
+                        <span class="year">Lyon League A2025</span>
+                        <span class="winner">Campione: Black Rages (2)</span>
+                    </div>
+                </a>
+                <a href="Lyon League 2024 - Terza Edizione.html" class="edition-item">
+                    <span class="trophy">🏆</span>
+                    <div class="edition-info">
+                        <span class="year">Lyon League B2025</span>
+                        <span class="winner">Campione: Black Rages (3)</span>
+                    </div>
+                </a>
+                <a href="Lyon League 2024 - Quarta Edizione.html" class="edition-item">
+                    <span class="trophy">🏆</span>
+                    <div class="edition-info">
+                        <span class="year">Lyon League C2025</span>
+                        <span class="winner">Campione: Ratòn FC</span>
+                    </div>
+                </a>
+                <a href="Lyon League 2024 - Quinta Edizione.html" class="edition-item">
+                    <span class="trophy">🏆</span>
+                    <div class="edition-info">
+                        <span class="year">Lyon League A2026</span>
+                        <span class="winner">Campione: Flash Tigers</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="map-section">
+            <h2>Il campo: DON GUANELLA</h2>
+            <div class="iframe-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1536.0762847165179!2d16.864589697996006!3d41.0907504345288!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1347e9a77a32dc45%3A0xdb2251823ce8c42f!2sParrocchia%20di%20Maria%20Santissima%20Addolorata!5e1!3m2!1sit!2sit!4v1747166489109!5m2!1sit!2sit" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </section>
+    </div>
         
     <footer>
-        <p>&copy; 2024 Lyon League. Tutti i diritti riservati.</p>
+        <p>© 2024 Lyon League. Tutti i diritti riservati.</p>
         <div class="social-media">
             <a href="#"><i class="fab fa-facebook"></i></a>
             <a href="#"><i class="fab fa-twitter"></i></a>
