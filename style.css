@@ -1,357 +1,471 @@
-/* ================= Animazioni ================= */
-@keyframes pageLoad {
-    0% { opacity: 0; transform: scale(0.95); }
-    50% { opacity: 0.5; transform: scale(1.02); }
-    100% { opacity: 1; transform: scale(1); }
-}
-
-
+/* ================= Base & Reset ================= */
 body {
     position: relative;
-    overflow: visible;
     margin: 0;
+    padding: 0;
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #002f6c, #1976d2);
     color: #ffffff;
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
-/* ================= Particles ================= */
-body {
-    position: relative; 
-    margin: 0;
-    padding: 0;
-}
-
-/* Sfondo infinito con micro-stelline */
+/* Sfondo infinito con micro-stelline (Ottimizzato) */
 body::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%; /* Si allunga all'infinito insieme alla pagina */
+    height: 100%;
     z-index: -1; 
     pointer-events: none;
-
-    /* Cambiato a 1.5px per renderle piccolissime e circolari */
     background-image: 
-        radial-gradient(circle, #ffcc00 1.5px, transparent 1.5px),
         radial-gradient(circle, #ffcc00 1.2px, transparent 1.2px),
-        radial-gradient(circle, #ffcc00 1.5px, transparent 1.5px),
         radial-gradient(circle, #ffcc00 1px, transparent 1px);
-    
-    /* Ridotto a 150px così il pattern si ripete molto più frequentemente (tante stelline) */
-    background-size: 150px 150px; 
-    
-    /* Posizioni asimmetriche all'interno del quadratino di 150px */
-    background-position: 
-        15px 20px, 
-        95px 60px, 
-        40px 110px, 
-        120px 130px;
-        
-    /* Regola la luminosità generale delle stelline */
-    opacity: 0.6; 
+    background-size: 120px 120px; 
+    background-position: 15px 20px, 70px 70px;
+    opacity: 0.35; /* Leggermente attenuato per far risaltare i testi */
 }
 
-
-/* ================= Header & Nav ================= */
+/* ================= Header Moderno ================= */
 header {
-    background: linear-gradient(to right, #002f6c, #1976d2);
-    padding: 20px;
+    padding: 50px 20px 30px 20px;
     text-align: center;
-    color: #ffffff;
-    animation: slideIn 1.5s ease-out;
+    background: transparent;
 }
 header h1 {
-    font-size: 2.8em;
+    font-size: 3.5em;
+    font-weight: 800;
     margin: 0;
-    letter-spacing: 1.5px;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.4);
 }
-nav {
-    background: linear-gradient(to right, #005b96, #1976d2);
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-    animation: fadeIn 1s ease-in-out;
-}
-nav a {
-    color: #ffffff;
-    text-decoration: none;
-    padding: 12px 20px;
-    transition: background 0.3s, transform 0.3s;
-}
-nav a:hover {
-    background-color: #005b96;
-    color: #ffcc00 !important;
-    border-radius: 5px;
-    transform: scale(1.1);
+header .subtitle {
+    font-size: 1.2em;
+    color: #ffcc00;
+    margin-top: 5px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
-/* ================= Hero ================= */
-.hero {
-    background: url('https://i.postimg.cc/LY9XwPdy/Lyon-League-Logo.jpg') no-repeat center center/cover;
-    height: 60vh;
+/* ================= Navigazione "Glassmorphism" ================= */
+.main-nav {
+    max-width: 1100px;
+    margin: 20px auto;
     display: flex;
     align-items: center;
-    justify-content: center;
-    color: #1976d2;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
-    animation: zoomIn 2s ease;
-}
-.hero h2 {
-    font-size: 3em;
-    animation: fadeIn 2s ease-in-out;
-}
-
-/* ================= Content ================= */
-.content {
-    padding: 40px;
-    max-width: 1200px;
-    margin: auto;
-    animation: fadeIn 1.5s ease-in;
-}
-.download-button {
-    display: inline-block;
-    background: linear-gradient(45deg, #1e88e5, #1e88e5);
-    color: #ffffff;
-    padding: 15px 30px;
-    text-decoration: none;
-    font-weight: bold;
+    background: rgba(0, 91, 150, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 5px 20px;
     border-radius: 50px;
-    transition: transform 0.3s, background-color 0.3s;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    margin-bottom: 50px;
-    animation: bounceIn 1.2s ease-in;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    position: relative;
+    top: 15px;
+    z-index: 1000;
 }
-.download-button:hover {
-    background-color: #ffcc00;
-    transform: scale(1.1);
+.nav-links {
+    display: flex;
+    gap: 5px;
+}
+.main-nav a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 16px;
+    font-size: 0.95em;
+    font-weight: 500;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+.main-nav .nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffcc00;
+}
+.logo-nav-link {
+    margin-left: auto;
 }
 
-/* ================= Sections ================= */
+/* ================= Contenuto Principale ================= */
+.content {
+    padding: 20px;
+    max-width: 1140px;
+    margin: auto;
+}
+
+h2 {
+    font-size: 2em;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+
+/* ================= Sezioni Stile Card ================= */
 .rules-section,
 .teams-section,
-.standings-section {
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 0 25px rgba(0,0,0,0.6);
+.standings-section,
+.stats-section,
+.matches-section,
+.season-section,
+.map-section {
+    padding: 35px;
+    border-radius: 24px;
+    background: linear-gradient(145deg, rgba(0, 47, 108, 0.85), rgba(0, 91, 150, 0.85));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
     margin-bottom: 40px;
 }
-.rules-section {
-    background: linear-gradient(to bottom, #002f6c, #333);
-}
-.rules-section h2 {
-    font-size: 2.2em;
-    color: #ffffff;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    text-align: center;
-}
+
+/* Regole */
 .rules-section ul {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
-    line-height: 1.8;
 }
 .rules-section ul li {
-    margin-bottom: 15px;
-    font-size: 1.2em;
-    color: #ffffff;
+    margin-bottom: 12px;
+    font-size: 1.05em;
     position: relative;
-    padding-left: 25px;
+    padding-left: 30px;
 }
-.rules-section ul li:before {
-    content: "\2713";
+.rules-section ul li::before {
+    content: "✓";
     position: absolute;
-    left: 0;
-    color: #1e88e5;
-    font-size: 1.3em;
+    left: 5px;
+    color: #ffcc00;
+    font-weight: bold;
 }
 
-/* ================= Teams ================= */
-.teams-section {
-    background: linear-gradient(to bottom, #002f6c, #005b96);
-}
-.teams-section h2 {
-    color: #ffffff;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    text-align: center;
-}
+/* ================= Griglia Squadre ================= */
 .teams {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 20px;
-    justify-items: center;
 }
 .team {
-    background: linear-gradient(to bottom, #003366, #004c8c);
+    background: rgba(0, 51, 102, 0.5);
     padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.05);
     text-align: center;
-    width: 100%;
-    max-width: 180px;
-    transition: transform 0.3s;
-    animation: bounceIn 1.5s ease;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s;
+}
+.team a {
+    text-decoration: none;
 }
 .team:hover {
-    transform: scale(1.05);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    background: rgba(0, 51, 102, 0.8);
 }
 .team img {
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
     object-fit: cover;
     border-radius: 50%;
-    margin-bottom: 10px;
-    transition: transform 0.3s;
+    margin-bottom: 12px;
+    border: 3px solid rgba(255,255,255,0.1);
+    transition: transform 0.4s ease;
 }
-.team img:hover {
-    transform: rotate(10deg) scale(1.1);
+.team:hover img {
+    transform: scale(1.08) rotate(5deg);
+    border-color: #ffcc00;
 }
 .team h3 {
     color: #ffffff;
+    font-size: 1.1em;
     margin: 0;
 }
 
-/* Stile per la cella che contiene logo e nome */
-td:nth-child(2) {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    min-width: 200px;
-    padding: 10px;
-}
-
-/* Contenitore fisso per il logo per evitare spostamenti */
-.logo-wrapper {
-    width: 45px;
-    display: flex;
-    justify-content: center;
-    flex-shrink: 0;
-}
-
-/* Regola universale per i loghi */
-.logo-wrapper img {
-    height: 2.8em;
-    width: auto;
-    object-fit: contain;
-}
-
-/* ================= Standings ================= */
-.standings-section {
-    background: linear-gradient(to bottom, #002f6c, #005b96);
-}
-.standings-section h2 {
-    color: #ffffff;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    text-align: center;
+/* ================= Tabella Classifica Sportiva ================= */
+.table-container {
+    overflow-x: auto;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 .standings-table {
     width: 100%;
     border-collapse: collapse;
     text-align: center;
-    border-radius: 15px;
-    overflow: hidden;
-    animation: zoomIn 1.5s ease;
-}
-.standings-table th, .standings-table td {
-    padding: 15px;
-    border: none;
+    background: rgba(0, 39, 77, 0.6);
 }
 .standings-table th {
-    color: #ffffff;
+    background: #002f6c;
+    padding: 16px;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.7);
 }
 .standings-table td {
-    background-color: #003366;
-    color: #ffffff;
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
-.standings-table input[type="number"] {
-    width: 50px;
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    text-align: center;
+.standings-table tr:last-child td {
+    border-bottom: none;
 }
 .standings-table tr:hover td {
-    background-color: #077aee;
+    background-color: rgba(25, 118, 210, 0.3);
 }
 
+/* Celle Squadra */
+.team-cell {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-align: left;
+    min-width: 220px;
+}
+.logo-wrapper {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo-wrapper img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
 
-/* ================= Footer ================= */
-footer {
-    background: linear-gradient(to right, #002f6c, #005b96);
-    padding: 20px;
+/* Input Invisibili e Integrati */
+.standings-table input[type="number"] {
+    width: 45px;
+    padding: 6px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid transparent;
+    border-radius: 6px;
+    color: #fff;
+    font-family: inherit;
+    font-weight: 600;
     text-align: center;
-    color: #ffffff;
-    margin-top: 40px;
-    animation: slideInUp 1.5s ease;
+    transition: all 0.2s;
 }
-.social-media {
-    margin-top: 20px;
+.standings-table input[type="number"]:focus {
+    background: #ffffff;
+    color: #002f6c;
+    outline: none;
+    border-color: #ffcc00;
 }
-.social-media a {
-    color: #1e88e5;
+
+/* Badge Posizioni */
+.pos-badge {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 0.9em;
+}
+.pos-badge.gold { background: rgba(255, 204, 0, 0.2); color: #ffcc00; border: 1px solid #ffcc00; }
+.pos-badge.red { background: rgba(255, 0, 0, 0.2); color: #ff3333; border: 1px solid #ff3333; }
+
+/* Info Sotto Classifica */
+.info-footer-table {
+    margin-top: 25px;
+    padding: 15px 20px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 12px;
+}
+.info-footer-table p { margin: 8px 0; font-size: 1em; }
+.highlight { font-weight: 600; border-bottom: 2px solid; padding-bottom: 1px; }
+.highlight.gold { color: #ffcc00; border-color: #ffcc00; }
+.highlight.red { color: #ff4d4d; border-color: #ff4d4d; }
+.small-notice { font-style: italic; opacity: 0.7; font-size: 0.9em; margin-top: 12px !important; }
+
+/* ================= Timeline Cronologia Match ================= */
+.matches-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.match-card {
+    background: rgba(0, 39, 77, 0.4);
+    border-left: 4px solid #1976d2;
+    padding: 15px 25px;
+    border-radius: 0 12px 12px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.match-card.final-card {
+    border-left-color: #ffcc00;
+    background: rgba(255, 204, 0, 0.05);
+}
+.match-card h3 { margin: 0; font-size: 1.1em; font-weight: 600; }
+.match-card h3 small { display: block; color: rgba(255,255,255,0.5); font-weight: 400; margin-top: 2px;}
+.match-row { display: flex; flex-direction: column; gap: 5px; text-align: right; }
+.teams-versus { margin: 0; font-weight: 500; letter-spacing: 0.5px; }
+.teams-versus.font-big { font-size: 1.2em; font-weight: 700; color: #ffcc00; }
+.vs { color: #ffcc00; font-size: 0.85em; margin: 0 8px; opacity: 0.8; }
+.final-card .vs { color: #fff; }
+
+/* ================= Edizioni Grid ================= */
+.editions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 15px;
+}
+.edition-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(255,255,255,0.03);
+    padding: 15px 20px;
+    border-radius: 12px;
     text-decoration: none;
-    margin: 0 10px;
-    font-size: 1.5em;
-    transition: color 0.3s;
+    color: inherit;
+    border: 1px solid transparent;
+    transition: all 0.3s;
 }
-.social-media a:hover {
-    color: #ffffff;
-    transform: scale(1.1);
+.edition-item:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 204, 0, 0.3);
+    transform: scale(1.02);
+}
+.edition-item .trophy { font-size: 1.5em; }
+.edition-info { display: flex; flex-direction: column; }
+.edition-info .year { font-weight: 600; color: #ffcc00; }
+.edition-info .winner { font-size: 0.9em; opacity: 0.8; margin-top: 2px;}
+
+/* Separatori Generali */
+.separator-line {
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255, 204, 0, 0.4), transparent);
+    margin: 40px 0;
 }
 
-/* ================= Responsive ================= */
-@media (max-width: 768px) {
-    header h1 { font-size: 2em; }
-    .hero h2 { font-size: 2.5em; }
-    .content { padding: 20px; }
-    nav { flex-direction: column; }
-    nav a { padding: 10px; }
+/* ================= Tooltip con Click Forzato ================= */
+.tooltip-trigger {
+    background: rgba(255, 204, 0, 0.1);
+    border: 1px solid rgba(255, 204, 0, 0.4);
+    color: #ffcc00;
+    font-size: 0.6em;
+    margin-left: 8px;
+    cursor: pointer;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    transition: all 0.2s ease;
 }
 
-supertext {
-    color: yellow;
-    font-weight: bold;
-    font-style: italic;
-    text-decoration: underline;
-    text-decoration-color: red;
+/* Effetto visivo quando il menu Ã¨ aperto */
+.tooltip-trigger.active {
+    background: #ffcc00;
+    color: #002f6c;
 }
 
-/* Classe speciale per il pulsante */
+/* Il box dei criteri parte chiuso */
+.criteria-popup {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    background: rgba(0, 31, 77, 0.8);
+    border-radius: 12px;
+    border: 1px solid transparent;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 0;
+    padding: 0 20px;
+    font-size: 0.95em;
+}
+
+.criteria-popup strong {
+    display: block;
+    color: #ffcc00;
+    margin-top: 15px;
+    font-size: 1em;
+}
+
+.criteria-popup ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 15px 0;
+}
+
+.criteria-popup ul li {
+    margin-bottom: 6px;
+    opacity: 0.9;
+    font-size: 0.9em;
+}
+
+/* Questa classe viene attivata dal JavaScript al click */
+.criteria-popup.active {
+    max-height: 200px; /* Si espande */
+    opacity: 1;
+    margin-top: 15px;
+    padding: 5px 20px;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Mappa */
+.iframe-container {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+.iframe-container iframe { width: 100%; height: 350px; border: 0; display: block; }
+
+/* Bottone Torneo Personalizzato (Tuo Pulsante) */
 .btn-torneo {
-    margin-left: auto; 
-    width: 60px; 
-    height: 60px; 
+    width: 45px; 
+    height: 45px; 
     padding: 0; 
     display: flex; 
     align-items: center; 
     justify-content: center; 
     background: none; 
-    border: 2px solid #ffffff; 
-    border-radius: 8px; 
+    border: 1px solid rgba(255,255,255,0.3); 
+    border-radius: 50%; 
     cursor: pointer; 
-    transition: border 0.3s ease; /* Transizione SOLO sul bordo */
+    transition: all 0.3s ease;
 }
-
-/* Stato normale del logo */
 .btn-torneo img {
-    width: 80px; 
-    height: 80px;
-    /* Diamo al logo bianco un filtro di partenza per evitare il flash rosso */
-    filter: brightness(1) saturate(1);
+    width: 30px; 
+    height: 30px;
+    filter: brightness(1);
     transition: filter 0.3s ease;
 }
-
-/* Quando ci passi sopra con il mouse */
 .btn-torneo:hover {
-    border-color: #ffcc00; /* Il bordo diventa giallo */
+    border-color: #ffcc00;
+    background: rgba(255,204,0,0.1);
+}
+.btn-torneo:hover img {
+    filter: sepia(1) hue-rotate(15deg) saturate(10) brightness(1.1);
 }
 
-.btn-torneo:hover img {
-    /* Questa combinazione pulita trasforma il bianco in giallo fisso senza passare dal rosso */
-    filter: sepia(1) hue-rotate(15deg) saturate(10) brightness(1.1);
+/* ================= Footer ================= */
+footer {
+    background: #002f6c;
+    padding: 30px 20px;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+.social-media a {
+    color: #ffcc00;
+    margin: 0 12px;
+    font-size: 1.3em;
+    transition: opacity 0.3s;
+}
+.social-media a:hover { opacity: 0.7; }
+
+/* ================= Responsive ================= */
+@media (max-width: 768px) {
+    header h1 { font-size: 2.3em; }
+    .main-nav { flex-direction: column; border-radius: 20px; padding: 15px; gap: 15px; }
+    .nav-links { flex-direction: column; align-items: center; width: 100%; }
+    .logo-nav-link { margin: 0 auto; }
+    .match-card { flex-direction: column; text-align: center; gap: 10px; }
+    .match-row { text-align: center; }
 }
