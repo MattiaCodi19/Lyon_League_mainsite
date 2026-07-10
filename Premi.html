@@ -6,6 +6,7 @@
     <title>Lyon League - Premi</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="stylesquad.css">
+    <script src="script.js" defer></script>
 
     <script>
         function toggleDarkMode() {
@@ -49,16 +50,19 @@
     <header>
         <h1>Lyon League - Premi</h1>
     </header>
-    <nav style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; background: linear-gradient(to right, #005b96, #1976d2); padding: 10px; position: static; top: 0; width: 100%; z-index: 1000;">
-        <a href="./index.html" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Home</a>
-        <a href="./index.html#rules" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Regolamento</a>
-        <a href="./index.html#teams" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Squadre</a>
-        <a href="./index.html#standings-normale" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Classifica</a>        
-        <a href="./index.html#season" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Edizioni</a>
-        <a href="Premi.html" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Premi</a>
-        <a href="amm.html" style="color: #ffffff; text-decoration: none; padding: 12px 20px;">Amministrazione</a>
-        <button onclick="toggleDarkMode()" id="darkModeToggle" style="margin-left: auto; padding: 10px; background: none; border: 2px solid #ffffff; border-radius: 8px; cursor: pointer; transition: background 0.3s, border 0.3s;">
-            <img id="darkModeIcon" src="https://img.icons8.com/ios-filled/50/ffffff/sun--v1.png" alt="Icona Modalità Notte" style="width: 24px; height: 24px;">
+    <nav class="main-nav">
+        <div class="nav-links">
+            <a href="./index.html">Home</a>
+            <a href="./index.html#rules">Regolamento</a>
+            <a href="./index.html#teams">Squadre</a>
+            <a href="./index.html#standings-normale">Classifica</a>
+            <a href="./index.html#season">Edizioni</a>
+            <a href="Premi.html">Premi</a>
+            <a href="amm.html">Amministrazione</a>
+        </div>
+
+        <button onclick="toggleDarkMode()" id="darkModeToggle" aria-label="Cambia modalità colore">
+            <img id="darkModeIcon" src="https://img.icons8.com/ios-filled/50/ffffff/sun--v1.png" alt="Icona Modalità Notte">
         </button>
     </nav>
     <div class="content">
@@ -75,14 +79,17 @@
         </section>
         <section> 
             <h2>ALBO D'ORO: Pallone d'Oro</h2>
-            <h3 text="#ffffff"> <a href="Lyon League 2024 - Prima Edizione.html"> &#127942; </a>  Lyon League 2024 - Antonello (Black Rages)<a href="black-rage.html"><sup>&#128312;</sup></a> </h3>
-            <h3 text="#ffffff"> <a href="Lyon League 2024 - Seconda Edizione.html"> &#127942; </a>  Lyon League A2025 - Antonello (Black Rages)<a href="black-rage.html"><sup>&#128312;</sup></a> </h3>
-            <h3 text="#ffffff"> <a href="Lyon League 2024 - Terza Edizione.html"> &#127942; </a>  Lyon League B2025 - Pepe (Flash Tigers)<a href="Flash Tigers.html"><sup>&#128312;</sup></a> </h3>
-            <h3 text="#ffffff"> <a href="Lyon League 2024 - Quarta Edizione.html"> &#127942; </a>  Lyon League C2025 - Traversa (Flash Tigers)<a href="Flash Tigers.html"><sup>&#128312;</sup></a> </h3>
-            <h3 text="#ffffff"> <a href="Lyon League 2024 - Quinta Edizione.html"> &#127942; </a>  Lyon League A2026 - Samuele (Black Rages)<a href="black-rage.html"><sup>&#128312;</sup></a> </h3>
+            <h3><a href="Lyon League_PrSnTr_Edizione.html">&#127942;</a> Lyon League 2024 - Antonello (Black Rages)<a href="black-rage.html"><corona-ll></corona-ll></a> </h3>
+            <h3 text="#ffffff"> <a href="Lyon League_PrSnTr_Edizione.html">&#127942;</a> Lyon League A2025 - Antonello (Black Rages)<a href="black-rage.html"><sup><corona-ll></corona-ll></sup></a> </h3>
+            <h3 text="#ffffff"> <a href="Lyon League_PrSnTr_Edizione.html">&#127942;</a> Lyon League B2025 - Pepe (Flash Tigers)<a href="Flash Tigers.html"><sup><corona-ll></corona-ll></sup></a> </h3>
+            <h3 text="#ffffff"> <a href="Lyon League 2024 - Quarta Edizione.html">&#127942;</a> Lyon League C2025 - Traversa (Flash Tigers)<a href="Flash Tigers.html"><sup><corona-ll></corona-ll></sup></a> </h3>
+            <h3 text="#ffffff"> <a href="Lyon League 2024 - Quinta Edizione.html">&#127942;</a> Lyon League A2026 - Samuele (Black Rages)<a href="black-rage.html"><sup><corona-ll></corona-ll></sup></a> </h3>
+            <h3 text="#ffffff"> <a href="LyonLeagueHolidays.html">&#127942;</a> Lyon League Summer 2026 - Sciaco (Flash Tigers)<a href="Flash Tigers.html"><sup><corona-ll></corona-ll></sup></a> </h3>
+            
             <h2>ALBO D'ORO: Scarpa d'Oro</h2>
-            <h3 text="#ffffff"> <a href="Lyon League 2024 - Quarta Edizione.html"> &#127942; </a>  Lyon League C2025 - Gabbo Santorsola (Ratòn)<a href="Raton FC.html"><sup>&#128312;</sup></a> </h3>
-            <h3 text="#ffffff"> <a href="Lyon League 2024 - Quinta Edizione.html"> &#127942; </a>  Lyon League A2026 - Traversa (Flash Tigers)<a href="Flash Tigers.html"><sup>&#128312;</sup></a> </h3>
+            <h3 text="#ffffff"> <a href="Lyon League 2024 - Quarta Edizione.html"> &#127942;</a>  Lyon League C2025 - Gabbo Santorsola (Ratòn)<a href="Raton FC.html"><sup><corona-ll></corona-ll></sup></a> </h3>
+            <h3 text="#ffffff"> <a href="Lyon League 2024 - Quinta Edizione.html"> &#127942;</a>  Lyon League A2026 - Traversa (Flash Tigers)<a href="Flash Tigers.html"><sup><corona-ll></corona-ll></sup></a> </h3>
+            <h3 text="#ffffff"> <a href="LyonLeagueHolidays.html"> &#127942;</a>  Lyon League Summer 2026 - Gabbo Santorsola (Ratòn)<a href="Raton FC.html"><sup><corona-ll></corona-ll></sup></a> </h3>
         </section>
     </div>
     <footer>
