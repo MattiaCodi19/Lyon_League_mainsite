@@ -4,15 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ratòn FC - Lyon League</title>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="stylesquad.css">
     <script src="script.js" defer></script>
-
     <script>
         function toggleDarkMode() {
             const darkModeIcon = document.getElementById('darkModeIcon');
-
             document.body.classList.toggle('dark-mode');
             document.querySelector('header').classList.toggle('dark-mode');
             document.querySelector('nav').classList.toggle('dark-mode');
@@ -29,9 +26,9 @@
 
         document.addEventListener("DOMContentLoaded", function() {
             createFireEffect(100);
-
             setTimeout(() => {
-                document.querySelector('.fire-container').remove();
+                const container = document.querySelector('.fire-container');
+                if(container) container.remove();
                 document.body.style.overflow = 'auto';
             }, 1000);
         });
@@ -47,32 +44,44 @@
                 fire.style.animationDelay = Math.random() * 2 + "s";
                 fireContainer.appendChild(fire);
             }
-
             document.body.appendChild(fireContainer);
             document.body.style.overflow = 'hidden';
         }
+
+        function toggleComp(selectElement) {
+            const card = selectElement.closest('.player-card');
+            const champStats = card.querySelector('.championship-stats');
+            const cupStats = card.querySelector('.cup-stats');
+            
+            if (selectElement.value === 'cup') {
+                champStats.style.display = 'none';
+                cupStats.style.display = 'flex';
+            } else {
+                champStats.style.display = 'flex';
+                cupStats.style.display = 'none';
+            }
+        }
     </script>
 </head>
-
 <body>
 
     <header>
         <h1>Rat&oacute;n FC - Lyon League</h1>
     </header>
 
-    <nav>
-        <a href="./index.html">Home</a>
-        <a href="./index.html#rules">Regolamento</a>
-        <a href="./index.html#teams">Squadre</a>
-        <a href="./index.html#standings-normale">Classifica</a>
-        <a href="./index.html#season">Edizioni</a>
-        <a href="Premi.html">Premi</a>
-        <a href="amm.html">Amministrazione</a>
+    <nav class="main-nav">
+        <div class="nav-links">
+            <a href="./index.html">Home</a>
+            <a href="./index.html#rules">Regolamento</a>
+            <a href="./index.html#teams">Squadre</a>
+            <a href="./index.html#standings-normale">Classifica</a>
+            <a href="./index.html#season">Edizioni</a>
+            <a href="Premi.html">Premi</a>
+            <a href="amm.html">Amministrazione</a>
+        </div>
 
-        <button onclick="toggleDarkMode()" id="darkModeToggle">
-            <img id="darkModeIcon"
-                 src="https://img.icons8.com/ios-filled/50/ffffff/sun--v1.png"
-                 alt="Icona Modalità Notte">
+        <button onclick="toggleDarkMode()" id="darkModeToggle" aria-label="Cambia modalità colore">
+            <img id="darkModeIcon" src="https://img.icons8.com/ios-filled/50/ffffff/sun--v1.png" alt="Icona Modalità Notte">
         </button>
     </nav>
 
@@ -80,7 +89,6 @@
 
         <section class="team-info">
             <img src="https://i.postimg.cc/28ZGfvQh/Rato-n-FC.png" alt="Logo Ratòn FC">
-
             <h2>
                 <a href="Ratòn FC.html" style="color: #ffffff; text-decoration: none;">
                     RAT&Oacute;N FC
@@ -90,95 +98,98 @@
 
         <section class="team-history">
             <h3>Storia del Team</h3>
-
             <p>
                 Principali rivali dei Flash Tiger, i Rat&oacute;n sono una squadra di calcio molto organizzata.
                 &Egrave; stata la squadra più giovane della prima edizione della Lyon League.
-
+            </p>
+            <p>
                 Nonostante ci&oacute;, i Ratti sono arrivati secondi, alle spalle dei Black Rage,
                 grazie soprattuto al primo derby, nonch&eacute; partita inaugurale per la competizione,
                 vinto 10 a 2, complice la grandiosa forma fisica.
-
+            </p>
+            <p>
                 Nella Seconda Edizione, invece, i Rat&oacute;n sembrano vincerle tutte,
                 fino al derby con i Flash Tiger dove le tigri hanno trovato la loro prima vittoria
                 stagione con un gigantesco 6-2.
-
+            </p>
+            <p>
                 Questo evento comunque non ha influenzato la classifica della squadra di Luca Marzullo,
                 che &eacute; andata comunque a giocarsi la finale, perdendola per un risultato di 6 a 4
                 per le pantere.
-
+            </p>
+            <p>
                 Nella Terza Stagione arrivano ai playoff senza però raggiungere la finale.
-
+            </p>
+            <p>
                 Nella Quarta stagione i Rat&oacute;n, per la prima volta, fanno un clean sheet
                 nella Lyon League, nella partita contro i Black Rages (2-0).
-
+            </p>
+            <p>
                 I Rat&oacute;n vincono la loro prima Lyon League tornando alla vittoria contro
                 i Flash Tigers, vincendo la finale.
             </p>
         </section>
 
-        <section>
-            <h2>MEMBRI SQUADRA</h2>
+        <div class="team-details-grid">
+            
+            <section class="section-box members-box">
+                <h2>MEMBRI SQUADRA</h2>
+                <ul class="members-list">
+                    <li>Francesco G. <small>(por)</small></li>
+                    <li>Ivan <small>(por)</small></li>
+                    <li>Santorsola Mattia <small>(dif)</small></li>
+                    <li>Giuse <small>(dif)</small></li>
+                    <li>Diego <small>(dif)</small></li>
+                    <li class="captain">Luca Marzullo <small>(cen, capitano)</small></li>
+                    <li>Granata <small>(cen)</small></li>
+                    <li>Gabbo Santorsola <small>(att, vicecapitano)</small></li>
+                </ul>
+            </section>
 
-            <p>
-                Francesco G. (por)
-                Ivan (por)<br>
-                Santorsola Mattia (dif)
-                Giuse (dif)<br>
-                Diego (dif) <br>
-                <b>Luca Marzullo (cen, capitano)</b><br>
-                Granata (cen)<br>
-                Gabbo Santorsola (att, vicecapitano)
-            </p>
-        </section> <br><br><br><br>
-
-
-        <section class="gallery-section" style="float: left; clear: left; width: 45%; margin-top: 20px;">
-            <h2>GALLERIA</h2>
-            <div class="slider-container" style="position: relative; overflow: hidden; border-radius: 15px;">
-                <button class="slider-btn prev" style="position: absolute; z-index: 99; left: 10px; top: 50%; transform: translateY(-50%);">&#10094;</button> 
-
-                <div class="slider-wrapper">
-                    <div class="slider-slide"><img src="https://i.postimg.cc/htYYfkS2/raton1LL.jpg" alt="LyonLeagueC2025"></div>
+            <section class="gallery-section">
+                <h2>GALLERIA</h2>
+                <div class="slider-container">
+                    <button class="slider-btn prev">&#10094;</button> 
+                    <div class="slider-wrapper">
+                        <div class="slider-slide"><img src="https://i.postimg.cc/htYYfkS2/raton1LL.jpg" alt="LyonLeagueC2025"></div>
+                    </div>
+                    <button class="slider-btn next">&#10095;</button> 
                 </div>
+            </section>
 
-                <button class="slider-btn next" style="position: absolute; z-index: 99; right: 10px; top: 50%; transform: translateY(-50%);">&#10095;</button> 
-            </div>
-        </section>
+            
+            <section class="section-box data-box section-right">
+                <h2>FONDAZIONE, COLORI SOCIALI E SIMBOLI</h2>
+                <ul class="info-data-list">
+                    <li><strong>Fondazione:</strong> 5 Agosto 2024</li>
+                    <li><strong>Colori Sociali:</strong> Grigio, Giallo e Bianco</li>
+                    <li><strong>Simboli:</strong> Topo, Ratto</li>
+                    <li><strong>Nomi:</strong> <em>i Topi, i Ratti</em></li>
+                </ul>
+            </section>
 
+            <section class="section-box palmares-box section-right">
+                <h2>PALMARES</h2>
+                <p>
+                    1 Primo Posto Lyon League
+                    <a href="Lyon League 2024 - Quarta Edizione.html"><sup><corona-ll></corona-ll></sup></a>
+                </p>
+                <p>
+                    2 Secondo Posto Lyon League
+                    <a href="Lyon League_PrSnTr_Edizione.html#prima"><sup><corona-ll></corona-ll></sup></a>
+                    <a href="Lyon League_PrSnTr_Edizione.html#seconda"><sup><corona-ll></corona-ll></sup></a>
+                </p>
+                <p>
+                    1 Secondo Posto Lyon League Holidays
+                    <a href="LyonLeagueHolidays.html"><sup><corona-ll></corona-ll></sup></a>
+                </p>
+                <p>
+                    2 Scarpa d'Oro Lyon League
+                    <a href="Premi.html"><sup><corona-ll></corona-ll></sup></a>
+                </p>
+            </section>
 
-
-        <section class="section-right">
-            <h2>FONDAZIONE, COLORI SOCIALI E SIMBOLI</h2>
-
-            <p>
-                Fondazione: 5 Agosto 2024 <br>
-                Colori Sociali: Grigio, Giallo e Bianco <br>
-                Simboli: Topo, Ratto <br>
-                Nomi: <em>i Topi, i Ratti</em>
-            </p>
-        </section>
-
-        <section class="section-right">
-            <h2>PALMARES</h2>
-
-            <p>
-                2 Secondo Posto Lyon League
-                <a href="Lyon League 2024 - Prima Edizione.html"><sup>&#128312;</sup></a>
-                <a href="Lyon League 2024 - Seconda Edizione.html"><sup>&#128312;</sup></a>
-            </p>
-
-            <p>
-                1 Primo Posto Lyon League
-                <a href="Lyon League 2024 - Quarta Edizione.html"><sup>&#128312;</sup></a>
-            </p>
-
-            <p>
-                1 Scarpa d'Oro Lyon League
-                <a href="Premi.html"><sup>&#128312;</sup></a>
-            </p>
-        </section>
-
+        </div>
     </div>
 
     <footer>
