@@ -4,14 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Black Rage - Lyon League</title>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link class="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="stylesquad.css">
     <script src="script.js" defer></script>
     <script>
         function toggleDarkMode() {
             const darkModeIcon = document.getElementById('darkModeIcon');
-
             document.body.classList.toggle('dark-mode');
             document.querySelector('header').classList.toggle('dark-mode');
             document.querySelector('nav').classList.toggle('dark-mode');
@@ -28,9 +26,9 @@
 
         document.addEventListener("DOMContentLoaded", function() {
             createFireEffect(100);
-
             setTimeout(() => {
-                document.querySelector('.fire-container').remove();
+                const container = document.querySelector('.fire-container');
+                if(container) container.remove();
                 document.body.style.overflow = 'auto';
             }, 1000);
         });
@@ -46,32 +44,44 @@
                 fire.style.animationDelay = Math.random() * 2 + "s";
                 fireContainer.appendChild(fire);
             }
-
             document.body.appendChild(fireContainer);
             document.body.style.overflow = 'hidden';
         }
+
+        function toggleComp(selectElement) {
+            const card = selectElement.closest('.player-card');
+            const champStats = card.querySelector('.championship-stats');
+            const cupStats = card.querySelector('.cup-stats');
+            
+            if (selectElement.value === 'cup') {
+                champStats.style.display = 'none';
+                cupStats.style.display = 'flex';
+            } else {
+                champStats.style.display = 'flex';
+                cupStats.style.display = 'none';
+            }
+        }
     </script>
 </head>
-
 <body>
 
     <header>
         <h1>Black Rages - Lyon League</h1>
     </header>
 
-    <nav>
-        <a href="./index.html">Home</a>
-        <a href="./index.html#rules">Regolamento</a>
-        <a href="./index.html#teams">Squadre</a>
-        <a href="./index.html#standings-normale">Classifica</a>
-        <a href="./index.html#season">Edizioni</a>
-        <a href="Premi.html">Premi</a>
-        <a href="amm.html">Amministrazione</a>
+    <nav class="main-nav">
+        <div class="nav-links">
+            <a href="./index.html">Home</a>
+            <a href="./index.html#rules">Regolamento</a>
+            <a href="./index.html#teams">Squadre</a>
+            <a href="./index.html#standings-normale">Classifica</a>
+            <a href="./index.html#season">Edizioni</a>
+            <a href="Premi.html">Premi</a>
+            <a href="amm.html">Amministrazione</a>
+        </div>
 
-        <button onclick="toggleDarkMode()" id="darkModeToggle">
-            <img id="darkModeIcon"
-                 src="https://img.icons8.com/ios-filled/50/ffffff/sun--v1.png"
-                 alt="Icona Modalità Notte">
+        <button onclick="toggleDarkMode()" id="darkModeToggle" aria-label="Cambia modalità colore">
+            <img id="darkModeIcon" src="https://img.icons8.com/ios-filled/50/ffffff/sun--v1.png" alt="Icona Modalità Notte">
         </button>
     </nav>
 
@@ -79,7 +89,6 @@
 
         <section class="team-info">
             <img src="https://i.postimg.cc/XZpR17qR/Black-Rage.png" alt="Logo Black Rage">
-
             <h2>
                 <a href="black-rage.html" style="color: #ffffff; text-decoration: none;">
                     BLACK RAGES
@@ -89,101 +98,99 @@
 
         <section class="team-history">
             <h3>Storia del Team</h3>
-
             <p>
                 Black Rages è una squadra nata con l'obiettivo di vincere la Lyon League grazie
                 alla determinazione e alla passione per il calcio.
-
+            </p>
+            <p>
                 I giocatori dei Black Rage sono noti per la loro grinta e il loro spirito competitivo,
-                che li rende una delle squadre più temute del torneo. <br>
-
+                che li rende una delle squadre più temute del torneo.
+            </p>
+            <p>
                 Hanno vinto la prima edizione del torneo, conquistando pure la seconda.
-
+            </p>
+            <p>
                 Tra l'altro detengono il record di gol più veloce della competizione,
                 segnato da Antonello dopo 26 secondi nella finale A2025.
-
+            </p>
+            <p>
                 Inoltre hanno anche il record di imbattibilit&aacute;, dato che non hanno mai perso
                 nelle prime due edizioni.
-
+            </p>
+            <p>
                 Nella terza stagione si confermano campioni in una finale combattuta con i Flash Tigers,
-                vinta per 7-4. <br>
-
+                vinta per 7-4.
+            </p>
+            <p>
                 Durante la quarta stagione subiscono la loro prima sconfitta di sempre,
                 contro i Flash Tigers per 4-1.
-
+            </p>
+            <p>
                 Successivamente perdono anche contro i Rat&oacute;n per 2-0,
                 interrompendo il loro grandissimo record di imbattibilità.
-
+            </p>
+            <p>
                 Nella quinta stagione vincono 4 partite su 4 nella regular season,
                 ma si fermano sul più bello perdendo la finale.
             </p>
         </section>
 
-        <section>
-            <h2>MEMBRI SQUADRA</h2>
+        <div class="team-details-grid">
+            
+            <section class="section-box members-box">
+                <h2>MEMBRI SQUADRA</h2>
+                <ul class="members-list">
+                    <li class="captain">Antox <small>(por, capitano)</small></li>
+                    <li>Tota <small>(dif)</small></li>
+                    <li>Mauro <small>(dif, vicecapitano)</small></li>
+                    <li>Salvatore <small>(cen)</small></li>
+                    <li>Antonello <small>(att)</small></li>
+                    <li>Ivan <small>(att)</small></li>
+                </ul>
+            </section>
 
-            <p>
-                <b>Antox (por, capitano)</b><br>
-                Gabriele (dif)<br>
-                Tota (dif)<br>
-                Mauro (dif) <br>
-                Salvatore (cen)<br>
-                <a href="Red Dragon.html" style="color: #ffffff;">
-                    Samuele (cen, vicecapitano)
-                </a><br>
-                Antonello (att)<br>
-                Ivan (att)
-            </p>
-        </section> <br><br><br><br>
-
-
-        <section class="gallery-section" style="float: left; clear: left; width: 45%; margin-top: 20px;">
-            <h2>GALLERIA</h2>
-            <div class="slider-container" style="position: relative; overflow: hidden; border-radius: 15px;">
-                <button class="slider-btn prev" style="position: absolute; z-index: 99; left: 10px; top: 50%; transform: translateY(-50%);">&#10094;</button> 
-
-                <div class="slider-wrapper">
-                    <div class="slider-slide"><img src="https://i.postimg.cc/SxPPJByV/blrg1LL.jpg" alt="LyonLeague2024"></div>
-                    <div class="slider-slide"><img src="https://i.postimg.cc/13ddfk9J/blrg2ll.jpg" alt="LyonLeagueA2025"></div>
-                    <div class="slider-slide"><img src="https://i.postimg.cc/pLSSpw20/blrg3LL.jpg" alt="LyonLeagueB2025"></div>
+            <section class="gallery-section">
+                <h2>GALLERIA</h2>
+                <div class="slider-container">
+                    <button class="slider-btn prev">&#10094;</button> 
+                    <div class="slider-wrapper">
+                        <div class="slider-slide"><img src="https://i.postimg.cc/SxPPJByV/blrg1LL.jpg" alt="LyonLeague2024"></div>
+                        <div class="slider-slide"><img src="https://i.postimg.cc/13ddfk9J/blrg2ll.jpg" alt="LyonLeagueA2025"></div>
+                        <div class="slider-slide"><img src="https://i.postimg.cc/pLSSpw20/blrg3LL.jpg" alt="LyonLeagueB2025"></div>
+                    </div>
+                    <button class="slider-btn next">&#10095;</button> 
                 </div>
+            </section>
 
-                <button class="slider-btn next" style="position: absolute; z-index: 99; right: 10px; top: 50%; transform: translateY(-50%);">&#10095;</button> 
-            </div>
-        </section>
+            <section class="section-box data-box section-right">
+                <h2>FONDAZIONE, COLORI SOCIALI E SIMBOLI</h2>
+                <ul class="info-data-list">
+                    <li><strong>Fondazione:</strong> 5 Agosto 2024</li>
+                    <li><strong>Colori Sociali:</strong> Nero, Giallo e Blu</li>
+                    <li><strong>Simboli:</strong> Pantera</li>
+                    <li><strong>Nomi:</strong> <em>Le Pantere</em></li>
+                </ul>
+            </section>
 
-        <section class="section-right">
-            <h2>FONDAZIONE, COLORI SOCIALI E SIMBOLI</h2>
+            <section class="section-box palmares-box section-right">
+                <h2>PALMARES</h2>
+                <p>
+                    3 Lyon League (record)
+                    <a href="Lyon League_PrSnTr_Edizione.html#prima"><sup><corona-ll></corona-ll></sup></a>
+                    <a href="Lyon League_PrSnTr_Edizione.html#seconda"><sup><corona-ll></corona-ll></sup></a>
+                    <a href="Lyon League_PrSnTr_Edizione.html#terza"><sup><corona-ll></corona-ll></sup></a>
+                </p>
+                <p>
+                    1 Secondo Posto Lyon League
+                    <a href="Lyon League 2024 - Quinta Edizione.html"><sup> <corona-ll></corona-ll> </sup></a>
+                </p>
+                <p>
+                    3 Pallone d'Oro
+                    <a href="Premi.html"><sup><corona-ll></corona-ll></sup></a>
+                </p>
+            </section>
 
-            <p>
-                Fondazione: 5 Agosto 2024 <br>
-                Colori Sociali: Nero, Giallo e Blu <br>
-                Simboli: Pantera <br>
-                Nomi: <em>Le Pantere</em>
-            </p>
-        </section>
-
-        <section class="section-right">
-            <h2>PALMARES</h2>
-
-            <p>
-                3 Lyon League
-                <a href="Lyon League 2024 - Prima Edizione.html"><sup>&#128312;</sup></a>
-                <a href="Lyon League 2024 - Seconda Edizione.html"><sup>&#128312;</sup></a>
-                <a href="Lyon League 2024 - Terza Edizione.html"><sup>&#128312;</sup></a>
-            </p>
-
-            <p>
-                1 Secondo Posto Lyon League
-                <a href="Lyon League 2024 - Quinta Edizione.html"><sup>&#128312;</sup></a>
-            </p>
-
-            <p>
-                3 Pallone d'Oro
-                <a href="Premi.html"><sup>&#128312;</sup></a>
-            </p>
-        </section>
-
+        </div>
     </div>
 
     <footer>
