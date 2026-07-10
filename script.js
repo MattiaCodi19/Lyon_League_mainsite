@@ -111,6 +111,17 @@ document.addEventListener("DOMContentLoaded", () => {
     updateStandingsNormale(null);
 });
 
+function toggleCriteria(event) {
+    // Impedisce eventuali comportamenti di refresh o salti della pagina
+    event.preventDefault(); 
+    
+    const button = event.currentTarget;
+    const box = document.getElementById('criteria-box');
+    
+    // Attiva o disattiva la classe 'active' sia sul bottone che sul box
+    button.classList.toggle('active');
+    box.classList.toggle('active');
+}
 
 
 
@@ -260,7 +271,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // Chiudi la modalità schermo intero quando si clicca sullo sfondo nero
+    // Chiudi la modalitÃ  schermo intero quando si clicca sullo sfondo nero
     lightbox.addEventListener('click', () => {
         lightbox.style.display = 'none';
         document.body.style.overflow = 'auto'; // Ripristina lo scroll della pagina
@@ -299,7 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
 (function() {
     class CoronaElement extends HTMLElement {
         connectedCallback() {
-            this.innerHTML = `<img src="img/crown.png" height="30px" style="pointer-events: auto; vertical-align: middle;">`;
+            this.innerHTML = `<img src="crown.png" height="30px" style="pointer-events: auto; vertical-align: middle;">`;
         }
     }
 
@@ -312,3 +323,18 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error("Errore nella registrazione del tag corona:", e);
     }
 })();
+
+// CAMBIO COMPETIZIONE MEMBRI SQUADRA
+function toggleComp(selectElement) {
+    const card = selectElement.closest('.player-card');
+    const champStats = card.querySelector('.championship-stats');
+    const cupStats = card.querySelector('.cup-stats');
+    
+    if (selectElement.value === 'cup') {
+        champStats.style.display = 'none';
+        cupStats.style.display = 'flex';
+    } else {
+        champStats.style.display = 'flex';
+        cupStats.style.display = 'none';
+    }
+}
