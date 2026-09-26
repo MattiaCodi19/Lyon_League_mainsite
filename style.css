@@ -141,6 +141,27 @@ h2 {
     font-weight: bold;
 }
 
+.rules-container {
+    text-align: center;
+    margin-top: 25px;
+}
+.btn-rules {
+    display: inline-block;
+    padding: 12px 24px;
+    background: rgba(241, 215, 69, 0.1);
+    border: 1px solid #ffd700;
+    color: #ffd700;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.3s;
+}
+.btn-rules:hover {
+    background: #ffd700;
+    color: #111;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+}
+
 /* ================= Griglia Squadre ================= */
 .teams {
     display: grid;
@@ -213,6 +234,14 @@ h2 {
     background-color: rgba(25, 118, 210, 0.3);
 }
 
+/* Asteriaco */
+tbody tr:nth-child(3) td:first-child .pos-badge::after {
+    content: " *";
+    color: rgba(255, 0, 0, 0.914);
+    font-weight: bold;
+}
+
+
 /* Celle Squadra */
 .team-cell {
     display: flex;
@@ -264,8 +293,23 @@ h2 {
     font-weight: 700;
     font-size: 0.9em;
 }
-.pos-badge.gold { background: rgba(255, 204, 0, 0.2); color: #ffcc00; border: 1px solid #ffcc00; }
-.pos-badge.red { background: rgba(255, 0, 0, 0.2); color: #ff3333; border: 1px solid #ff3333; }
+
+.pos-badge.green { 
+    background: rgba(255, 204, 0, 0.2) !important; 
+    color: #ffcc00 !important; 
+    border: 3px solid #04ff00 !important; 
+}
+.pos-badge.gold { 
+    background: rgba(255, 204, 0, 0.2) !important; 
+    color: #ffcc00 !important; 
+    border: 3px solid #ffcc00 !important; 
+}
+.pos-badge.red { 
+    background: rgba(255, 0, 0, 0.2) !important; 
+    color: #ffcc00 !important; 
+    border: 3px solid #ff3333 !important; 
+}
+
 
 /* Info Sotto Classifica */
 .info-footer-table {
@@ -276,6 +320,7 @@ h2 {
 }
 .info-footer-table p { margin: 8px 0; font-size: 1em; }
 .highlight { font-weight: 600; border-bottom: 2px solid; padding-bottom: 1px; }
+.highlight.green { color: #04ff00; border-color: #04ff00; }
 .highlight.gold { color: #ffcc00; border-color: #ffcc00; }
 .highlight.red { color: #ff4d4d; border-color: #ff4d4d; }
 .small-notice { font-style: italic; opacity: 0.7; font-size: 0.9em; margin-top: 12px !important; }
