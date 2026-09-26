@@ -2,8 +2,7 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<title>Accesso Amministrazione</title>
-
+<title>Accesso Amministrazione</title> 
 <style>
     body {
         margin: 0;
@@ -64,10 +63,10 @@
 <div class="box">
     <h2>AREA AMMINISTRAZIONE</h2>
 
-    <input type="password" id="codice" placeholder="Inserisci codice">
+    <!-- Aggiunto autofocus per attivare subito il campo di testo -->
+    <input type="password" id="codice" placeholder="Inserisci codice" autofocus>
 
     <br>
-
     <button class="invia" onclick="verifica()">INVIA</button>
     <button class="indietro" onclick="torna()">TORNA INDIETRO</button>
 
@@ -77,6 +76,14 @@
 <script>
 const CODICE_CORRETTO = "1908";
 const DESTINAZIONE = "admin.html";
+
+// --- NOVITÀ: Gestione del tasto Invio ---
+document.getElementById("codice").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault(); // Evita comportamenti indesiderati del browser
+        verifica(); // Esegue la stessa funzione del bottone INVIA
+    }
+});
 
 function verifica() {
     const valore = document.getElementById("codice").value;
