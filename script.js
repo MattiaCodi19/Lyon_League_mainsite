@@ -73,25 +73,36 @@ function updateStandingsNormale(activeInput) {
         return diffGoalsB - diffGoalsA;
     });
 
-    // 3. Aggiorna l'ordine visivo e i colori delle posizioni
+
+   // 3. Aggiorna l'ordine visivo e i colori delle posizioni
     rows.forEach((row, index) => {
-        table.appendChild(row);
+    table.appendChild(row);
+    
+    const positionSpan = row.querySelector('td span');
+    if (positionSpan) {
+        const pos = index + 1;
         
-        const positionSpan = row.querySelector('td span');
-        if (positionSpan) {
-            const pos = index + 1;
-            
-            if (pos === 1 || pos === 2) {
-                positionSpan.setAttribute('style', 'border-left: 4px solid #ffcc00; padding-left: 6px;');
-            } else if (pos === 3) {
-                positionSpan.setAttribute('style', 'border-left: 4px solid #ff0000; padding-left: 6px;');
-            } else {
-                positionSpan.setAttribute('style', 'padding-left: 10px;'); 
-            }
-            
-            positionSpan.textContent = pos;
+        // 1. Rimuovi le vecchie classi di colore per evitare conflitti sullo sfondo
+        positionSpan.classList.remove('green', 'gold');
+        
+        // 2. Gestisci i colori e i bordi in base alla posizione reale (pos)
+        if (pos === 1) {
+            positionSpan.classList.add('green'); // Sfondo verde per il 1°
+            positionSpan.setAttribute('style', 'border-left: 4px solid #ffcc00; padding-left: 6px;');
+        } else if (pos === 2) {
+            positionSpan.classList.add('gold');  // Sfondo oro per il 2°
+            positionSpan.setAttribute('style', 'border-left: 4px solid #ffcc00; padding-left: 6px;');
+        } else if (pos === 3) {
+            positionSpan.classList.add('gold');  // Sfondo oro per il 3° (se previsto dal tuo HTML originario, altrimenti pos-eliminated)
+            positionSpan.setAttribute('style', 'border-left: 4px solid #ff0000; padding-left: 6px;');
+        } else {
+            positionSpan.setAttribute('style', 'padding-left: 10px;'); 
         }
-    });
+        
+        positionSpan.textContent = pos;
+    }
+});
+
 
     // 4. RIPRISTINA IL FOCUS: Cerca la stessa casella nella nuova tabella ordinata e rimetti il cursore
     if (activeTeam && activeClass) {
