@@ -352,6 +352,59 @@ tbody tr:nth-child(3) td:first-child .pos-badge::after {
 .vs { color: #ffcc00; font-size: 0.85em; margin: 0 8px; opacity: 0.8; }
 .final-card .vs { color: #fff; }
 
+
+
+/* ================= Classifiche Marcatori e Cartellini ================= */
+.styled-list {
+    padding-left: 0;
+    list-style: none;
+}
+.styled-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    border-left: 3px solid #ffcc00;
+    font-size: 1.05em;
+}
+.styled-list li:hover {
+    background: rgba(255,255,255,0.04);
+    border-left-color: #ffcc00;
+}
+.styled-list small {
+    color: rgba(255,255,255,0.5);
+    margin-left: 5px;
+}
+.stats-counter {
+    font-weight: 600;
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.award {
+    background: rgba(255, 204, 0, 0.15);
+    color: #ffcc00;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75em;
+    text-transform: uppercase;
+}
+.yellow-card-text {
+    color: #f9ff4d;
+    background: rgba(255, 231, 77, 0.15);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+.red-card-text {
+    color: #ff4d4d;
+    background: rgba(255, 77, 77, 0.15);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
 /* ================= Edizioni Grid ================= */
 .editions-grid {
     display: grid;
