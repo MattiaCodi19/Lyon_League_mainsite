@@ -20,6 +20,7 @@
             <a href="./index.html">Home</a>
             <a href="./index.html#rules">Regolamento</a>
             <a href="./index.html#teams">Squadre</a>
+            <a href="./index.html#matches">Partite</a>
             <a href="./index.html#standings-normale">Classifica</a>        
             <a href="./index.html#season">Edizioni</a>
             <a href="Premi.html">Premi</a>
@@ -116,44 +117,44 @@
                                 <div class="logo-wrapper"><img src="https://i.postimg.cc/B6sQYZCk/Flash-Tigers-Logo.png" alt="FT"></div>
                                 <span>Flash Tigers</span>
                             </td>
-                            <td><input type="number" value="12" class="punti-input" data-team="ft" oninput="updateStandingsNormale(this)"></td> <!--PUNTI-->
-                            <td><input type="number" value="4" class="pg-input" data-team="ft" oninput="updateStandingsNormale(this)"></td> <!--PARTITE GIOCATE-->
-                            <td><input type="number" value="4" class="w-input" data-team="ft" oninput="updateStandingsNormale(this)"></td> <!--VITTORIE-->
+                            <td><input type="number" value="15" class="punti-input" data-team="ft" oninput="updateStandingsNormale(this)"></td> <!--PUNTI-->
+                            <td><input type="number" value="5" class="pg-input" data-team="ft" oninput="updateStandingsNormale(this)"></td> <!--PARTITE GIOCATE-->
+                            <td><input type="number" value="5" class="w-input" data-team="ft" oninput="updateStandingsNormale(this)"></td> <!--VITTORIE-->
                             <td><input type="number" value="0" class="d-input" data-team="ft" oninput="updateStandingsNormale(this)"></td> <!--PAREGGI-->
                             <td><input type="number" value="0" class="l-input" data-team="ft" oninput="updateStandingsNormale(this)"></td> <!--SCONFITTE-->
-                            <td><input type="number" value="18" class="gf-input" data-team="ft" oninput="updateStandingsNormale(this)"></td> <!--GOL FATTI-->
+                            <td><input type="number" value="20" class="gf-input" data-team="ft" oninput="updateStandingsNormale(this)"></td> <!--GOL FATTI-->
                             <td><input type="number" value="6" class="gs-input" data-team="ft" oninput="updateStandingsNormale(this)"></td> <!--GOL SUBITI-->
-                            <td class="dr-cell">12</td> <!--DIFFERENZA RETI-->
+                            <td class="dr-cell">14</td> <!--DIFFERENZA RETI-->
                         </tr>
                         <tr class="pos-advance">
                             <td><span class="pos-badge gold">2</span></td>
+                            <td class="team-cell" class="pos-elimitaed">
+                                <div class="logo-wrapper"><img src="https://i.postimg.cc/T25QTRjt/Raton-Logo.png" alt="RT"></div>
+                                <span>Ratòn FC</span>
+                            </td>
+                            <td><input type="number" value="6" class="punti-input" data-team="rt" oninput="updateStandingsNormale(this)"></td> <!--PUNTI-->
+                            <td><input type="number" value="5" class="pg-input" data-team="rt" oninput="updateStandingsNormale(this)"></td> <!--PARTITE GIOCATE-->
+                            <td><input type="number" value="2" class="w-input" data-team="rt" oninput="updateStandingsNormale(this)"></td> <!--VITTORIE-->
+                            <td><input type="number" value="0" class="d-input" data-team="rt" oninput="updateStandingsNormale(this)"></td> <!--PAREGGI-->
+                            <td><input type="number" value="3" class="l-input" data-team="rt" oninput="updateStandingsNormale(this)"></td> <!--SCONFITTE-->
+                            <td><input type="number" value="10" class="gf-input" data-team="rt" oninput="updateStandingsNormale(this)"></td> <!--GOL FATTI-->
+                            <td><input type="number" value="17" class="gs-input" data-team="rt" oninput="updateStandingsNormale(this)"></td> <!--GOL SUBITI-->
+                            <td class="dr-cell">-7</td> <!--DIFFERENZA RETI-->
+                        </tr>
+                        <tr class="pos-eliminated">
+                            <td><span class="pos-badge gold">3</span></td>
                             <td class="team-cell">
                                 <div class="logo-wrapper"><img src="https://i.postimg.cc/XZpR17qR/Black-Rage.png" alt="BR"></div>
                                 <span>Black Rage</span>
                             </td>
                             <td><input type="number" value="3" class="punti-input" data-team="br" oninput="updateStandingsNormale(this)"></td> <!--PUNTI-->
-                            <td><input type="number" value="4" class="pg-input" data-team="br" oninput="updateStandingsNormale(this)"></td> <!--PARTITE GIOCATE-->
+                            <td><input type="number" value="6" class="pg-input" data-team="br" oninput="updateStandingsNormale(this)"></td> <!--PARTITE GIOCATE-->
                             <td><input type="number" value="1" class="w-input" data-team="br" oninput="updateStandingsNormale(this)"></td> <!--VITTORIE-->
                             <td><input type="number" value="0" class="d-input" data-team="br" oninput="updateStandingsNormale(this)"></td> <!--PAREGGI-->
-                            <td><input type="number" value="3" class="l-input" data-team="br" oninput="updateStandingsNormale(this)"></td> <!--SCONFITTE-->
+                            <td><input type="number" value="5" class="l-input" data-team="br" oninput="updateStandingsNormale(this)"></td> <!--SCONFITTE-->
                             <td><input type="number" value="7" class="gf-input" data-team="br" oninput="updateStandingsNormale(this)"></td> <!--GOL FATTI-->
-                            <td><input type="number" value="10" class="gs-input" data-team="br" oninput="updateStandingsNormale(this)"></td> <!--GOL SUBITI-->
-                            <td class="dr-cell">-3</td> <!--DIFFERENZA RETI-->
-                        </tr>
-                        <tr class="pos-eliminated">
-                            <td><span class="pos-badge gold">3</span></td>
-                            <td class="team-cell" class="pos-elimitaed">
-                                <div class="logo-wrapper"><img src="https://i.postimg.cc/T25QTRjt/Raton-Logo.png" alt="RT"></div>
-                                <span>Ratòn FC</span>
-                            </td>
-                            <td><input type="number" value="3" class="punti-input" data-team="rt" oninput="updateStandingsNormale(this)"></td> <!--PUNTI-->
-                            <td><input type="number" value="4" class="pg-input" data-team="rt" oninput="updateStandingsNormale(this)"></td> <!--PARTITE GIOCATE-->
-                            <td><input type="number" value="1" class="w-input" data-team="rt" oninput="updateStandingsNormale(this)"></td> <!--VITTORIE-->
-                            <td><input type="number" value="0" class="d-input" data-team="rt" oninput="updateStandingsNormale(this)"></td> <!--PAREGGI-->
-                            <td><input type="number" value="3" class="l-input" data-team="rt" oninput="updateStandingsNormale(this)"></td> <!--SCONFITTE-->
-                            <td><input type="number" value="8" class="gf-input" data-team="rt" oninput="updateStandingsNormale(this)"></td> <!--GOL FATTI-->
-                            <td><input type="number" value="17" class="gs-input" data-team="rt" oninput="updateStandingsNormale(this)"></td> <!--GOL SUBITI-->
-                            <td class="dr-cell">-9</td> <!--DIFFERENZA RETI-->
+                            <td><input type="number" value="14" class="gs-input" data-team="br" oninput="updateStandingsNormale(this)"></td> <!--GOL SUBITI-->
+                            <td class="dr-cell">-7</td> <!--DIFFERENZA RETI-->
                         </tr>
                     </tbody>
                 </table>
@@ -217,7 +218,7 @@
 
         <div class="separator-line"></div>
 
-        <section class="matches-section">
+        <section id="matches" class="matches-section">
             <h2>Cronologia Partite</h2>
             <div class="matches-timeline">
                 <div class="match-card">
@@ -237,18 +238,18 @@
                     </div>
                 </div>
                 <div class="match-card">
-                    <h3>Terzo Incontro<small>TBD</small></h3>
+                    <h3>Terzo Incontro<small>18/10</small></h3>
                     <div class="match-row">
-                        <p class="teams-versus">Ratòn FC <span class="vs">VS</span> Black Rage</p>
+                        <p class="teams-versus">Ratòn FC <span class="score">2 - 0</span> Black Rage <span class="supertext">tav</span></p> 
                         <p class="teams-versus">Ratòn FC <span class="vs">VS</span> Flash Tigers</p>
-                        <p class="teams-versus">Flash Tigers <span class="vs">VS</span> Black Rage</p>
+                        <p class="teams-versus">Flash Tigers <span class="score">2 - 0</span> Black Rage <span class="supertext">tav</span></p>
                     </div>
                 </div>
                 <div class="match-card final-card">
                     <h3>Playoff + Finalissima <small>TBD</small></h3>
                     <div class="match-row">
-                        <small><p class="teams-versus font-big">Secondo posto <span class="vs">VS</span> Terzo posto</p></small>
-                        <p class="teams-versus font-big">Primo Posto <span class="vs">VS</span> Vinc. Playoff</p>
+                        <small><p class="teams-versus font-big">Ratòn FC <span class="vs">VS</span> Black Rages</p></small>
+                        <p class="teams-versus font-big">Flash Tigers <span class="vs">VS</span> Vinc. Playoff</p>
                     </div>
                 </div>
             </div>
