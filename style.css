@@ -352,6 +352,16 @@ tbody tr:nth-child(3) td:first-child .pos-badge::after {
 .vs { color: #ffcc00; font-size: 0.85em; margin: 0 8px; opacity: 0.8; }
 .score { font-weight: 700; color: #ffcc00; margin: 0 6px; }
 .final-card .vs { color: #fff; }
+.supertext {
+    font-size: 0.75em;
+    background: rgba(204, 0, 0, 0.2);
+    color: #ff4d4d;
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-left: 5px;
+}
 
 
 
