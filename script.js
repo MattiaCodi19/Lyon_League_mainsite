@@ -349,3 +349,8 @@ function toggleComp(selectElement) {
         cupStats.style.display = 'none';
     }
 }
+
+// BALOON
+document.addEventListener("DOMContentLoaded", () => {
+  document.body.innerHTML = document.body.innerHTML.replace(/\^\((.*?)\)/g, '<span class="balloon-tip" tabindex="0" data-text="$1">^</span>');
+});
