@@ -234,12 +234,41 @@ h2 {
     background-color: rgba(25, 118, 210, 0.3);
 }
 
-/* Asteriaco */
+/* Asterisco */
 tbody tr:nth-child(3) td:first-child .pos-badge::after {
     content: " *";
     color: rgba(255, 0, 0, 0.914);
     font-weight: bold;
 }
+
+/* BALOON */
+.balloon-tip {
+  position: relative;
+  display: inline-block;
+  color: #ffeb3b; /* Simbolo ^ Giallo */
+  font-weight: bold;
+  cursor: pointer;
+  background: #0056b3; /* Sfondo blu dietro al simbolo per farlo leggere (opzionale) */
+  padding: 0 4px;
+  border-radius: 3px;
+}
+
+/* Il fumetto blu con scritte gialle che va a capo */
+.balloon-tip::after {
+  content: attr(data-text);
+  position: absolute;
+  bottom: 130%; left: 50%; transform: translateX(-50%);
+  background: #0056b3; color: #ffeb3b;
+  padding: 6px 10px; border-radius: 4px; font-size: 13px;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.2s; z-index: 99;
+  
+  /* Permette al testo di andare a capo */
+  white-space: normal; 
+  width: 200px; /* Larghezza massima del fumetto prima di andare a capo */
+  text-align: center;
+}
+.balloon-tip:hover::after, .balloon-tip:focus::after { opacity: 1; }
 
 
 /* Celle Squadra */
