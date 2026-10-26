@@ -208,86 +208,85 @@ function updateStandingsHE() {
 document.addEventListener("DOMContentLoaded", function() {
     
     // ==========================================
-    // 1. LOGICA DELLO SLIDER GALLERIA (FRECCE)
-    // ==========================================
-    const wrapper = document.querySelector('.slider-wrapper');
-    const slides = document.querySelectorAll('.slider-slide');
-    const prevBtn = document.querySelector('.slider-btn.prev');
-    const nextBtn = document.querySelector('.slider-btn.next');
-    
-    let currentIndex = 0;
-    const totalSlides = slides.length;
+// 1. LOGICA DELLO SLIDER GALLERIA (FRECCE)
+// ==========================================
+const wrapper = document.querySelector('.slider-wrapper');
+const slides = document.querySelectorAll('.slider-slide');
+const prevBtn = document.querySelector('.slider-btn.prev');
+const nextBtn = document.querySelector('.slider-btn.next');
 
-    function updateSlider() {
-        if (totalSlides > 0) {
-            wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
-        }
+let currentIndex = 0;
+const totalSlides = slides.length;
+
+function updateSlider() {
+    if (totalSlides > 0 && wrapper) {
+        wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
     }
+}
 
-    if (nextBtn && prevBtn && totalSlides > 0) {
-        nextBtn.addEventListener('click', (e) => {
-            e.stopPropagation(); // Impedisce l'apertura del fullscreen quando si clicca la freccia
-            currentIndex = (currentIndex + 1) % totalSlides;
-            updateSlider();
-        });
-
-        prevBtn.addEventListener('click', (e) => {
-            e.stopPropagation(); // Impedisce l'apertura del fullscreen quando si clicca la freccia
-            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-            updateSlider();
-        });
-    }
-
-    // ==========================================
-    // 2. LOGICA IMMAGINE INTERA (LIGHTBOX)
-    // ==========================================
-    // Crea dinamicamente il contenitore per lo schermo intero
-    const lightbox = document.createElement('div');
-    lightbox.id = 'lightbox-overlay';
-    lightbox.style.cssText = `
-        position: fixed;
-        z-index: 10000;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.9);
-        display: none;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-    `;
-    
-    const lightboxImg = document.createElement('img');
-    lightboxImg.style.cssText = `
-        max-width: 90%;
-        max-height: 90%;
-        border-radius: 8px;
-        box-shadow: 0 0 20px rgba(255,255,255,0.2);
-    `;
-    
-    lightbox.appendChild(lightboxImg);
-    document.body.appendChild(lightbox);
-
-    // Mostra l'immagine intera quando si clicca su una slide
-    slides.forEach(slide => {
-        slide.style.cursor = 'pointer';
-        slide.addEventListener('click', () => {
-            const img = slide.querySelector('img');
-            if (img && img.src && !img.src.includes('link_immagine_')) {
-                lightboxImg.src = img.src;
-                lightbox.style.display = 'flex';
-                document.body.style.overflow = 'hidden'; // Blocca lo scroll della pagina sotto
-            }
-        });
+if (nextBtn && prevBtn && totalSlides > 0) {
+    nextBtn.addEventListener('click', (e) => {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        updateSlider();
     });
 
-    // Chiudi la modalitÃ  schermo intero quando si clicca sullo sfondo nero
-    lightbox.addEventListener('click', () => {
-        lightbox.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Ripristina lo scroll della pagina
+    prevBtn.addEventListener('click', (e) => {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        updateSlider();
+    });
+}
+
+// ==========================================
+// 2. LOGICA IMMAGINE INTERA (LIGHTBOX)
+// ==========================================
+const lightbox = document.createElement('div');
+lightbox.id = 'lightbox-overlay';
+lightbox.style.cssText = `
+    position: fixed;
+    z-index: 10000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+`;
+
+const lightboxImg = document.createElement('img');
+lightboxImg.style.cssText = `
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
+`;
+
+lightbox.appendChild(lightboxImg);
+document.body.appendChild(lightbox);
+
+// Controllo mirato sul target del click per evitare l'attivazione involontaria dalle frecce
+slides.forEach(slide => {
+    slide.style.cursor = 'pointer';
+    slide.addEventListener('click', (e) => {
+        // Se il click intercetta i pulsanti o elementi interni ad essi, interrompe l'esecuzione
+        if (e.target.closest('.slider-btn')) return;
+
+        const img = slide.querySelector('img');
+        if (img && img.src && !img.src.includes('link_immagine_')) {
+            lightboxImg.src = img.src;
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; 
+        }
     });
 });
+
+lightbox.addEventListener('click', () => {
+    lightbox.style.display = 'none';
+    document.body.style.overflow = 'auto'; 
+});
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const dropdown = document.querySelector('.dropdown');
