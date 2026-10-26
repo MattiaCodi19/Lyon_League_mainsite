@@ -484,25 +484,48 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // BALOON
 document.addEventListener("DOMContentLoaded", () => {
-  // Funzione che analizza i nodi di testo senza distruggere i tag HTML
-  const analizzaNodiTesto = (nodo) => {
-    nodo.childNodes.forEach(child => {
-      if (child.nodeType === Node.TEXT_NODE) {
-        const testoOriginale = child.nodeValue;
-        // Cerca la corrispondenza del pattern ^(...)
-        if (/\^\((.*?)\)/.test(testoOriginale)) {
-          const contenitoreVirtuale = document.createElement('span');
-          // Sostituisce il pattern inserendo il tag corretto per il balloon
-          contenitoreVirtuale.innerHTML = testoOriginale.replace(/\^\((.*?)\)/g, '<span class="balloon-tip" tabindex="0" data-text="$1">^</span>');
-          // Sostituisce il vecchio testo puro con i nuovi elementi HTML creati
-          child.replaceWith(...contenitoreVirtuale.childNodes);
-        }
-      } else if (child.nodeType === Node.ELEMENT_NODE && child.tagName !== 'SCRIPT' && child.tagName !== 'STYLE') {
-        analizzaNodiTesto(child);
-      }
-    });
-  };
+    // Funzione che analizza i nodi di testo senza distruggere i tag HTML
+    const analizzaNodiTesto = (nodo) => {
+        nodo.childNodes.forEach(child => {
+            if (child.nodeType === Node.TEXT_NODE) {
+                const testoOriginale = child.nodeValue;
+                // Cerca la corrispondenza del pattern ^(...)
+                if (/\^\((.*?)\)/.test(testoOriginale)) {
+                    const contenitoreVirtuale = document.createElement('span');
+                    // Sostituisce il pattern inserendo il tag corretto per il balloon
+                    contenitoreVirtuale.innerHTML = testoOriginale.replace(/\^\((.*?)\)/g, '<span class="balloon-tip" tabindex="0" data-text="$1">^</span>');
+                    // Sostituisce il vecchio testo puro con i nuovi elementi HTML creati
+                    child.replaceWith(...contenitoreVirtuale.childNodes);
+                }
+            } else if (child.nodeType === Node.ELEMENT_NODE && child.tagName !== 'SCRIPT' && child.tagName !== 'STYLE') {
+                analizzaNodiTesto(child);
+            }
+        });
+    };
 
-  // Avvia la scansione protetta su tutta la pagina
-  analizzaNodiTesto(document.body);
+    // Avvia la scansione protetta su tutta la pagina
+    analizzaNodiTesto(document.body);
+
+    // GESTIONE COPERTURA TOUCH (APRI / CHIUDI)
+    document.addEventListener("click", (e) => {
+        const targetBalloon = e.target.closest(".balloon-tip");
+
+        // Se l'utente ha toccato un balloon
+        if (targetBalloon) {
+            // Verifica se il balloon toccato ha già una classe di attivazione (es. "active")
+            // Nota: Se usi solo i CSS (:focus o :hover), questa logica switcha una classe "is-open" per il touch
+            const isOpen = targetBalloon.classList.contains("is-open");
+
+            // Chiude tutti i balloon aperti
+            document.querySelectorAll(".balloon-tip.is-open").forEach(b => b.classList.remove("is-open"));
+
+            // Se non era aperto, lo apre
+            if (!isOpen) {
+                targetBalloon.classList.add("is-open");
+            }
+        } else {
+            // Se tocca ovunque all'esterno, chiude tutti i balloon
+            document.querySelectorAll(".balloon-tip.is-open").forEach(b => b.classList.remove("is-open"));
+        }
+    });
 });
