@@ -484,5 +484,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // BALOON
 document.addEventListener("DOMContentLoaded", () => {
-  document.body.innerHTML = document.body.innerHTML.replace(/\^\((.*?)\)/g, '<span class="balloon-tip" tabindex="0" data-text="$1">^</span>');
+  // Funzione che analizza i nodi di testo senza distruggere i tag HTML
+  const analizzaNodiTesto = (nodo) => {
+    nodo.childNodes.forEach(child => {
+      if (child.nodeType === Node.TEXT_NODE) {
+        const testoOriginale = child.nodeValue;
+        // Cerca la corrispondenza del pattern ^(...)
+        if (/\^\((.*?)\)/.test(testoOriginale)) {
+          const contenitoreVirtuale = document.createElement('span');
+          // Sostituisce il pattern inserendo il tag corretto per il balloon
+          contenitoreVirtuale.innerHTML = testoOriginale.replace(/\^\((.*?)\)/g, '<span class="balloon-tip" tabindex="0" data-text="$1">^</span>');
+          // Sostituisce il vecchio testo puro con i nuovi elementi HTML creati
+          child.replaceWith(...contenitoreVirtuale.childNodes);
+        }
+      } else if (child.nodeType === Node.ELEMENT_NODE && child.tagName !== 'SCRIPT' && child.tagName !== 'STYLE') {
+        analizzaNodiTesto(child);
+      }
+    });
+  };
+
+  // Avvia la scansione protetta su tutta la pagina
+  analizzaNodiTesto(document.body);
 });
