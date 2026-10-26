@@ -237,7 +237,7 @@ button#darkModeToggle img {
     font-weight: 800;
     letter-spacing: 1px;
     margin: 15px 0;
-    color: #ffffff;
+    color: #ffcc00;
 }
 
 .dark-mode .team-info h2 {
@@ -708,4 +708,15 @@ corona-ll img {
     vertical-align: baseline; /* Evita che il sup sballi l'altezza della riga del testo */
     position: relative;
     top: -2px; 
+}
+
+.supertext {
+    font-size: 0.75em;
+    background: rgba(204, 0, 0, 0.2);
+    color: #ff4d4d;
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-left: 5px;
 }
