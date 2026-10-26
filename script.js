@@ -116,7 +116,6 @@ function updateStandingsNormale(activeInput) {
         }
     }
 }
-
 // Calcolo iniziale a pagina vuota o caricata
 document.addEventListener("DOMContentLoaded", () => {
     updateStandingsNormale(null);
@@ -208,85 +207,86 @@ function updateStandingsHE() {
 document.addEventListener("DOMContentLoaded", function() {
     
     // ==========================================
-// 1. LOGICA DELLO SLIDER GALLERIA (FRECCE)
-// ==========================================
-const wrapper = document.querySelector('.slider-wrapper');
-const slides = document.querySelectorAll('.slider-slide');
-const prevBtn = document.querySelector('.slider-btn.prev');
-const nextBtn = document.querySelector('.slider-btn.next');
+    // 1. LOGICA DELLO SLIDER GALLERIA (FRECCE)
+    // ==========================================
+    const wrapper = document.querySelector('.slider-wrapper');
+    const slides = document.querySelectorAll('.slider-slide');
+    const prevBtn = document.querySelector('.slider-btn.prev');
+    const nextBtn = document.querySelector('.slider-btn.next');
+    
+    let currentIndex = 0;
+    const totalSlides = slides.length;
 
-let currentIndex = 0;
-const totalSlides = slides.length;
-
-function updateSlider() {
-    if (totalSlides > 0 && wrapper) {
-        wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
-    }
-}
-
-if (nextBtn && prevBtn && totalSlides > 0) {
-    nextBtn.addEventListener('click', (e) => {
-        currentIndex = (currentIndex + 1) % totalSlides;
-        updateSlider();
-    });
-
-    prevBtn.addEventListener('click', (e) => {
-        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-        updateSlider();
-    });
-}
-
-// ==========================================
-// 2. LOGICA IMMAGINE INTERA (LIGHTBOX)
-// ==========================================
-const lightbox = document.createElement('div');
-lightbox.id = 'lightbox-overlay';
-lightbox.style.cssText = `
-    position: fixed;
-    z-index: 10000;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-`;
-
-const lightboxImg = document.createElement('img');
-lightboxImg.style.cssText = `
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(255,255,255,0.2);
-`;
-
-lightbox.appendChild(lightboxImg);
-document.body.appendChild(lightbox);
-
-// Controllo mirato sul target del click per evitare l'attivazione involontaria dalle frecce
-slides.forEach(slide => {
-    slide.style.cursor = 'pointer';
-    slide.addEventListener('click', (e) => {
-        // Se il click intercetta i pulsanti o elementi interni ad essi, interrompe l'esecuzione
-        if (e.target.closest('.slider-btn')) return;
-
-        const img = slide.querySelector('img');
-        if (img && img.src && !img.src.includes('link_immagine_')) {
-            lightboxImg.src = img.src;
-            lightbox.style.display = 'flex';
-            document.body.style.overflow = 'hidden'; 
+    function updateSlider() {
+        if (totalSlides > 0) {
+            wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
         }
+    }
+
+    if (nextBtn && prevBtn && totalSlides > 0) {
+        nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Impedisce l'apertura del fullscreen quando si clicca la freccia
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateSlider();
+        });
+
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Impedisce l'apertura del fullscreen quando si clicca la freccia
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateSlider();
+        });
+    }
+
+    // ==========================================
+    // 2. LOGICA IMMAGINE INTERA (LIGHTBOX)
+    // ==========================================
+    // Crea dinamicamente il contenitore per lo schermo intero
+    const lightbox = document.createElement('div');
+    lightbox.id = 'lightbox-overlay';
+    lightbox.style.cssText = `
+        position: fixed;
+        z-index: 10000;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    `;
+    
+    const lightboxImg = document.createElement('img');
+    lightboxImg.style.cssText = `
+        max-width: 90%;
+        max-height: 90%;
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(255,255,255,0.2);
+    `;
+    
+    lightbox.appendChild(lightboxImg);
+    document.body.appendChild(lightbox);
+
+    // Mostra l'immagine intera quando si clicca su una slide
+    slides.forEach(slide => {
+        slide.style.cursor = 'pointer';
+        slide.addEventListener('click', () => {
+            const img = slide.querySelector('img');
+            if (img && img.src && !img.src.includes('link_immagine_')) {
+                lightboxImg.src = img.src;
+                lightbox.style.display = 'flex';
+                document.body.style.overflow = 'hidden'; // Blocca lo scroll della pagina sotto
+            }
+        });
+    });
+
+    // Chiudi la modalitÃ  schermo intero quando si clicca sullo sfondo nero
+    lightbox.addEventListener('click', () => {
+        lightbox.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Ripristina lo scroll della pagina
     });
 });
-
-lightbox.addEventListener('click', () => {
-    lightbox.style.display = 'none';
-    document.body.style.overflow = 'auto'; 
-});
-
 
 document.addEventListener('DOMContentLoaded', () => {
     const dropdown = document.querySelector('.dropdown');
@@ -348,6 +348,139 @@ function toggleComp(selectElement) {
         cupStats.style.display = 'none';
     }
 }
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const openWheelBtn = document.getElementById("openWheelBtn");
+    const cancelWheelBtn = document.getElementById("cancelWheelBtn");
+    const wheelModal = document.getElementById("wheelModal");
+    const wheelContainer = document.getElementById("wheelContainer");
+    const wheelCenterBtn = document.getElementById("wheelCenterBtn");
+    const wheelItems = Array.from(document.querySelectorAll(".wheel-item"));
+
+    if (!wheelContainer || !openWheelBtn) return;
+
+    let currentAngle = 0;
+    let isDragging = false;
+    let dragMoved = false;
+    let startAngle = 0;
+    let selectedIndex = 0;
+    let radius = 110; 
+
+    if (window.innerWidth <= 480) {
+        radius = 85;
+    }
+
+    // Apri / Chiudi
+    openWheelBtn.addEventListener("click", () => wheelModal.classList.add("active"));
+    const closeModal = () => wheelModal.classList.remove("active");
+    cancelWheelBtn.addEventListener("click", closeModal);
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && wheelModal.classList.contains("active")) {
+            closeModal();
+        }
+    });
+
+    // Seleziona la squadra e aggiorna il tasto "APRI"
+    function selectTeam(index) {
+        selectedIndex = index;
+        wheelItems.forEach((item, idx) => {
+            if (idx === index) {
+                item.classList.add("selected");
+                wheelCenterBtn.href = item.getAttribute("href");
+            } else {
+                item.classList.remove("selected");
+            }
+        });
+    }
+
+    // Posiziona gli elementi in cerchio
+    function updateWheelPosition() {
+        const totalItems = wheelItems.length;
+        const angleStep = 360 / totalItems;
+
+        wheelItems.forEach((item, index) => {
+            const itemAngle = currentAngle + (index * angleStep);
+            const rad = (itemAngle - 90) * (Math.PI / 180);
+
+            const x = Math.cos(rad) * radius;
+            const y = Math.sin(rad) * radius;
+
+            item.style.transform = `translate(${x}px, ${y}px)`;
+        });
+    }
+
+    // Ruota fino a portare l'elemento selezionato in alto
+    function rotateToItem(index) {
+        const totalItems = wheelItems.length;
+        const angleStep = 360 / totalItems;
+        currentAngle = - (index * angleStep);
+        updateWheelPosition();
+        selectTeam(index);
+    }
+
+    // Click Diretto sulle Squadre
+    wheelItems.forEach((item, index) => {
+        item.addEventListener("click", (e) => {
+            e.preventDefault(); 
+            if (!dragMoved) {
+                rotateToItem(index);
+            }
+        });
+    });
+
+    // Gestione Gestures & Mouse
+    function getPointerAngle(e) {
+        const rect = wheelContainer.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        
+        return Math.atan2(clientY - centerY, clientX - centerX) * (180 / Math.PI);
+    }
+
+    function startDrag(e) {
+        isDragging = true;
+        dragMoved = false;
+        startAngle = getPointerAngle(e) - currentAngle;
+    }
+
+    function moveDrag(e) {
+        if (!isDragging) return;
+        dragMoved = true;
+        e.preventDefault();
+        currentAngle = getPointerAngle(e) - startAngle;
+        updateWheelPosition();
+
+        // Calcola la squadra più vicina alla cima in base alla rotazione
+        const totalItems = wheelItems.length;
+        const angleStep = 360 / totalItems;
+        let normalizedAngle = (-currentAngle) % 360;
+        if (normalizedAngle < 0) normalizedAngle += 360;
+        
+        const closestIndex = Math.round(normalizedAngle / angleStep) % totalItems;
+        selectTeam(closestIndex);
+    }
+
+    function stopDrag() {
+        isDragging = false;
+    }
+
+    // Eventi Pointer / Touch
+    wheelContainer.addEventListener("mousedown", startDrag);
+    window.addEventListener("mousemove", moveDrag);
+    window.addEventListener("mouseup", stopDrag);
+
+    wheelContainer.addEventListener("touchstart", startDrag, { passive: false });
+    window.addEventListener("touchmove", moveDrag, { passive: false });
+    window.addEventListener("touchend", stopDrag);
+
+    // Inizializzazione: seleziona la prima squadra
+    updateWheelPosition();
+    selectTeam(0);
+});
 
 // BALOON
 document.addEventListener("DOMContentLoaded", () => {
