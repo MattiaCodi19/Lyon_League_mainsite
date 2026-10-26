@@ -241,7 +241,7 @@ tbody tr:nth-child(3) td:first-child .pos-badge::after {
     font-weight: bold;
 }
 
-/* BALOON */
+/* ===== BALOON ===== */
 .balloon-tip {
   position: relative;
   display: inline-block;
@@ -251,6 +251,7 @@ tbody tr:nth-child(3) td:first-child .pos-badge::after {
   background: #0056b3; /* Sfondo blu dietro al simbolo per farlo leggere (opzionale) */
   padding: 0 4px;
   border-radius: 3px;
+  outline: none; /* Rimuove la linea di focus nativa del browser che su mobile può disturbare visivamente */
 }
 
 /* Il fumetto blu con scritte gialle che va a capo */
@@ -268,7 +269,14 @@ tbody tr:nth-child(3) td:first-child .pos-badge::after {
   width: 200px; /* Larghezza massima del fumetto prima di andare a capo */
   text-align: center;
 }
-.balloon-tip:hover::after, .balloon-tip:focus::after { opacity: 1; }
+
+/* Mostra il fumetto su desktop (hover/focus) e su mobile tramite la classe dinamica .is-open */
+.balloon-tip:hover::after, 
+.balloon-tip:focus::after,
+.balloon-tip.is-open::after { 
+  opacity: 1; 
+}
+
 
 
 /* Celle Squadra */
